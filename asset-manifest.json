@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/filly-port/static/css/main.492c1da0.css",
+    "main.css": "/filly-port/static/css/main.53977d57.css",
     "main.js": "/filly-port/static/js/main.2650f202.js",
     "static/js/453.35bee4ea.chunk.js": "/filly-port/static/js/453.35bee4ea.chunk.js",
     "index.html": "/filly-port/index.html",
-    "main.492c1da0.css.map": "/filly-port/static/css/main.492c1da0.css.map",
+    "main.53977d57.css.map": "/filly-port/static/css/main.53977d57.css.map",
     "main.2650f202.js.map": "/filly-port/static/js/main.2650f202.js.map",
     "453.35bee4ea.chunk.js.map": "/filly-port/static/js/453.35bee4ea.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.492c1da0.css",
+    "static/css/main.53977d57.css",
     "static/js/main.2650f202.js"
   ]
 }
