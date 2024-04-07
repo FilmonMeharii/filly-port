@@ -234,3 +234,57 @@ body {
     width: calc(100% - 20px); 
   }
 }
+
+
+/*For small phones*/
+
+@media screen and (max-width: 576px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .navbar {
+    width: 100%;
+    background-color: #87dabc;
+  }
+
+  .navbar ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar li {
+    margin-right: 10px;
+  }
+
+  .navbar a {
+    font-size: 18px;
+  }
+
+  .banner h1 {
+    font-size: 40px;
+  }
+
+  .section h2 {
+    font-size: 26px;
+  }
+
+  .skills li {
+    margin: 0 5px;
+    padding: 5px 10px;
+  }
+
+  .project {
+    padding: 15px;
+  }
+
+  .project h3 {
+    font-size: 18px;
+  }
+
+  .contact input[type="text"],
+  .contact input[type="email"],
+  .contact textarea {
+    width: calc(100% - 20px);
+  }
+}
