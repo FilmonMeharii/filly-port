@@ -178,3 +178,59 @@ body {
 .footer p {
   margin: 0;
 }
+
+
+
+
+/* Responsive CSS style */
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 10px; 
+  }
+}
+
+  .navbar {
+    width: 100%;
+    background-color: #87dabc; 
+  }
+
+  .navbar ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar li {
+    margin-right: 10px;
+  }
+
+  .navbar a {
+    font-size: 20px; 
+  }
+
+  .banner h1 {
+    font-size: 60px; 
+  }
+
+  .section h2 {
+    font-size: 30px; 
+  }
+
+  .skills li {
+    margin: 0 5px; 
+    padding: 5px 10px; 
+
+  .project {
+    padding: 15px; 
+    }
+
+  .project h3 {
+    font-size: 20px; 
+  }
+
+  .contact input[type="text"],
+  .contact input[type="email"],
+  .contact textarea {
+    width: calc(100% - 20px); 
+  }
+}
