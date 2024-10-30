@@ -6,7 +6,7 @@ const Banner = () => {
     <div id='filmon' className="banner">
       <div className='banner-content'>
         <div className='text-content'>
-          <h1>Filmon Mehari</h1>
+          <h1>Hi <br></br>I'm Filmon <br></br>Software Developer</h1>
           <p><br/>Hi there👋<br/>I'm Filmon Mehari, a Software Engineering student. 
             I'm a fast learner who enjoys diving into the world of coding and tech. 
             I love solving problems, exploring new ideas, and keeping an open mind to learn from every experience. 
