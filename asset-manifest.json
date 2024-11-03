@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/filly-port/static/css/main.9fd56623.css",
-    "main.js": "/filly-port/static/js/main.e2c746b8.js",
+    "main.css": "/filly-port/static/css/main.e3198ba1.css",
+    "main.js": "/filly-port/static/js/main.c06bc02c.js",
     "static/js/453.35bee4ea.chunk.js": "/filly-port/static/js/453.35bee4ea.chunk.js",
     "static/media/profilePic.svg": "/filly-port/static/media/profilePic.5043210391e4b2ec4c39400df6ff98c1.svg",
     "index.html": "/filly-port/index.html",
-    "main.9fd56623.css.map": "/filly-port/static/css/main.9fd56623.css.map",
-    "main.e2c746b8.js.map": "/filly-port/static/js/main.e2c746b8.js.map",
+    "main.e3198ba1.css.map": "/filly-port/static/css/main.e3198ba1.css.map",
+    "main.c06bc02c.js.map": "/filly-port/static/js/main.c06bc02c.js.map",
     "453.35bee4ea.chunk.js.map": "/filly-port/static/js/453.35bee4ea.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9fd56623.css",
-    "static/js/main.e2c746b8.js"
+    "static/css/main.e3198ba1.css",
+    "static/js/main.c06bc02c.js"
   ]
 }
