@@ -1,33 +1,41 @@
 .body {
   font-family: 'Arial', sans-serif;
   font-size: 16px;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #88c0b9;
+  background-color: #f0f8ff;
+  color: #333;
 }
 .section {
-  background-color: #88c0b9;
-  padding: 50px 0;
+  background-color: #fff;
+  padding: 60px 0;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .section h2 {
-  font-size: 36px;
+  font-size: 32px;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  color: #27b2a2; 
 }
 
 .skills-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0px 0px;
+  padding: 0 20px;
 }
 
 .skills-box,
 .description-box {
-  width: 100%;
-  background-color: #88c0b9;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 20px);
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .skills-box {
@@ -40,13 +48,12 @@
   margin-bottom: 20px;
 }
 
-.skills-list {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+.skills-list li {
+  padding: 8px 16px;
+  background-color: #27b2a2;
+  color: #fff;
+  border-radius: 20px;
+  transition: all 0.3s ease;
 }
 
 .skills-list li {
@@ -58,8 +65,8 @@
 }
 
 .skills-list li:hover {
-  background-color: #88c0b9;
-  cursor: pointer;
+  background-color: #1c7f74;
+  transform: translateY(-2px);
 }
 
 .description-box p {
@@ -80,15 +87,17 @@
 }
 
 .about p {
-  width: 95%;
+  width: 80%;
   margin: 20px auto;
-  padding: 15px;
-  background-color: #27b2a2;
-  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
 .contact {
   text-align: center;
 }
@@ -107,36 +116,40 @@
 .contact input[type="email"],
 .contact textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-color: #16865f;
+  transition: border-color 0.3s ease;
 }
 
-.contact textarea {
-  height: 150px;
+.contact input[type="text"]:focus,
+.contact input[type="email"]:focus,
+.contact textarea:focus {
+  border-color: #27b2a2;
+  outline: none;
 }
 
 .contact button {
-  background-color: #007bff;
+  background-color: #27b2a2;
   color: #fff;
   border: none;
-  padding: 15px 30px;
-  font-size: 18px;
-  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-
 .contact button:hover {
-  background-color: #0056b3;
+  background-color: #1c7f74;
 }
 
 .footer {
-  background-color: #79aca6;
+  background-color: #27b2a2;
   color: #fff;
   text-align: center;
-  padding: 20px 0;
+  padding: 30px 0;
+
 }
 
 .footer p {
@@ -145,6 +158,15 @@
 
 
 @media screen and (max-width: 768px) {
+
+  .skills-box,
+  .description-box {
+    width: 100%;
+  }
+
+  .about p {
+    width: 90%;
+  }
   .container {
     padding: 0 10px;
   }
@@ -260,13 +282,12 @@
   }
 
   .section h2 {
-    font-size: 18px;
+    font-size: 24px;
   }
 
-  .skills li {
-    margin: 0 5px;
-    padding: 4px 8px;
-    font-size: 12px;
+  .skills-list li {
+    font-size: 14px;
+    padding: 6px 12px;
   }
 
   .project {
