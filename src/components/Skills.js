@@ -18,7 +18,7 @@ const Skills = () => {
   };
 
   return (
-    <section className="skills-container">
+    <section  id= "skills" className="skills-container">
       <div className="skills-box">
         <h2>My Skills</h2>
         {Object.entries(skillsCategories).map(([category, skills], index) => (

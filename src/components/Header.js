@@ -1,18 +1,18 @@
 import React from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
 import profile from '../profilePic.svg';
 import '../CSS/Header.css'
-
 
 const Header = () => {
     return (
         <header className='header'>
             <nav className='navbar'>
                 <ul>
-                    <li><a href='#header'>Filmon</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><Link smooth to='#top'>Filmon</Link></li>
+                    <li><Link smooth to='#about'>About</Link></li>
+                    <li><Link smooth to='#skills'>Skills</Link></li>
+                    <li><Link smooth to='#projects'>Projects</Link></li>
+                    <li><Link smooth to='#contact'>Contact</Link></li>
                 </ul>
             </nav>
             <div className='banner'>
