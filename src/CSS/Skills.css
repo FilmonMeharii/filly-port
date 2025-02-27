@@ -9,10 +9,10 @@
 }
 
 .skills-box, .description-box {
-  background-color: #ffffff;
+  background-color: var(--background-color);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   flex: 1;
   max-width: 48%;
   transition: all 0.3s ease;
@@ -30,8 +30,8 @@
 .skills-category h3 {
   font-size: 20px;
   margin-bottom: 15px;
-  color: #27b2a2;
-  border-bottom: 2px solid #27b2a2;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 5px;
 }
 
@@ -46,8 +46,8 @@
 .skills-list li {
   font-size: 15px;
   line-height: 1.6;
-  background-color: #27b2a2;
-  color: #fff;
+  background-color: var(--primary-color);
+  color: var(--background-color);
   padding: 8px 12px;
   border-radius: 20px;
   flex: 0 1 auto;
@@ -57,18 +57,14 @@
 }
 
 .skills-list li:hover {
-  background-color: #1c7f74;
+  background-color: var(--secondary-color);
   transform: translateY(-2px);
-}
-
-.description-box {
-  background-color: #f0f8ff;
 }
 
 .description-box p {
   font-size: 16px;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-color);
 }
 
 @media (max-width: 992px) {

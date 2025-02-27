@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import profile from '../profilePic.svg';
 import '../CSS/Header.css'
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <header className='header'>
             <nav className='navbar'>
-                <ul>
-                    <li><Link smooth to='#top'>Filmon</Link></li>
-                    <li><Link smooth to='#about'>About</Link></li>
-                    <li><Link smooth to='#skills'>Skills</Link></li>
-                    <li><Link smooth to='#projects'>Projects</Link></li>
-                    <li><Link smooth to='#contact'>Contact</Link></li>
+                <div className="menu-icon" onClick={toggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul className={isMenuOpen ? 'open' : ''}>
+                    <li><Link smooth to='#top' onClick={closeMenu}>Filmon</Link></li>
+                    <li><Link smooth to='#about' onClick={closeMenu}>About</Link></li>
+                    <li><Link smooth to='#skills' onClick={closeMenu}>Skills</Link></li>
+                    <li><Link smooth to='#projects' onClick={closeMenu}>Projects</Link></li>
+                    <li><Link smooth to='#contact' onClick={closeMenu}>Contact</Link></li>
                 </ul>
             </nav>
             <div className='banner'>
@@ -28,6 +43,6 @@ const Header = () => {
             </div>
         </header>
     );
-}
+};
 
 export default Header;
