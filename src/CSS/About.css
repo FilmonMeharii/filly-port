@@ -1,6 +1,6 @@
 .about {
   background-color: var(--secondary-color);
-  padding: 50px 0;
+  padding: 80px 0;
   text-align: center;
   transition: background-color 0.3s ease;
 }
@@ -12,36 +12,52 @@
 }
 
 .about h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 30px;
   color: var(--background-color);
   transition: color 0.3s ease;
+  position: relative;
+}
+
+.about h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--background-color);
+  margin: 15px auto 0;
 }
 
 .about p {
   width: 80%;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 30px auto;
+  padding: 30px;
   background-color: var(--background-color);
-  border: 1px solid var(--primary-color);
-  border-radius: 8px;
-  font-size: 16px;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  font-size: 18px;
   line-height: 1.8;
   box-shadow: var(--box-shadow);
   color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.about p:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .about a {
   color: var(--primary-color);
   text-decoration: none;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
 .about a:hover {
-  color: var(--secondary-color);
+  color: var(--accent-color);
+  text-decoration: underline;
 }
-
 
 [data-theme="dark"] .about {
   background-color: var(--background-color);
@@ -51,6 +67,10 @@
   color: var(--primary-color);
 }
 
+[data-theme="dark"] .about h2::after {
+  background-color: var(--primary-color);
+}
+
 [data-theme="dark"] .about p {
   background-color: var(--secondary-color);
   border-color: var(--primary-color);
@@ -58,18 +78,34 @@
 }
 
 @media (max-width: 768px) {
+  .about {
+    padding: 60px 0;
+  }
+
+  .about h2 {
+    font-size: 36px;
+  }
+
   .about p {
     width: 90%;
+    padding: 25px;
+    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
+  .about {
+    padding: 50px 0;
+  }
+
   .about h2 {
-    font-size: 28px;
+    font-size: 32px;
   }
   
   .about p {
-    font-size: 14px;
-    padding: 15px;
+    width: 95%;
+    font-size: 15px;
+    padding: 20px;
+    line-height: 1.6;
   }
 }

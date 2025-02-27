@@ -10,6 +10,7 @@ import About from './components/About';
 import ScrollToTop from './components/ScrollToTop';
 import ThemeToggle from './components/ThemeToggle';
 import { ThemeProvider } from './components/ThemeContext';
+import Timeline from './components/Timeline';
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
           <About />
           <Skills />
           <Projects />
-          <Contact />
-          <Footer />
-          <ScrollToTop />
+          <Timeline />
+          <Contact />          
           <ThemeToggle />
+          <ScrollToTop />
+          <Footer />
         </div>
       </Router>
     </ThemeProvider>

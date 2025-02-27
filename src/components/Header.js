@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import profile from '../profilePic.svg';
+import profile from '../assets/profilePic.svg'
+
 import '../CSS/Header.css'
 
 const Header = () => {
