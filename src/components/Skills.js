@@ -35,11 +35,26 @@ const Skills = () => {
       <div className="description-box">
         <h2>About My Skills</h2>
         <p>
-          I have a diverse skill set ranging from front-end technologies like
-          React and JavaScript to back-end programming languages such as Java and Python.
-          My experience also includes mobile development with Swift and Kotlin, and I am
-          proficient in writing efficient and clean code in C++ and building modern, responsive
-          designs using HTML and CSS.
+          As a Computer Science student at Jönköping University, I've developed a diverse set of skills through various projects and coursework. My experience spans:
+          <br />
+          • AI and Computer Vision: I've worked on deep learning projects to count people and made AI programs using Haskell and Python.
+          <br />
+          • Mobile Development: Created iOS apps using SwiftUI, like a quiz app, weather app and a todo list app.
+          <br />
+          • Web Development: Built a website using React, JavaScript, and CSS.
+          <br />
+          • Software Design: Developed a Java based board game framework using good design practices.
+          <br />
+          • Database Work: Designed and implemented a Hotel management system using SQL.
+          <br />
+          • System Analysis: Created comprehensive domain models for university teaching systems.
+          <br />
+          • Project Management: Served as a Product Owner in a large-scale software development project.
+          <br />
+          • Graphic Design: Completed projects in layout design, branding, and digital illustration.
+          <br />
+          <br />
+          I am familiar to use C++, Java, Python, Swift, and JavaScript. I also use tools like Git and SQL.I'm always eager to learn new technologies and apply my skills to solve real-world problems.
         </p>
       </div>
     </section>
