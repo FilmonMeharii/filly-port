@@ -53,8 +53,6 @@ const Skills = () => {
           <br />
           • Graphic Design: Completed projects in layout design, branding, and digital illustration.
           <br />
-          <br />
-          I am familiar to use C++, Java, Python, Swift, and JavaScript. I also use tools like Git and SQL.I'm always eager to learn new technologies and apply my skills to solve real-world problems.
         </p>
       </div>
     </section>

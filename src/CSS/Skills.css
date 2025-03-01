@@ -1,58 +1,70 @@
 .skills-section {
-  padding: 80px 0;
+  padding: 40px 0;
   background-color: var(--background-color);
   transition: background-color 0.3s ease;
 }
 
-.skills-section h2 {
-  font-size: 40px;
+.skills-section h2,
+.skills-box h2,
+.description-box h2 {
+  font-size: 28px;
   text-align: center;
   color: var(--primary-color);
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   position: relative;
 }
 
-.skills-section h2::after {
+.skills-section h2::after,
+.skills-box h2::after,
+.description-box h2::after {
   content: '';
   display: block;
-  width: 60px;
+  width: 40px;
   height: 3px;
   background-color: var(--primary-color);
-  margin: 15px auto 0;
+  margin: 10px auto 0;
 }
 
 .skills-container {
   display: flex;
-  flex-direction: row;
-  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 0 20px;
-  max-width: 1200px;
+  max-width: 1100px;
   width: 100%;
   margin: 0 auto;
+  gap: 20px;
 }
 
-.skills-box, .description-box {
-  background-color: var(--background-color);
-  padding: 30px;
+.skills-box,
+.description-box {
+  background-color: var(--secondary-color);
+  padding: 20px;
   border-radius: 12px;
   box-shadow: var(--box-shadow);
   flex: 1;
-  max-width: 48%;
+  max-width: calc(50% - 10px);
   transition: all 0.3s ease;
+  margin-bottom: 20px;
 }
 
-.skills-box:hover, .description-box:hover {
+.skills-box:hover,
+.description-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+.skills-box {
+  text-align: center;
+}
+
 .skills-category {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .skills-category h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
+  font-size: 18px;
+  margin-bottom: 10px;
   color: var(--primary-color);
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 5px;
@@ -67,117 +79,108 @@
 }
 
 .skills-list li {
-  font-size: 16px;
+  font-size: 10px;
   line-height: 1.6;
   background-color: var(--primary-color);
-  color: var(--background-color);
-  padding: 8px 12px;
+  color: var(--light-text-color);
+  padding: 6px 10px;
   border-radius: 20px;
   flex: 0 1 auto;
-  min-width: 80px;
+  min-width: 60px;
   text-align: center;
   transition: all 0.3s ease;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 .skills-list li:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--accent-color);
   transform: translateY(-2px);
 }
 
-.description-box {
-  background-color: var(--secondary-color);
-}
-
 .description-box p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
-  color: var(--text-color);
-}
-
-/* Add this new style for line breaks */
-.description-box p br {
-  margin-bottom: 10px;
-  display: block;
-  content: "";
-}
-
-@media (max-width: 992px) {
-  .skills-container {
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  .skills-box, .description-box {
-    max-width: 100%;
-  }
+  color: var(--light-text-color);
 }
 
 @media (max-width: 768px) {
-  .skills-section {
-    padding: 60px 0;
-  }
-
-  .skills-section h2 {
-    font-size: 36px;
-  }
-
   .skills-container {
-    padding: 0 15px;
+    flex-direction: column;
   }
 
-  .skills-box, .description-box {
-    padding: 25px;
+  .skills-box,
+  .description-box {
+    max-width: 100%;
+  }
+
+  .skills-section h2,
+  .skills-box h2,
+  .description-box h2 {
+    font-size: 24px;
   }
 
   .skills-category h3 {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .skills-list li {
-    font-size: 15px;
-    padding: 6px 10px;
+    font-size: 9px;
+    padding: 5px 8px;
+    min-width: 50px;
   }
 
   .description-box p {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .skills-section {
-    padding: 50px 0;
-  }
-
-  .skills-section h2 {
-    font-size: 32px;
-  }
-
   .skills-container {
-    padding: 0 10px;
-    gap: 20px;
+    flex-direction: column;
   }
 
-  .skills-box, .description-box {
-    padding: 20px;
+  .skills-box,
+  .description-box {
+    max-width: 100%;
+  }
+
+  .skills-section {
+    padding: 20px 0;
+  }
+
+  .skills-section h2,
+  .skills-box h2,
+  .description-box h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .skills-section h2::after,
+  .skills-box h2::after,
+  .description-box h2::after {
+    width: 30px;
+    height: 2px;
+    margin: 8px auto 0;
   }
 
   .skills-category h3 {
-    font-size: 18px;
+    font-size: 16px;
+    margin-bottom: 8px;
   }
 
   .skills-list {
-    gap: 10px;
+    gap: 8px;
   }
 
   .skills-list li {
-    font-size: 14px;
+    font-size: 9px;
     padding: 5px 8px;
-    min-width: 70px;
+    min-width: 50px;
   }
 
   .description-box p {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.4;
   }
 }

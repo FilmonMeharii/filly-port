@@ -74,7 +74,7 @@
 [data-theme="dark"] .about p {
   background-color: var(--secondary-color);
   border-color: var(--primary-color);
-  color: var(--background-color);
+  color: var(--light-text-color);
 }
 
 @media (max-width: 768px) {

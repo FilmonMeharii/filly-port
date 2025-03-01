@@ -8,27 +8,22 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import About from './components/About';
 import ScrollToTop from './components/ScrollToTop';
-import ThemeToggle from './components/ThemeToggle';
-import { ThemeProvider } from './components/ThemeContext';
 import Timeline from './components/Timeline';
 
 function App() {
   return (
-    <ThemeProvider>
-      <Router>
-        <div className="App">
-          <Header />
-          <About />
-          <Skills />
-          <Projects />
-          <Timeline />
-          <Contact />          
-          <ThemeToggle />
-          <ScrollToTop />
-          <Footer />
-        </div>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <div className="App">
+        <Header />
+        <About />
+        <Skills />
+        <Projects />
+        <Timeline />
+        <Contact />          
+        <ScrollToTop />
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

@@ -18,7 +18,7 @@ const timelineData = [
     date: '2018 - 2021',
     title: 'Natural Science',
     institution: 'Katrinelundsgymnasiet',
-    description: 'Got high school diploma'
+    description: 'High School Diploma in Natural Science'
   }
 ];
 

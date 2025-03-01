@@ -65,9 +65,22 @@
   font-size: 10px;
 }
 
+[data-theme="dark"] .footer {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+[data-theme="dark"] .social-links a {
+  color: var(--background-color);
+}
+
+[data-theme="dark"] .social-links a:hover {
+  color: var(--secondary-color);
+}
+
 @media (max-width: 768px) {
   .contact-info {
-    flex-direction: column; /* Stack on smaller screens */
+    flex-direction: column;
     align-items: center;
   }
 
