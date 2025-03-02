@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-import '../CSS/Projects.css'
+import '../CSS/Projects.css';
 
 const Projects = () => {
-  const [modalProjectIndex, setModalProjectIndex] = useState(null);
+  const [modalProject, setModalProject] = useState(null);
   const [filter, setFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleProjectClick = (index) => {
-    setModalProjectIndex(index);
+  const handleProjectClick = (project) => {
+    setModalProject(project);
   };
 
   const handleCloseClick = () => {
-    setModalProjectIndex(null);
+    setModalProject(null);
   };
 
   const filterButtons = ['All', 'Web', 'Mobile', 'Data', 'Database'];
 
   const projectsData = [
     {
+      id: 1,
       title: 'Real-Time People Counting System',
       description: 'Developing a deep learning-based system for real-time people counting in classrooms using multi-modal data from RGB, depth, and infrared cameras.',
       category: 'AI/Computer Vision',
@@ -31,6 +32,7 @@ const Projects = () => {
       tags: ['Deep Learning', 'PyTorch', 'Computer Vision', 'Multi-Modal Data']
     },
     {
+      id: 2,
       title: 'Large-Scale Software Development Project',
       description: 'Participated in a major software development project in collaboration with Knowit, serving as the Product Owner for the Admin Page team.',
       category: 'Software Development',
@@ -43,6 +45,7 @@ const Projects = () => {
       tags: ['Agile', 'Scrum', 'Product Owner', 'Project Management']
     },
     {
+      id: 3,
       title: 'AI Programming with Haskell and Python',
       description: 'Comprehensive course project covering various AI algorithms and concepts using Haskell and Python.',
       category: 'AI',
@@ -55,6 +58,7 @@ const Projects = () => {
       tags: ['AI', 'Haskell', 'Python', 'Machine Learning']
     },
     {
+      id: 4,
       title: 'Weather App with Open Meteo API',
       description: 'An iOS weather application using SwiftUI and the Open Meteo API, providing current and forecast weather data.',
       category: 'Mobile',
@@ -67,6 +71,7 @@ const Projects = () => {
       tags: ['iOS', 'SwiftUI', 'API Integration', 'Core Location']
     },
     {
+      id: 5,
       title: 'Java Board Game Framework',
       description: 'A Java-based framework for board games, designed using GRASP principles and MVC pattern.',
       category: 'Software Design',
@@ -79,6 +84,7 @@ const Projects = () => {
       tags: ['Java', 'OOP', 'Design Patterns', 'MVC']
     },
     {
+      id: 6,
       title: 'Hotel Management System',
       description: 'A comprehensive database solution for hotel management, featuring ER diagrams, SQL code, and complex queries.',
       category: 'Database',
@@ -92,6 +98,7 @@ const Projects = () => {
       tags: ['SQL', 'Database Design', 'ER Modeling']
     },
     {
+      id: 7,
       title: 'SwiftUI Todo List App',
       description: 'An iOS app built with SwiftUI and Swift, featuring todo management with categories and filtering capabilities.',
       category: 'Mobile',
@@ -104,6 +111,7 @@ const Projects = () => {
       tags: ['iOS', 'SwiftUI', 'Swift', 'Mobile Development']
     },
     {
+      id: 8,
       title: 'University Teaching System Domain Model',
       description: 'A comprehensive domain model for university teaching systems, focusing on student-teacher interactions and supporting tools.',
       category: 'System Analysis',
@@ -116,6 +124,7 @@ const Projects = () => {
       tags: ['UML', 'Domain Modeling', 'System Analysis']
     },
     {
+      id: 9,
       title: 'Graphic Design',
       description: 'A comprehensive graphic design project showcasing skills in layout design, branding, and digital illustration.',
       category: 'Design',
@@ -128,6 +137,7 @@ const Projects = () => {
       tags: ['Graphic Design', 'Adobe Illustrator', 'Branding']
     },
     {
+      id: 10,
       title: 'Portfolio Website',
       description: 'Personal portfolio website showcasing projects and skills, built using React and modern CSS techniques.',
       category: 'Web',
@@ -140,8 +150,7 @@ const Projects = () => {
       tags: ['React', 'CSS', 'Responsive Design', 'Web Development']
     }
   ];
-  
-  
+
   const filteredProjects = projectsData
     .filter(project => project.title.toLowerCase().includes(searchTerm.toLowerCase()))
     .filter(project => filter === 'All' || project.category === filter);
@@ -169,11 +178,11 @@ const Projects = () => {
           ))}
         </div>
         <div className="projects">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <div
-              key={index}
+              key={project.id}
               className="project"
-              onClick={() => handleProjectClick(index)}
+              onClick={() => handleProjectClick(project)}
             >
               <h3>{project.title}</h3>
               <p>{project.description}</p>
@@ -182,29 +191,29 @@ const Projects = () => {
           ))}
         </div>
 
-        {modalProjectIndex !== null && (
+        {modalProject && (
           <div className="modal">
             <div className="modal-content">
               <button className="close-button" onClick={handleCloseClick}>
                 &times;
               </button>
-              <h3>{projectsData[modalProjectIndex].title}</h3>
-              <p>{projectsData[modalProjectIndex].description}</p>
-              {projectsData[modalProjectIndex].details && (
+              <h3>{modalProject.title}</h3>
+              <p>{modalProject.description}</p>
+              {modalProject.details && (
                 <ul>
-                  {projectsData[modalProjectIndex].details.map((detail, index) => (
+                  {modalProject.details.map((detail, index) => (
                     <li key={index}>{detail}</li>
                   ))}
                 </ul>
               )}
-              {projectsData[modalProjectIndex].githubLink && (
+              {modalProject.githubLink && (
                 <p>
-                  <a href={projectsData[modalProjectIndex].githubLink} target="_blank" rel="noopener noreferrer">
+                  <a href={modalProject.githubLink} target="_blank" rel="noopener noreferrer">
                     View on GitHub
                   </a>
                 </p>
               )}
-              <span className="project-category">{projectsData[modalProjectIndex].category}</span>
+              <span className="project-category">{modalProject.category}</span>
             </div>
           </div>
         )}

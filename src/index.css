@@ -1,11 +1,11 @@
 :root {
-  --main-color: #3498db; /* Blue */
-  --background-color: #ffffff; /* White */
+  --main-color: #3498db; 
+  --background-color: #ffffff; 
 }
 
 [data-theme="dark"] {
-  --main-color: #000000; /* Black */
-  --background-color: #000000; /* Black */
+  --main-color: #000000; 
+  --background-color: #000000; 
 }
 
 *, *::before, *::after {
