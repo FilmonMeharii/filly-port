@@ -3,22 +3,28 @@ import '../CSS/Timeline.css';
 
 const timelineData = [
   {
-    date: 'Graduate June 2025',
-    title: 'Computer Science Student',
-    institution: 'Jönköping University',
-    description: 'Specializing in Software Development and Mobile Platforms'
+    date: '2025 – Present',
+    title: 'MSc Cybersecurity',
+    institution: 'Högskolan Väst, Trollhättan',
+    description: ''
   },
   {
-    date: 'March 2024 - May 2024',
+    date: 'Graduated May 2025',
+    title: 'BSc Computer Science',
+    institution: 'Jönköping University',
+    description: ''
+  },
+  {
+    date: 'Mar 2023 – May 2023',
     title: 'Software Developer Intern',
     institution: 'Sweco',
-    description: 'Conducted unit tests and developed a Proof of Concept (POC) app'
+    description: ''
   },
   {
-    date: '2018 - 2021',
-    title: 'Natural Science',
+    date: '2018 – 2021',
+    title: 'Natural Science Program',
     institution: 'Katrinelundsgymnasiet',
-    description: 'High School Diploma in Natural Science'
+    description: ''
   }
 ];
 

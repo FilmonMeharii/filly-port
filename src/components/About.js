@@ -10,8 +10,19 @@ const About = () => {
     <div id="about" className="section about" ref={sectionRef}>
       <div className='container'>
         <h2>About Me</h2>
-        <p> Hi there👋<br />I'm a final-year Computer Science student at Jönköping University, specializing in Software Development and Mobile Platforms. I'm passionate about coding and problem-solving. I did an internship at Sweco as a software developer and unit tester, where I gained practical experience. Right now, I'm working on my bachelor's thesis using AI to count people in a room with a video camera. I enjoy learning new technologies and solving problems.I am familiar to use C++, Java, Python, Swift, and JavaScript. I also use tools like Git and SQL.I'm always eager to learn new technologies and apply my skills to solve real-world problems. I'm looking for a job to gain more experience and continue growing in the tech field.
+        <p>
+          Hi there 👋<br />
+          I’m a Computer Science graduate from Jönköping University, now studying for a Master’s degree in Cybersecurity at Högskolan Väst.
         </p>
+
+        <p>
+          My background is in software development and AI, and I’m now exploring cybersecurity through hands-on labs and projects. I’ve worked with PLC systems, firewalls, and intrusion detection while continuing to code in languages like Python, C++, Java, and Swift.
+        </p>
+
+        <p>
+          I enjoy combining development and security building things and learning how to protect them. I’m currently looking for a Master’s thesis or a part-time cybersecurity role where I can apply both my technical and security knowledge.
+        </p>
+
         <p>
           <a href={CV} download="CV_Filmon_Mehari.pdf">Download Resume</a>
         </p>

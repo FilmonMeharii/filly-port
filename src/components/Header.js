@@ -17,8 +17,8 @@ const Header = () => {
     });
 
     useEffect(() => {
-        // Ensure the document body reflects the current theme on mount
-        document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+        // Ensure the documentElement reflects the current theme on mount (matches public/index.html inline script)
+        document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
         try {
             localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
         } catch (e) {
@@ -39,8 +39,12 @@ const Header = () => {
         setIsDarkMode(prev => {
             const newVal = !prev;
             const newTheme = newVal ? 'dark' : 'light';
-            localStorage.setItem('theme', newTheme);
-            document.body.setAttribute('data-theme', newTheme);
+            try {
+                localStorage.setItem('theme', newTheme);
+            } catch (e) {
+                // ignore storage errors
+            }
+            document.documentElement.setAttribute('data-theme', newTheme);
             return newVal;
         });
     };
@@ -84,7 +88,7 @@ const Header = () => {
                     <div className='text-content'>
                         <h3>Hello, I'm</h3>
                         <h1>Filmon Mehari</h1>
-                        <h2>Software Developer</h2>
+                        <h2> Computer Science Graduate <br /> Cybersecurity Student </h2>
                     </div>
                     <div className='profile-photo'>
                         <img src={profile} alt='Filmon - Software Developer' />

@@ -75,6 +75,16 @@ const Projects = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Ensure projects are visible after modal interactions (defensive restore)
+  useEffect(() => {
+    if (modalProject) return; // only when modal closed
+    // re-add in-view to any project elements that may have lost it
+    const els = document.querySelectorAll('.project');
+    els.forEach((el) => {
+      if (!el.classList.contains('in-view')) el.classList.add('in-view');
+    });
+  }, [modalProject]);
+
   // ensure the whole projects section reveals (parent .section is hidden by default)
   const sectionRef = useRef(null);
   useEffect(() => {
@@ -96,135 +106,50 @@ const Projects = () => {
   const projectsData = [
     {
       id: 1,
-      title: 'Real-Time People Counting System',
-      description: 'Developing a deep learning-based system for real-time people counting in classrooms using multi-modal data from RGB, depth, and infrared cameras.',
-      category: 'AI/Computer Vision',
+      title: 'Cybersecurity Labs',
+      description: 'Practical labs at Högskolan Väst where I worked with OpenPLC and network security tools. I configured firewalls, performed vulnerability scans, and set up intrusion detection systems.',
+      category: 'Cybersecurity',
       details: [
-        'Utilized and fine-tuned a Faster R-CNN model for accurate people detection',
-        'Implemented multi-modal data fusion for enhanced accuracy',
-        'Optimized for real-time performance and privacy preservation',
-        'Achieved significant accuracy improvements over baseline models',
-        'Collaborated with Jönköping Museum for real-world testing and deployment'
+        'Configured OpenPLC and tested Modbus/TCP scenarios',
+        'Set up nftables rules and basic firewall hardening',
+        'Performed vulnerability scans and basic IDS using Fail2Ban',
       ],
-      tags: ['Deep Learning', 'PyTorch', 'Computer Vision', 'Multi-Modal Data']
+      tags: ['OpenPLC', 'Modbus', 'nftables', 'IDS']
     },
     {
       id: 2,
-      title: 'Large-Scale Software Development Project',
-      description: 'Participated in a major software development project in collaboration with Knowit, serving as the Product Owner for the Admin Page team.',
-      category: 'Software Development',
+      title: 'AI People Counting System',
+      description: 'Bachelor’s thesis using RGB, depth, and infrared video data to count people without identifying them. Used deep learning and data fusion to improve accuracy.',
+      category: 'AI',
       details: [
-        'Managed requirements and coordinated with stakeholders',
-        'Applied agile methodologies (Scrum) and project management skills',
-        'Ensured successful implementation of the Admin Page component',
-        'Collaborated effectively in a multi-group environment'
+        'Implemented deep learning models for people detection',
+        'Combined RGB, depth and infrared data for robust counting',
+        'Focused on privacy-preserving techniques'
       ],
-      tags: ['Agile', 'Scrum', 'Product Owner', 'Project Management']
+      tags: ['Deep Learning', 'Data Fusion', 'Privacy']
     },
     {
       id: 3,
-      title: 'AI Programming with Haskell and Python',
-      description: 'Comprehensive course project covering various AI algorithms and concepts using Haskell and Python.',
-      category: 'AI',
+      title: 'Mobile App – Sweco Internship',
+      description: 'Developed a proof-of-concept mobile app using React Native and REST APIs during my internship. Contributed to unit testing and debugging workflows.',
+      category: 'Mobile',
       details: [
-        'Implemented fundamental AI algorithms from scratch',
-        'Explored functional programming in Haskell',
-        'Covered search algorithms, rule-based systems, supervised learning, and reinforcement learning',
-        'Developed intelligent game players and self-learning agents'
+        'Implemented key features and integration with REST APIs',
+        'Wrote unit tests and fixed bugs',
+        'Collaborated with other teams to deliver a POC'
       ],
-      tags: ['AI', 'Haskell', 'Python', 'Machine Learning']
+      tags: ['React Native', 'REST', 'Testing']
     },
     {
       id: 4,
-      title: 'Weather App with Open Meteo API',
-      description: 'An iOS weather application using SwiftUI and the Open Meteo API, providing current and forecast weather data.',
+      title: 'iOS Apps (SwiftUI)',
+      description: 'Created iOS applications including a weather app and a todo list app using SwiftUI.',
       category: 'Mobile',
       details: [
-        'Displays weather for current location and user-defined cities',
-        'Shows weather forecast for upcoming days',
-        'Integrates Core Location for obtaining user\'s current location',
-        'Implements data persistence for user preferences'
+        'Built apps with SwiftUI and Core Location',
+        'Handled data persistence and UI state management',
       ],
-      tags: ['iOS', 'SwiftUI', 'API Integration', 'Core Location']
-    },
-    {
-      id: 5,
-      title: 'Java Board Game Framework',
-      description: 'A Java-based framework for board games, designed using GRASP principles and MVC pattern.',
-      category: 'Software Design',
-      details: [
-        'Implemented MVC architecture for game design',
-        'Applied GRASP design principles for better maintainability and extensibility',
-        'Designed for easy adaptation to different board games and rule sets',
-        'Focused on clean code and object-oriented design patterns'
-      ],
-      tags: ['Java', 'OOP', 'Design Patterns', 'MVC']
-    },
-    {
-      id: 6,
-      title: 'Hotel Management System',
-      description: 'A comprehensive database solution for hotel management, featuring ER diagrams, SQL code, and complex queries.',
-      category: 'Database',
-      details: [
-        'Developed ER Diagrams (Conceptual and Logical)',
-        'Implemented SQL code for database creation',
-        'Created 8+ SQL queries ranging from simple to complex joins and functions',
-        'Designed 6 main tables and 2 middle tables for many-to-many relations'
-      ],
-      githubLink: 'https://github.com/FilmonMeharii/SQL-Hotel-Management-System',
-      tags: ['SQL', 'Database Design', 'ER Modeling']
-    },
-    {
-      id: 7,
-      title: 'SwiftUI Todo List App',
-      description: 'An iOS app built with SwiftUI and Swift, featuring todo management with categories and filtering capabilities.',
-      category: 'Mobile',
-      details: [
-        'Implemented CRUD operations for todos',
-        'Added category system with filtering functionality',
-        'Used icons/colors to visualize categories',
-        'Implemented data persistence using UserDefaults or @AppStorage'
-      ],
-      tags: ['iOS', 'SwiftUI', 'Swift', 'Mobile Development']
-    },
-    {
-      id: 8,
-      title: 'University Teaching System Domain Model',
-      description: 'A comprehensive domain model for university teaching systems, focusing on student-teacher interactions and supporting tools.',
-      category: 'System Analysis',
-      details: [
-        'Created a detailed domain model using UML',
-        'Analyzed complex interactions between students, teachers, and administrative systems',
-        'Modeled various university systems including PingPong, Ladok, and Kronox',
-        'Applied principles of domain-driven design and conceptual modeling'
-      ],
-      tags: ['UML', 'Domain Modeling', 'System Analysis']
-    },
-    {
-      id: 9,
-      title: 'Graphic Design',
-      description: 'A comprehensive graphic design project showcasing skills in layout design, branding, and digital illustration.',
-      category: 'Design',
-      details: [
-        'Created coffee table book spreads about a designer',
-        'Developed branding and visual identity for a restaurant',
-        'Designed a stylized geometric animal illustration using Adobe Illustrator',
-        'Applied principles of typography, color theory, and layout design'
-      ],
-      tags: ['Graphic Design', 'Adobe Illustrator', 'Branding']
-    },
-    {
-      id: 10,
-      title: 'Portfolio Website',
-      description: 'Personal portfolio website showcasing projects and skills, built using React and modern CSS techniques.',
-      category: 'Web',
-      details: [
-        'Designed and implemented a responsive layout',
-        'Created interactive project displays with filtering and search functionality',
-        'Implemented smooth scrolling and animations for enhanced user experience',
-        'Optimized for performance and accessibility'
-      ],
-      tags: ['React', 'CSS', 'Responsive Design', 'Web Development']
+      tags: ['SwiftUI', 'iOS']
     }
   ];
 

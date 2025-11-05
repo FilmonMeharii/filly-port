@@ -102,9 +102,51 @@
 
 .text-content h1, .text-content h2, .text-content h3 { color: var(--text-color); }
 
-.text-content h1 { font-size: 3.2rem; margin: 0 0 6px; line-height: 1.08; }
-.text-content h2 { font-size: 1.6rem; margin: 0 0 6px; font-weight: 600; }
-.text-content h3 { font-size: 1.05rem; margin: 0 0 4px; color: var(--muted-color); }
+/* Eyebrow / small lead-in */
+.text-content h3 {
+  font-size: 0.9rem;
+  margin: 0 0 10px;
+  color: var(--muted-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  opacity: 0.95;
+}
+
+/* Main heading with clipped gradient for a modern look */
+.text-content h1 {
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  margin: 0 0 8px;
+  line-height: 1.02;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* shows the gradient */
+  display: inline-block;
+}
+
+/* Subtitle / role — subtle, slightly muted */
+.text-content h2 {
+  font-size: 1.05rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--muted-color);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* small accent bar after the subtitle */
+.text-content h2::after {
+  content: '';
+  display: inline-block;
+  width: 44px;
+  height: 4px;
+  margin-left: 12px;
+  vertical-align: middle;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
 
 .profile-photo {
   flex: 1;

@@ -130,6 +130,14 @@
   opacity: 1;
 }
 
+/* If the whole section is visible, show projects even if individual cards
+   don't have their own .in-view class (defensive, avoids cards disappearing
+   after modal open/close or DOM updates). */
+.projects-section.in-view .project {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .project-content {
   flex-grow: 1;
 }
