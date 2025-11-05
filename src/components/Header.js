@@ -24,10 +24,14 @@ const Header = () => {
     };
 
     const toggleTheme = () => {
-        setIsDarkMode(prevMode => !prevMode);
-        const newTheme = isDarkMode ? 'light' : 'dark';
-        localStorage.setItem('theme', newTheme);
-        document.body.setAttribute('data-theme', newTheme);
+        // use functional update so we always compute based on previous state
+        setIsDarkMode(prev => {
+            const newVal = !prev;
+            const newTheme = newVal ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            document.body.setAttribute('data-theme', newTheme);
+            return newVal;
+        });
     };
 
     return (
@@ -36,12 +40,18 @@ const Header = () => {
                 <div className="logo">
                     <Link smooth to='#top'>Home</Link>
                 </div>
-                <div className="menu-icon" onClick={toggleMenu}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <ul className={isMenuOpen ? 'open' : ''}>
+                <button
+                    className="menu-icon"
+                    onClick={toggleMenu}
+                    aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                    aria-expanded={isMenuOpen}
+                    aria-controls="primary-navigation"
+                >
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
+                <ul id="primary-navigation" className={isMenuOpen ? 'open' : ''}>
                     <li><Link smooth to='#about' onClick={closeMenu}>About</Link></li>
                     <li><Link smooth to='#skills' onClick={closeMenu}>Skills</Link></li>
                     <li><Link smooth to='#projects' onClick={closeMenu}>Projects</Link></li>
@@ -50,7 +60,11 @@ const Header = () => {
                         <button
                             className={`light-mode-switch ${isDarkMode ? 'dark' : 'light'}`}
                             onClick={toggleTheme}
-                        ></button>
+                            aria-pressed={isDarkMode}
+                            aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                        >
+                            {isDarkMode ? '🌙' : '☀️'}
+                        </button>
                     </li>
                 </ul>
             </nav>
