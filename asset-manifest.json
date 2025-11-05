@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/filly-port/static/css/main.1a7ee017.css",
-    "main.js": "/filly-port/static/js/main.38ca5504.js",
+    "main.css": "/filly-port/static/css/main.0bdafe2c.css",
+    "main.js": "/filly-port/static/js/main.7d18dd0d.js",
     "static/js/453.35bee4ea.chunk.js": "/filly-port/static/js/453.35bee4ea.chunk.js",
     "static/media/profilePic.svg": "/filly-port/static/media/profilePic.ee94674eb87e5d102474f8df8ac7ef5e.svg",
     "static/media/CV_Filmon_Mehari.pdf": "/filly-port/static/media/CV_Filmon_Mehari.42482680dc8f86d63124.pdf",
     "index.html": "/filly-port/index.html",
-    "main.1a7ee017.css.map": "/filly-port/static/css/main.1a7ee017.css.map",
-    "main.38ca5504.js.map": "/filly-port/static/js/main.38ca5504.js.map",
+    "main.0bdafe2c.css.map": "/filly-port/static/css/main.0bdafe2c.css.map",
+    "main.7d18dd0d.js.map": "/filly-port/static/js/main.7d18dd0d.js.map",
     "453.35bee4ea.chunk.js.map": "/filly-port/static/js/453.35bee4ea.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a7ee017.css",
-    "static/js/main.38ca5504.js"
+    "static/css/main.0bdafe2c.css",
+    "static/js/main.7d18dd0d.js"
   ]
 }
