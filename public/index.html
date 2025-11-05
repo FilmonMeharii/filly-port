@@ -27,6 +27,23 @@
     <title>Filmon Mehari - Portfolio</title>
   </head>
   <body>
+    <!-- Inline theming script: set dark mode by default (or respect saved preference) to avoid flash of light UI -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          if (saved === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            // default to dark when no preference or any other value
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {
+          // If localStorage is unavailable, default to dark
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

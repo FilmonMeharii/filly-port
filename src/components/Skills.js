@@ -1,62 +1,61 @@
-import React from 'react';
-import '../CSS/Skills.css'
+import React, { useEffect, useRef } from 'react';
+import '../CSS/Skills.css';
 
-const Skills = () => {
-  const skillsCategories = {
-    'Programming Languages': [
-      'C++',
-      'JavaScript',
-      'Swift',
-      'Python',
-      'Kotlin',
-      'Java',
-      'React'
-    ],
-    'Development Tools': ['Git/GitHub', 'SQL', 'SQLite', 'HTML', 'CSS'],
-    'Testing': ['System Testing', 'Unit Testing'],
-    'Design': ['Graphic Design']
-  };
+export default function Skills() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section  id= "skills" className="skills-container">
-      <div className="skills-box">
-        <h2>My Skills</h2>
-        {Object.entries(skillsCategories).map(([category, skills], index) => (
-          <div key={index} className="skills-category">
-            <h3>{category}</h3>
-            <ul className="skills-list">
-              {skills.map((skill, skillIndex) => (
-                <li key={skillIndex}>{skill}</li>
-              ))}
-            </ul>
+    <section id="skills" className="section skills" ref={sectionRef}>
+      <div className="container skills-container">
+        <h2>Skills</h2>
+        <div className="skills-grid">
+          <div className="skills-card card">
+            <h3>Technical</h3>
+            <div className="chips">
+              <span className="chip">React</span>
+              <span className="chip">JavaScript</span>
+              <span className="chip">HTML</span>
+              <span className="chip">CSS</span>
+              <span className="chip">Node.js</span>
+            </div>
           </div>
-        ))}
-      </div>
-      <div className="description-box">
-        <h2>About My Skills</h2>
-        <p>
-          As a Computer Science student at Jönköping University, I've developed a diverse set of skills through various projects and coursework. My experience spans:
-          <br />
-          • AI and Computer Vision: I've worked on deep learning projects to count people and made AI programs using Haskell and Python.
-          <br />
-          • Mobile Development: Created iOS apps using SwiftUI, like a quiz app, weather app and a todo list app.
-          <br />
-          • Web Development: Built a website using React, JavaScript, and CSS.
-          <br />
-          • Software Design: Developed a Java based board game framework using good design practices.
-          <br />
-          • Database Work: Designed and implemented a Hotel management system using SQL.
-          <br />
-          • System Analysis: Created comprehensive domain models for university teaching systems.
-          <br />
-          • Project Management: Served as a Product Owner in a large-scale software development project.
-          <br />
-          • Graphic Design: Completed projects in layout design, branding, and digital illustration.
-          <br />
-        </p>
+
+          <div className="skills-card card">
+            <h3>Tools & Workflow</h3>
+            <div className="chips">
+              <span className="chip">Git</span>
+              <span className="chip">VSCode</span>
+              <span className="chip">Figma</span>
+              <span className="chip">Webpack</span>
+            </div>
+          </div>
+
+          <aside className="description-box card">
+            <h3>About My Skills</h3>
+            <p>
+              As a Computer Science student at Jönköping University, I've
+              developed a diverse skill set through projects and coursework.
+              My experience includes AI & Computer Vision, Mobile and Web
+              development, software design, databases and project management.
+            </p>
+            <p className="muted">Tools: Git, SQL, PyTorch, SwiftUI, React, Jest</p>
+          </aside>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Skills;
+}

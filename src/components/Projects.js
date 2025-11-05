@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../CSS/Projects.css';
 
 const Projects = () => {
@@ -13,6 +13,83 @@ const Projects = () => {
   const handleCloseClick = () => {
     setModalProject(null);
   };
+
+  // modal focus management
+  const closeButtonRef = useRef(null);
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    if (!modalProject) return;
+
+    const previousActive = document.activeElement;
+    // focus the close button for accessibility
+    setTimeout(() => closeButtonRef.current?.focus(), 0);
+
+    const handleKey = (e) => {
+      if (e.key === 'Escape') {
+        setModalProject(null);
+      }
+      if (e.key === 'Tab' && modalRef.current) {
+        // simple focus trap
+        const focusable = modalRef.current.querySelectorAll(
+          'a[href], button:not([disabled]), textarea, input, select'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKey);
+
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      previousActive?.focus?.();
+    };
+  }, [modalProject]);
+
+  // animate projects on scroll into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    const els = document.querySelectorAll('.project');
+    els.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // ensure the whole projects section reveals (parent .section is hidden by default)
+  const sectionRef = useRef(null);
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const secObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          secObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    secObs.observe(sectionRef.current);
+    return () => secObs.disconnect();
+  }, []);
 
   const filterButtons = ['All', 'Web', 'Mobile', 'Data', 'Database'];
 
@@ -156,7 +233,7 @@ const Projects = () => {
     .filter(project => filter === 'All' || project.category === filter);
 
   return (
-    <section id="projects" className="section projects-section">
+  <section id="projects" className="section projects-section" ref={sectionRef}>
       <div className="container">
         <h2>Projects</h2>
         <input
@@ -192,9 +269,18 @@ const Projects = () => {
         </div>
 
         {modalProject && (
-          <div className="modal">
-            <div className="modal-content">
-              <button className="close-button" onClick={handleCloseClick}>
+          <div
+            className="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Details for ${modalProject.title}`}
+            onClick={(e) => {
+              // close when clicking outside modal content (overlay)
+              if (e.target === e.currentTarget) handleCloseClick();
+            }}
+          >
+            <div className="modal-content" ref={modalRef} onClick={(e) => e.stopPropagation()}>
+              <button className="close-button" onClick={handleCloseClick} ref={closeButtonRef} aria-label="Close project details">
                 &times;
               </button>
               <h3>{modalProject.title}</h3>

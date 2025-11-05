@@ -1,5 +1,4 @@
 .about {
-  background-color: var(--secondary-color);
   padding: 80px 0;
   text-align: center;
   transition: background-color 0.3s ease;
@@ -9,31 +8,18 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  transition: opacity 360ms ease, transform 360ms ease;
 }
 
-.about h2 {
-  font-size: 40px;
-  margin-bottom: 30px;
-  color: var(--background-color);
-  transition: color 0.3s ease;
-  position: relative;
-}
-
-.about h2::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background-color: var(--background-color);
-  margin: 15px auto 0;
-}
+.about h2 { margin-bottom: 18px; }
 
 .about p {
   width: 80%;
   margin: 30px auto;
-  padding: 30px;
-  background-color: var(--background-color);
-  border: 2px solid var(--primary-color);
+  padding: 28px;
+  /* subtle card so it stands out on unified background */
+  background-color: color-mix(in srgb, var(--primary-color) 3%, transparent);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   font-size: 18px;
   line-height: 1.8;
@@ -59,10 +45,6 @@
   text-decoration: underline;
 }
 
-[data-theme="dark"] .about {
-  background-color: var(--background-color);
-}
-
 [data-theme="dark"] .about h2 {
   color: var(--primary-color);
 }
@@ -72,9 +54,13 @@
 }
 
 [data-theme="dark"] .about p {
-  background-color: var(--secondary-color);
-  border-color: var(--primary-color);
+  background-color: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.06);
   color: var(--light-text-color);
+}
+
+[data-theme="dark"] .about .card {
+  background: rgba(255,255,255,0.02);
 }
 
 @media (max-width: 768px) {

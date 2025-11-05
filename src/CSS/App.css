@@ -1,60 +1,20 @@
-:root {
-  --background-color: #ffffff;
-  --text-color: #333333;
-  --primary-color: #0077b5;
-  --secondary-color: #f5f5f5;
-  --accent-color: #00a0dc;
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --border-color: #e0e0e0;
-}
-
-[data-theme="dark"] {
-  --background-color: #767171;
-  --text-color: #f0f0f0;
-  --primary-color: #0077b5;
-  --secondary-color: #2c2c2c;
-  --accent-color: #00a0dc;
-  --box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
-  --border-color: #333333;
-}
-
+/* App-level styles; variables are defined centrally in index.css */
 body {
   font-family: 'Roboto', 'Arial', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .section {
-  background-color: var(--background-color);
-  padding: 80px 0;
-  margin-bottom: 30px;
-}
-
-.section h2 {
-  font-size: 36px;
-  text-align: center;
-  margin-bottom: 40px;
-  color: var(--primary-color);
-  position: relative;
-}
-
-.section h2::after {
-  content: '';
-  display: block;
-  width: 50px;
-  height: 3px;
-  background-color: var(--accent-color);
-  margin: 10px auto 0;
+  padding: 72px 0;
+  margin-bottom: 18px;
 }
 
 .description-box p {
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 17px;
+  line-height: 1.7;
 }
 
 .contact {
@@ -93,31 +53,23 @@ body {
 }
 
 .contact button {
-  background-color: var(--primary-color);
-  color: var(--background-color);
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  color: var(--light-text-color);
   border: none;
-  padding: 12px 24px;
-  font-size: 18px;
-  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
-.contact button:hover {
-  background-color: var(--accent-color);
-  transform: translateY(-2px);
-}
+.contact button:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(2,6,23,0.08); }
 
 .footer {
-  background-color: var(--primary-color);
-  color: var(--background-color);
   text-align: center;
   padding: 30px 0;
 }
 
-.footer p {
-  margin: 0;
-  font-size: 16px;
-}
+.footer p { margin: 0; font-size: 15px; color: var(--muted-color); }
 
 /* Media queries remain the same */

@@ -5,15 +5,26 @@ import '../CSS/Header.css';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    // Default to dark mode unless the user previously saved a preference
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        try {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved === 'dark';
+        } catch (e) {
+            // ignore storage errors
+        }
+        return true; // default to dark
+    });
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            setIsDarkMode(true);
-            document.body.setAttribute('data-theme', 'dark');
+        // Ensure the document body reflects the current theme on mount
+        document.body.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+        try {
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        } catch (e) {
+            // ignore storage errors
         }
-    }, []);
+    }, [isDarkMode]);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);

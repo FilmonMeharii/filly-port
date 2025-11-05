@@ -51,4 +51,13 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^6.1.1"
   }
+  ,
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "<rootDir>/src/__mocks__/styleMock.js",
+      "\\.(gif|ttf|eot|svg|png|jpg|jpeg|webp|woff|woff2)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "^react-router-dom$": "<rootDir>/src/__mocks__/react-router-dom.js",
+      "^react-router-hash-link$": "<rootDir>/src/__mocks__/react-router-hash-link.js"
+    }
+  }
 }

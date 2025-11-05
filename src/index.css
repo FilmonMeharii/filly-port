@@ -1,14 +1,14 @@
 :root {
-  /* modern palette */
+  /* modern palette (light mode tokens) - tuned for a softer, neutral light background */
   --primary-color: #06b6d4; /* teal-ish */
   --accent-color: #8b5cf6; /* violet accent */
   --secondary-color: #111827; /* dark slate for nav/blocks */
-  --background-color: #ffffff;
+  --background-color: #f5f8fb; /* soft off-white for light mode */
   --text-color: #0f172a; /* slate-900 */
   --light-text-color: #ffffff;
-  --muted-color: #6b7280; /* gray-500 */
+  --muted-color: #475569; /* softer muted slate */
   --box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-  --border-color: #e6e7eb;
+  --border-color: #e6eef3; /* very light border for cards */
   --radius-sm: 6px;
   --radius-md: 12px;
   --max-width: 1200px;
@@ -45,7 +45,9 @@ body {
   max-width: var(--max-width);
   font-size: 16px;
   line-height: 1.6;
+  /* use a single unified background color to avoid top/bottom color differences */
   background-color: var(--background-color);
+  background-image: none;
   color: var(--text-color);
   transition: background-color 0.25s ease, color 0.25s ease;
 }
@@ -104,4 +106,63 @@ a:focus {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Unified section heading style */
+.section h2 {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin: 0 0 18px;
+  text-align: center;
+  position: relative;
+}
+
+.section h2::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Reusable card used across sections */
+.card {
+  background: color-mix(in srgb, var(--background-color) 92%, transparent);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+}
+
+.card-sm { padding: 12px; }
+
+/* Make individual sections transparent so the unified body background shows through */
+.section,
+.about,
+.projects-section,
+.skills-section,
+.timeline-section,
+.footer,
+.banner {
+  background: transparent !important;
+}
+
+/* dark theme unified background */
+[data-theme="dark"] body {
+  background: linear-gradient(180deg, #071124 0%, var(--background-color) 100%);
+}
+
+/* Reveal-on-scroll helper: sections start slightly hidden and slide up when in view */
+.section {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 520ms cubic-bezier(.2,.9,.2,1), transform 520ms cubic-bezier(.2,.9,.2,1);
+  will-change: opacity, transform;
+}
+
+.section.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
