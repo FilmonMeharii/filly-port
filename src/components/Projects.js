@@ -101,7 +101,7 @@ const Projects = () => {
     return () => secObs.disconnect();
   }, []);
 
-  const filterButtons = ['All', 'Web', 'Mobile', 'Data', 'Database'];
+  const filterButtons = ['All', 'Cybersecurity', 'AI', 'Mobile', 'Web', 'Database'];
 
   const projectsData = [
     {

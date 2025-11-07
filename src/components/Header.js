@@ -90,6 +90,18 @@ const Header = () => {
                         <h1>Filmon Mehari</h1>
                         <h2> Computer Science Graduate <br /> Cybersecurity Student </h2>
                     </div>
+                    {/* TryHackMe public badge — loads a local static copy to avoid login prompts */}
+                    <div className='badges'>
+                        <iframe
+                            className='tryhackme-badge'
+                            title='TryHackMe Public Badge'
+                            src='https://tryhackme.com/api/v2/badges/public-profile?userPublicId=5838198'
+                            style={{ border: 'none' }}
+                            loading='lazy'
+                            scrolling='no'
+                            aria-label='TryHackMe public profile badge'
+                        />
+                    </div>
                     <div className='profile-photo'>
                         <img src={profile} alt='Filmon - Software Developer' />
                     </div>

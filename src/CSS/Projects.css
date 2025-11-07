@@ -274,14 +274,16 @@
   }
 
   .projects {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    /* allow slightly narrower cards on tablets so more columns can fit */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 15px;
   }
 
   .project {
     padding: 15px;
-    height: 250px;
-    overflow-y: auto;
+    /* remove fixed height on mobile so content can flow naturally */
+    height: auto;
+    overflow: visible;
   }
 
   .project h3 {

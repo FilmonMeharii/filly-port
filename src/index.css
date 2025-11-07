@@ -52,6 +52,9 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+/* Prevent horizontal scrolling caused by wide embedded content or unexpected layout shifts */
+html, body { overflow-x: hidden; }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

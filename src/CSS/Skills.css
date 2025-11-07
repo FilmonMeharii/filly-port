@@ -91,6 +91,14 @@
   .skills-section h2 { font-size: 22px; }
 }
 
+@media (max-width: 420px) {
+  /* Slightly smaller chips on very small screens to avoid wrapping overflow */
+  .chip, .skill-chip {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}
+
 /* Dark theme adjustments for skills cards and chips */
 [data-theme="dark"] .card {
   background: rgba(255,255,255,0.02);

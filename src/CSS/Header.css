@@ -93,11 +93,51 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap; /* allow children to wrap so badges can sit under the title */
 }
 
 .text-content {
   flex: 1;
   padding-right: 2rem;
+}
+
+/* spacing for embedded badges (TryHackMe iframe) to sit lower in the hero */
+.text-content .badges {
+  margin-top: 18px;
+  /* keep if badges remain inside text-content on smaller screens */
+  max-width: 360px;
+  overflow: hidden;
+}
+
+/* Center badges when they are direct children of banner-content */
+.banner-content > .badges {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18px;
+  flex: 1 1 100%; /* span full row so it appears under the title */
+  order: 2;
+}
+
+/* Make embedded badge iframe responsive and less tall on small viewports */
+.text-content .badges iframe,
+.banner-content > .badges iframe.tryhackme-badge,
+.badges iframe.tryhackme-badge {
+  width: 100%;
+  height: 120px; /* default */
+  max-height: 180px;
+  border: 0;
+  overflow: hidden; /* attempt to prevent scrollbars */
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.badges iframe.tryhackme-badge::-webkit-scrollbar { display: none; } /* WebKit */
+
+@media (max-width: 480px) {
+  .text-content .badges iframe,
+  .badges iframe.tryhackme-badge { height: 96px; }
 }
 
 .text-content h1, .text-content h2, .text-content h3 { color: var(--text-color); }
@@ -116,24 +156,24 @@
 /* Main heading with clipped gradient for a modern look */
 .text-content h1 {
   font-size: clamp(2.6rem, 6vw, 3.6rem);
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   line-height: 1.02;
   font-weight: 800;
   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent; /* shows the gradient */
-  display: inline-block;
+  display: block; /* ensure name is on its own line */
 }
 
 /* Subtitle / role — subtle, slightly muted */
+
 .text-content h2 {
   font-size: 1.05rem;
-  margin: 0;
+  margin: 8px 0 0;
   font-weight: 600;
   color: var(--muted-color);
-  display: inline-block;
-  vertical-align: middle;
+  display: block; /* place subtitle on its own line */
 }
 
 /* small accent bar after the subtitle */
@@ -148,11 +188,100 @@
   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
 }
 
+/* Remove the trailing accent bar after the subtitle (user asked to remove '-') */
+.text-content h2::after { display: none; }
+
+/* Responsive scaling for mid-size screens (tablets) to avoid oversized hero text */
+@media (max-width: 980px) {
+  .text-content h1 {
+    font-size: clamp(2.2rem, 5.5vw, 3rem);
+  }
+  .text-content h2 {
+    font-size: 1rem;
+  }
+}
+
+/* Glitch heading (lightweight) */
+.glitch {
+  position: relative;
+  display: block; /* ensure headline is on its own line */
+  margin-bottom: 6px;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.glitch::before {
+  color: var(--primary-color);
+  transform: translate(-2px, -1px);
+  clip-path: inset(0 0 60% 0);
+}
+.glitch::after {
+  color: var(--accent-color);
+  transform: translate(2px, 1px);
+  clip-path: inset(60% 0 0 0);
+}
+
+/* Typewriter subtitle (simple, no JS) */
+.typewriter {
+  display: block; /* place subtitle on its own line */
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Static subtitle: allow wrapping and avoid forcing a single long line */
+.subtitle {
+  display: block;
+  white-space: normal;
+  overflow: visible;
+  font-weight: 600;
+  color: var(--muted-color);
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+/* Profile badge overlay */
+.profile-image-container { position: relative; display: inline-block; }
+.profile-image-container img { border-radius: 50%; display: block; }
+.security-badge {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  color: var(--light-text-color);
+  padding: 8px 10px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  font-size: 14px;
+}
+
+/* Scroll indicator */
+.scroll-indicator { display:flex; flex-direction:column; align-items:center; gap:8px; margin: 12px 0 0; color:var(--muted-color); }
+.scroll-indicator .mouse { width:28px; height:44px; border-radius:20px; border:2px solid var(--muted-color); display:inline-flex; align-items:flex-start; justify-content:center; padding-top:6px; }
+.scroll-indicator .wheel { width:6px; height:6px; background:var(--muted-color); border-radius:50%; display:block; animation: scroll-wheel 1.6s infinite; }
+@keyframes scroll-wheel { 0% { transform: translateY(0); opacity:1 } 50% { transform: translateY(8px); opacity:0.6 } 100% { transform: translateY(0); opacity:1 } }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator .wheel { animation: none; }
+  .glitch::before, .glitch::after { opacity: 0; }
+}
+
 .profile-photo {
   flex: 1;
   display: flex;
   justify-content: center;
 }
+
+/* Ensure the banner area doesn't allow horizontal scrolling from embedded content */
+.banner, .banner-content { overflow-x: hidden; }
 
 .profile-photo img {
   width: 220px;
@@ -161,6 +290,7 @@
   object-fit: cover;
   border: 4px solid color-mix(in srgb, var(--background-color) 80%, transparent);
   box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease, width 200ms ease, height 200ms ease;
 }
 
 .menu-icon {
@@ -172,6 +302,8 @@
   flex-direction: column;
   justify-content: center;
   gap: 4px;
+  /* ensure interactive area and stacking context when visible */
+  z-index: 1101;
 }
 
 @media (max-width: 768px) {
@@ -210,26 +342,69 @@
   .menu-icon {
     display: block;
     cursor: pointer;
+    /* make the button clearly visible against light/dark hero backgrounds */
+    padding: 8px;
+    border-radius: 10px;
+    background-color: color-mix(in srgb, var(--background-color) 88%, black 6%);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 18px rgba(2,6,23,0.06);
   }
 
   .menu-icon span {
     display: block;
-    width: 25px;
+    width: 26px;
     height: 3px;
-    background-color: var(--light-text-color);
-    margin: 0;
+    background-color: var(--text-color);
+    margin: 0 0 4px 0;
     border-radius: 2px;
+    transition: transform 220ms ease, opacity 180ms ease, background-color 180ms ease;
+    transform-origin: center;
   }
 
+  /* slightly darker background for dark theme so menu contrast remains */
+  [data-theme="dark"] .menu-icon {
+    background-color: color-mix(in srgb, var(--background-color) 88%, white 4%);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 6px 20px rgba(2,6,23,0.5);
+  }
+
+  /* keyboard focus styling for accessibility */
+  .menu-icon:focus {
+    outline: 3px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
+    outline-offset: 4px;
+    border-radius: 8px;
+  }
+
+  /* Animated hamburger -> X when open */
+  .menu-icon.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .menu-icon.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  .menu-icon.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+
   .banner-content {
-    flex-direction: column-reverse;
+    /* Stack vertically on small screens; we'll control explicit ordering below */
+    flex-direction: column;
     text-align: center;
+    gap: 18px; /* add spacing between stacked hero elements on mobile */
   }
 
   .text-content {
     padding-right: 0;
     margin-top: 2rem;
   }
+
+  .text-content .badges { margin-top: 12px; }
+  /* Small-screen stacking: profile first, then text, then badge */
+  .banner-content > .profile-photo { order: 1; }
+  .banner-content > .text-content { order: 2; }
+  .banner-content > .badges { order: 3; align-self: center; margin-top: 6px; }
 
   .profile-photo img {
     width: 200px;
@@ -247,4 +422,9 @@
   .text-content h3 {
     font-size: 1.5rem;
   }
+}
+
+@media (max-width: 375px) {
+  .profile-photo img { width: 160px; height: 160px; }
+  .banner { padding: 4.5rem 1rem 3rem; }
 }
