@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import profile from '../assets/profilePic.svg';
+import cvFile from '../assets/CV.pdf';
 import '../CSS/Header.css';
 
 const Header = () => {
@@ -68,6 +69,7 @@ const Header = () => {
                 </button>
                 <ul id="primary-navigation" className={isMenuOpen ? 'open' : ''}>
                     <li><Link smooth to='#about' onClick={closeMenu}>About</Link></li>
+                    <li><a href={cvFile} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>CV</a></li>
                     <li><Link smooth to='#skills' onClick={closeMenu}>Skills</Link></li>
                     <li><Link smooth to='#projects' onClick={closeMenu}>Projects</Link></li>
                     <li><Link smooth to='#contact' onClick={closeMenu}>Contact</Link></li>
