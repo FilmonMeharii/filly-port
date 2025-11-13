@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import profile from '../assets/profilePic.svg';
-import cvFile from '../assets/CV.pdf';
+import cvFile from '../assets/CV thesis.pdf';
 import '../CSS/Header.css';
 
 const Header = () => {

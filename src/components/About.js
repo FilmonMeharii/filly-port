@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import '../CSS/About.css';
-import CV from '../assets/CV.pdf';
+import CV from '../assets/CV thesis.pdf';
 
 const About = () => {
   const sectionRef = useRef(null);
