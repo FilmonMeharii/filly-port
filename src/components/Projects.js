@@ -117,6 +117,18 @@ const Projects = () => {
       tags: ['OpenPLC', 'Modbus', 'nftables', 'IDS']
     },
     {
+      id: 5,
+      title: 'Cloud Security Lab',
+      description: 'Hands-on cloud security lab exploring IAM, MFA, RBAC, secure VM/storage configuration and centralized logging using Splunk and open-source scanning tools.',
+      category: 'Cybersecurity',
+      details: [
+        'Configured Azure-like environments: MFA, RBAC and secure VM onboarding',
+        'Integrated Splunk for centralized logging and basic alerting',
+        'Performed vulnerability assessments with OpenVAS/Tenable and remediations'
+      ],
+      tags: ['Cloud Security', 'Azure', 'Splunk', 'OpenVAS']
+    },
+    {
       id: 2,
       title: 'AI People Counting System',
       description: 'Bachelor’s thesis using RGB, depth, and infrared video data to count people without identifying them. Used deep learning and data fusion to improve accuracy.',
@@ -151,11 +163,47 @@ const Projects = () => {
       ],
       tags: ['SwiftUI', 'iOS']
     }
+    ,
+    {
+      id: 6,
+      title: 'Azure IoT Infrastructure Setup & Cloud Security',
+      description: 'Designed and deployed a secure IoT infrastructure using Azure-like services and ThingsBoard for telemetry and visualization.',
+      category: 'Cybersecurity',
+      details: [
+        'Created VNet/subnets and deployed Ubuntu VMs for frontend, backend and PostgreSQL',
+        'Implemented RBAC and MFA for user access control; used SSH keys and bastion host for management',
+        'Deployed ThingsBoard for telemetry ingestion and dashboards; integrated MQTT simulator (Python)'
+      ],
+      tags: ['Cloud Security','Azure','ThingsBoard','MQTT'],
+      githubLink: ''
+    },
+    {
+      id: 7,
+      title: 'IoT Platform Hardening — HTTPS & OAuth2',
+      description: 'Hardened ThingsBoard deployments with TLS, OAuth2 SSO and secret management using Azure services.',
+      category: 'Cybersecurity',
+      details: [
+        "Configured Let's Encrypt (Certbot) for HTTPS",
+        'Integrated Azure AD for OAuth2-based SSO and centralized auth',
+        'Used Key Vault-style secrets management and managed identities for secure access in functions'
+      ],
+      tags: ['TLS','OAuth2','Azure AD','Key Vault'],
+      githubLink: ''
+    }
   ];
 
   const filteredProjects = projectsData
     .filter(project => project.title.toLowerCase().includes(searchTerm.toLowerCase()))
     .filter(project => filter === 'All' || project.category === filter);
+
+  // Ensure Cybersecurity projects appear first in the listing
+  const orderedProjects = [...filteredProjects].sort((a, b) => {
+    const aCyber = a.category === 'Cybersecurity' ? 0 : 1;
+    const bCyber = b.category === 'Cybersecurity' ? 0 : 1;
+    if (aCyber !== bCyber) return aCyber - bCyber;
+    // fallback to original order by id
+    return a.id - b.id;
+  });
 
   return (
   <section id="projects" className="section projects-section" ref={sectionRef}>
@@ -180,7 +228,7 @@ const Projects = () => {
           ))}
         </div>
         <div className="projects">
-          {filteredProjects.map((project) => (
+          {orderedProjects.map((project) => (
             <div
               key={project.id}
               className="project"
@@ -210,13 +258,27 @@ const Projects = () => {
               </button>
               <h3>{modalProject.title}</h3>
               <p>{modalProject.description}</p>
-              {modalProject.details && (
-                <ul>
-                  {modalProject.details.map((detail, index) => (
-                    <li key={index}>{detail}</li>
-                  ))}
-                </ul>
-              )}
+                  {modalProject.details && (
+                    <ul>
+                      {modalProject.details.map((detail, index) => (
+                        <li key={index}>{detail}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {modalProject.images && modalProject.images.length > 0 && (
+                    <div className="project-gallery">
+                      {modalProject.images.map((img, i) => (
+                        <img key={i} src={img} alt={`${modalProject.title} screenshot ${i+1}`} className="project-image" />
+                      ))}
+                    </div>
+                  )}
+
+                  {modalProject.githubLink && modalProject.githubLink.length > 0 && (
+                    <p>
+                      <a href={modalProject.githubLink} target="_blank" rel="noopener noreferrer">View code on GitHub</a>
+                    </p>
+                  )}
               {modalProject.githubLink && (
                 <p>
                   <a href={modalProject.githubLink} target="_blank" rel="noopener noreferrer">

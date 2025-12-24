@@ -149,6 +149,14 @@
 .project:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0 20px 40px rgba(2,6,23,0.12);
+  background-color: color-mix(in srgb, var(--background-color) 92%, #000 4%);
+}
+
+/* improve keyboard focus readability for project cards */
+.project:focus {
+  outline: 3px solid color-mix(in srgb, var(--primary-color) 40%, transparent);
+  outline-offset: 4px;
+  background-color: color-mix(in srgb, var(--background-color) 90%, #000 6%);
 }
 
 .project h3 {
@@ -178,12 +186,13 @@
 .modal {
   position: fixed;
   inset: 0;
-  background: linear-gradient(rgba(2,6,23,0.45), rgba(2,6,23,0.45));
+  /* stronger overlay for better contrast when modal is open */
+  background: rgba(2,6,23,0.75);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1200;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
 }
 
 .modal-content {
@@ -194,10 +203,12 @@
   max-height: 80vh;
   width: min(92%, 720px);
   position: relative;
-  box-shadow: 0 24px 60px rgba(2,6,23,0.18);
+  box-shadow: 0 36px 90px rgba(2,6,23,0.32);
   overflow: auto;
   transform: translateY(8px) scale(.995);
   transition: transform 220ms ease, opacity 220ms ease;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
 /* Dark theme tweaks for project cards and modal */
@@ -209,8 +220,8 @@
 }
 
 [data-theme="dark"] .modal-content {
-  background: rgba(3,8,18,0.6);
-  border-color: rgba(255,255,255,0.04);
+  background: rgba(3,8,18,0.95);
+  border-color: rgba(255,255,255,0.06);
   color: var(--light-text-color);
 }
 
@@ -262,6 +273,26 @@
 .close-button:hover {
   color: var(--primary-color);
   transform: scale(1.06);
+}
+
+/* Project modal gallery */
+.project-gallery {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.project-image {
+  width: calc(50% - 12px);
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+}
+
+@media (max-width: 768px) {
+  .project-image { width: 100%; }
 }
 
 @media (max-width: 768px) {
