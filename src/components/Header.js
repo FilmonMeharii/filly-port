@@ -90,7 +90,7 @@ const Header = () => {
                     <div className='text-content'>
                         <h3>Hello, I'm</h3>
                         <h1>Filmon Mehari</h1>
-                        <h2> Computer Science Graduate <br /> Cybersecurity Student </h2>
+                        <h2> Computer Science Graduate <br /> Maters's Student in Cybersecurity</h2>
                     </div>
                     {/* TryHackMe public badge — loads a local static copy to avoid login prompts */}
                     <div className='badges'>
