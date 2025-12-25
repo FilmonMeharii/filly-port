@@ -5,6 +5,7 @@ const Projects = () => {
   const [modalProject, setModalProject] = useState(null);
   const [filter, setFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   const handleProjectClick = (project) => {
     setModalProject(project);
@@ -189,6 +190,94 @@ const Projects = () => {
       ],
       tags: ['TLS','OAuth2','Azure AD','Key Vault'],
       githubLink: ''
+    },
+    {
+      id: 8,
+      title: 'Advanced C++ Data Structures & Algorithms',
+      description: 'Comprehensive university-level programming assignments covering fundamental and advanced data structures, algorithms, complexity analysis, and recursion. Implemented core CS concepts with hands-on project applications.',
+      category: 'Web',
+      details: [
+        'Pointers, Arrays & Sorting Implemented BubbleSort and InsertSort using pointer arithmetic and index-based loops',
+        'Recursion Recursive array functions, binary search, Tower of Hanoi, flood-fill algorithm',
+        'Data Structures Linked lists, stacks (array and list-based), queues (FIFO, circular array), BSTs, heaps, hash tables',
+        'Complexity Analysis Theoretical and experimental analysis of sorting algorithms (BubbleSort, InsertSort, std::sort)',
+        'Tree & Graph Algorithms Tree traversal (pre/in/post-order), BST operations, Dijkstra\'s shortest path algorithm',
+        'Advanced Topics Priority queues, heap sort, merge sort, expression parsing (Dijkstra\'s shunting-yard algorithm)',
+        'Highlights Graphical paint tool with flood-fill, Tower of Hanoi solver, system queue simulator with priority queues'
+      ],
+      tags: ['C++', 'Qt', 'Data Structures', 'Algorithms', 'Recursion', 'Complexity Analysis', 'Dijkstra'],
+      githubLink: 'https://github.com/FilmonMeharii/Data-Structure-and-Algorithm'
+    },
+    {
+      id: 9,
+      title: 'FiliPort Personal E-Portfolio Web Application',
+      description: 'A fully functional personal e-portfolio web application that enables developers to showcase projects, skills, and contact information. Features admin content management, visitor comments, and a contact system.',
+      category: 'Web',
+      details: [
+        'Responsive navigation with six sections: Home, About, Projects, Comments, Contact, Login/Logout',
+        'Admin can Create, Update, Delete projects, contacts, and comments with session-based authentication',
+        'Secure password hashing using Bcrypt and Express-Session middleware',
+        'Visitors can view projects and add comments via interactive forms',
+        'Contact form with stored details in relational database',
+        'Database design with three normalized tables: projects, comments, contacts with proper relationships',
+        'Client-server architecture using HTTP requests/responses with Express.js middleware'
+      ],
+      tags: ['Node.js', 'Express.js', 'SQLite3', 'Bcrypt', 'Handlebars', 'REST APIs', 'Authentication'],
+      githubLink: ''
+    },
+    {
+      id: 10,
+      title: 'SQL: Hotel Management System Database',
+      description: 'A comprehensive relational database system designed to automate and streamline hotel operational workflows, from room inventory management to billing and guest services.',
+      category: 'Database',
+      details: [
+        'Designed normalized relational database for hotel operations with 8 core business entities',
+        'Implemented two junction tables to resolve complex many-to-many relationships (Room-Reservation Bridge, Service-Bill Mapping)',
+        'Real-time room availability tracking with status indicators and dynamic pricing',
+        'Integrated reservation system with date conflict prevention and multi-room assignment support',
+        'Automated billing generation with service charge aggregation and multi-method payment processing',
+        'Business intelligence queries for revenue analysis by room type, service, and time period',
+        'Complete documentation: ER diagrams (Conceptual & Logical), SQL DDL scripts, 8+ complex queries, data dictionary',
+        'Constraint definitions (PK, FK, unique, check), index strategy for performance optimization, sample data population'
+      ],
+      tags: ['SQL', 'Database Design', 'Relational Database', 'ER Modeling', 'Normalization', 'Hotel Management'],
+      githubLink: 'https://github.com/FilmonMeharii/SQL-Hotel-Management-System'
+    },
+    {
+      id: 11,
+      title: 'AI Programming: From Search to Learning',
+      description: 'A comprehensive series of AI algorithm implementations covering four core areas: problem solving (GPS & A*), knowledge & reasoning (rule-based systems & Minimax), supervised learning (KNN & Perceptron), and reinforcement learning (Q-learning).',
+      category: 'AI',
+      images: [require('../assets/AI-project/KNN.png'), require('../assets/AI-project/Perceptron.png')],
+      details: [
+        'Search Algorithms (Haskell) General Problem Solver (GPS) with BFS for Solitaire puzzle, A* with Manhattan heuristic for 8-puzzle',
+        'Rule-Based Systems & Adversarial Search Forward & backward chaining expert systems, Minimax with Alpha-Beta pruning for binary game trees',
+        'Supervised Learning (Python)K-Nearest Neighbors (KNN) for MNIST digit classification (1 vs 6), Perceptron for OR problem, multi-layer perceptron for XOR',
+        'Reinforcement Learning (Python) Q-learning for Frozen Lake 8x8 (discrete), linear function approximator for continuous state spaces (Lunar Lander/Acrobot)',
+        'All algorithms implemented from scratch in Haskell and Python without ML libraries (only NumPy for basic math)',
+        'Modular design separating generic solvers from problem-specific logic; custom training loops and evaluation metrics',
+        'Integrated with Gymnasium environments; implemented accuracy, error rate, cumulative reward, and pruning efficiency metrics'
+      ],
+      tags: ['Haskell', 'Python', 'AI', 'Search Algorithms', 'Machine Learning', 'Reinforcement Learning', 'A*', 'Q-Learning'],
+      githubLink: 'https://github.com/FilmonMeharii/AI-Programming'
+    },
+    {
+      id: 12,
+      title: 'Aires AB – Drone-Based Emergency Medical Delivery',
+      description: 'A comprehensive business plan for a startup proposing AI-assisted, operator-controlled drones to deliver critical medical supplies in emergency situations to hard-to-reach areas.',
+      category: 'Web',
+      images: [require('../assets/bussiness/budget2025.png'), require('../assets/bussiness/budget2026.png')],
+      details: [
+        'Business Model Canvas Key partners (hospitals, ambulance services, regulators), revenue streams, cost structure analysis',
+        'Financial Analysis Self-cost calculation (SEK 5,322/delivery), pricing strategy (SEK 6,653/delivery with 20% margin), break-even analysis (557 deliveries/year)',
+        'Market & Competitor Analysis Target segments (hospitals, ambulance services, remote locations), competitors (Zipline, Everdrone), unique selling points',
+        'Risk Assessment Technical, regulatory, economic, market, and environmental risks with probability/impact matrix and mitigation strategies',
+        'Operational Plan 6-month roadmap covering company registration, financing, recruitment, technical development, pilot testing, and market launch',
+        'Problem-Solution Framework Integration with emergency services (112) for verified need-based deployment of defibrillators, first-aid kits, and adrenaline',
+        'Team Contribution Market research, competitor analysis, financial modeling, budget forecasting, and strategic planning'
+      ],
+      tags: ['Business Planning', 'Financial Modeling', 'Market Analysis', 'Entrepreneurship', 'Risk Management', 'Strategic Planning'],
+      githubLink: ''
     }
   ];
 
@@ -269,7 +358,15 @@ const Projects = () => {
                   {modalProject.images && modalProject.images.length > 0 && (
                     <div className="project-gallery">
                       {modalProject.images.map((img, i) => (
-                        <img key={i} src={img} alt={`${modalProject.title} screenshot ${i+1}`} className="project-image" />
+                        <img
+                          key={i}
+                          src={img}
+                          alt={`${modalProject.title} screenshot ${i+1}`}
+                          className="project-image"
+                          onClick={() => setLightboxImage(img)}
+                          role="button"
+                          aria-label={`Open image ${i + 1} of ${modalProject.title}`}
+                        />
                       ))}
                     </div>
                   )}
@@ -288,6 +385,12 @@ const Projects = () => {
               )}
               <span className="project-category">{modalProject.category}</span>
             </div>
+          </div>
+        )}
+
+        {lightboxImage && (
+          <div className="lightbox" onClick={() => setLightboxImage(null)} role="dialog" aria-modal="true">
+            <img src={lightboxImage} alt="Expanded project screenshot" />
           </div>
         )}
 
