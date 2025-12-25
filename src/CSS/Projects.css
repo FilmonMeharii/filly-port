@@ -101,7 +101,22 @@
 .filter-container button:hover,
 .filter-container button.active {
   background-color: var(--secondary-color);
-  color: var(--background-color);
+  /* ensure active/hover text is always readable across themes */
+  color: var(--light-text-color);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  transform: translateY(-1px);
+}
+
+.filter-container button.active {
+  /* visible colored box/outline to clearly mark active filter */
+  border: 2px solid var(--accent-color);
+  padding: 5px 10px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent-color) 18%, var(--secondary-color)), var(--secondary-color));
+}
+
+.filter-container button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary-color) 40%, transparent);
+  outline-offset: 2px;
 }
 
 .projects {
