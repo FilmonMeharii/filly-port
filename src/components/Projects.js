@@ -5,7 +5,7 @@ const Projects = () => {
   const [modalProject, setModalProject] = useState(null);
   const [filter, setFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
-  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
   const handleProjectClick = (project) => {
     setModalProject(project);
@@ -105,17 +105,110 @@ const Projects = () => {
   const filterButtons = ['All', 'Cybersecurity', 'AI', 'Mobile', 'Web', 'Database'];
 
   const projectsData = [
+    // Cybersecurity Labs (latest additions first)
     {
-      id: 1,
-      title: 'Cybersecurity Labs',
-      description: 'Practical labs at Högskolan Väst where I worked with OpenPLC and network security tools. I configured firewalls, performed vulnerability scans, and set up intrusion detection systems.',
+      id: 20,
+      title: 'ICS Security & PLC Hardening Lab',
+      description: 'A unified cybersecurity case study securing an OpenPLC-based water pump control system with firewall hardening, centralized logging, and attack analysis.',
       category: 'Cybersecurity',
       details: [
-        'Configured OpenPLC and tested Modbus/TCP scenarios',
-        'Set up nftables rules and basic firewall hardening',
-        'Performed vulnerability scans and basic IDS using Fail2Ban',
+        'Environment Setup: deployed Ubuntu VMs for PLC server and HMI using Proxmox VE',
+        'PLC Programming: implemented water pump control with safety interlocks in OpenPLC (Structured Text)',
+        'Network Hardening: configured nftables to whitelist HMI IP and drop other traffic; implemented segmentation',
+        'Logging & Prevention: centralized logs with rsyslog and automated blocking via Fail2Ban',
+        'Attack Simulation: performed reconnaissance and verified firewall with pre/post Nmap scans; simulated Modbus/TCP interactions using mbpoll',
+        'Case Study Analysis: examined Colonial Pipeline incident to derive practical mitigations (segmentation, MFA, monitoring)',
+        'Documentation: collected before/after scans, rulesets, configuration snippets and a written analysis of mitigations'
       ],
-      tags: ['OpenPLC', 'Modbus', 'nftables', 'IDS']
+      tags: ['ICS Security','PLC','OpenPLC','nftables','Fail2Ban','Modbus','Colonial Pipeline','SCADA'],
+      githubLink: ''
+    },
+    {
+      id: 15,
+      title: 'Cybersecurity Labs: Reconnaissance & Network Discovery',
+      description: 'Hands-on lab covering network reconnaissance techniques and discovery using industry-standard tools. Techniques include WHOIS lookups, DNS enumeration, zone transfers, and subnet identification.',
+      category: 'Cybersecurity',
+      details: [
+        'Performed WHOIS queries for domain and IP ownership research',
+        'Conducted DNS zone transfers (dig AXFR) to enumerate DNS records',
+        'Used NetBox for network documentation and CIDR notation mapping',
+        'Network discovery and active/passive reconnaissance techniques',
+        'Created comprehensive network mapping reports identifying hosts, services, and potential entry points',
+        'Social engineering reconnaissance basics (OSINT from public sources)'
+      ],
+      tags: ['Reconnaissance', 'DNS', 'WHOIS', 'Network Mapping', 'OSINT', 'NetBox'],
+      githubLink: ''
+    },
+    {
+      id: 16,
+      title: 'Cybersecurity Labs: Vulnerability Scanning & Assessment',
+      description: 'Practical vulnerability assessment using industry-standard tools (OpenVAS and Nessus) to identify and classify security weaknesses in networks and hosts.',
+      category: 'Cybersecurity',
+      details: [
+        'Configured and deployed OpenVAS for vulnerability scanning on Kali Linux',
+        'Used Nessus Professional for enterprise-grade vulnerability assessment',
+        'Performed network-wide and targeted host scans',
+        'Analyzed CVE database entries and understood CVSS severity scoring',
+        'Generated professional vulnerability reports with remediation recommendations',
+        'Prioritized findings based on severity, exploitability, and business impact',
+        'Demonstrated understanding of common vulnerability classes (OWASP Top 10, CWE)'
+      ],
+      tags: ['OpenVAS', 'Nessus', 'Vulnerability Assessment', 'CVE', 'CVSS', 'Penetration Testing'],
+      githubLink: ''
+    },
+    {
+      id: 17,
+      title: 'Cybersecurity Labs: Network Monitoring & Honeypots',
+      description: 'Deployment and monitoring of T-Pot honeypot infrastructure to detect, log, and visualize attack patterns using Splunk and multiple honeypot services.',
+      category: 'Cybersecurity',
+      details: [
+        'Deployed T-Pot multi-service honeypot environment (Cowrie SSH, Suricata IDS, Dionaea)',
+        'Configured iptables rules for traffic logging and packet capture',
+        'Integrated Splunk for centralized logging and log aggregation',
+        'Created Splunk dashboards visualizing attack maps, top attackers, and attack patterns',
+        'Analyzed honeypot logs to identify attack trends, reconnaissance activities, and exploitation attempts',
+        'Captured and analyzed shell interaction logs from compromised honeypot services',
+        'Demonstrated understanding of attack lifecycle through real-world attack telemetry'
+      ],
+      tags: ['Honeypot', 'T-Pot', 'Splunk', 'iptables', 'Log Analysis', 'Network Monitoring', 'IDS'],
+      githubLink: ''
+    },
+    {
+      id: 18,
+      title: 'Cybersecurity Labs: Web Application Firewalls & Attack Mitigation',
+      description: 'Configuration and management of FortiGate Next-Generation Firewall (NGFW) with WAF capabilities to detect and block web-based attacks (SQLi, XSS, etc.).',
+      category: 'Cybersecurity',
+      details: [
+        'Set up FortiGate NGFW and Web Application Firewall (WAF)',
+        'Deployed vulnerable web application (DVWA) as attack target',
+        'Performed SQL injection (SQLi) and Cross-Site Scripting (XSS) attacks against unprotected application',
+        'Configured WAF rules and policies to detect and block injection attacks',
+        'Demonstrated successful attack mitigation with before/after screenshots',
+        'Created and tuned custom firewall policies for application protection',
+        'Analyzed attack logs and firewall block events to verify WAF effectiveness',
+        'Documented policy configurations and compliance with security best practices'
+      ],
+      tags: ['FortiGate', 'WAF', 'NGFW', 'SQLi', 'XSS', 'DVWA', 'Attack Mitigation'],
+      githubLink: ''
+    },
+    {
+      id: 19,
+      title: 'Cybersecurity Labs: Authentication & Access Control',
+      description: 'Implementation of user authentication systems and role-based access control (RBAC) using FortiGate firewalls, RADIUS authentication, and MFA concepts.',
+      category: 'Cybersecurity',
+      details: [
+        'Configured local user database and RADIUS authentication on FortiGate',
+        'Implemented role-based access control (RBAC) with multiple permission levels',
+        'Set up multi-factor authentication (MFA) concepts and testing',
+        'Created authentication policies with user groups and permissions',
+        'Configured MAC filtering and dynamic access control rules',
+        'Tested discretionary access control (DAC) and mandatory access control (MAC) concepts',
+        'Documented authentication scenarios and access control policies',
+        'Analyzed authentication logs and access denial events',
+        'Demonstrated principle of least privilege in policy configuration'
+      ],
+      tags: ['RBAC', 'Authentication', 'RADIUS', 'MFA', 'Access Control', 'FortiGate', 'DAC', 'MAC'],
+      githubLink: ''
     },
     {
       id: 5,
@@ -129,42 +222,6 @@ const Projects = () => {
       ],
       tags: ['Cloud Security', 'Azure', 'Splunk', 'OpenVAS']
     },
-    {
-      id: 2,
-      title: 'AI People Counting System',
-      description: 'Bachelor’s thesis using RGB, depth, and infrared video data to count people without identifying them. Used deep learning and data fusion to improve accuracy.',
-      category: 'AI',
-      details: [
-        'Implemented deep learning models for people detection',
-        'Combined RGB, depth and infrared data for robust counting',
-        'Focused on privacy-preserving techniques'
-      ],
-      tags: ['Deep Learning', 'Data Fusion', 'Privacy']
-    },
-    {
-      id: 3,
-      title: 'Mobile App – Sweco Internship',
-      description: 'Developed a proof-of-concept mobile app using React Native and REST APIs during my internship. Contributed to unit testing and debugging workflows.',
-      category: 'Mobile',
-      details: [
-        'Implemented key features and integration with REST APIs',
-        'Wrote unit tests and fixed bugs',
-        'Collaborated with other teams to deliver a POC'
-      ],
-      tags: ['React Native', 'REST', 'Testing']
-    },
-    {
-      id: 4,
-      title: 'iOS Apps (SwiftUI)',
-      description: 'Created iOS applications including a weather app and a todo list app using SwiftUI.',
-      category: 'Mobile',
-      details: [
-        'Built apps with SwiftUI and Core Location',
-        'Handled data persistence and UI state management',
-      ],
-      tags: ['SwiftUI', 'iOS']
-    }
-    ,
     {
       id: 6,
       title: 'Azure IoT Infrastructure Setup & Cloud Security',
@@ -191,6 +248,50 @@ const Projects = () => {
       tags: ['TLS','OAuth2','Azure AD','Key Vault'],
       githubLink: ''
     },
+    // Bachelor's Thesis
+    {
+      id: 13,
+      title: 'Bachelor\'s Thesis: Counting-People-Using-Video-Camera for Smart Classrooms',
+      description: 'A multimodal computer vision system using RGB, depth, and IR cameras with YOLO-based detection to estimate occupancy while preserving privacy.',
+      category: 'AI',
+      images: [
+        require('../assets/thesis/missedToDetectAnd Count.png'),
+        require('../assets/thesis/occupancy_plot.png'),
+        require('../assets/thesis/1.png'),
+        require('../assets/thesis/2.png'),
+        require('../assets/thesis/3.png'),
+        require('../assets/thesis/4.png')      ],
+      details: [
+        'Conducted independent research and implemented a real-world computer vision system',
+        'Multimodal sensing: RGB, depth, and infrared data fusion with dynamic weighting',
+        'Applied YOLO-based person detection and fine-tuned models for classroom settings',
+        'Deployed with Intel RealSense D435 and handled sensor synchronization and calibration',
+        'Collected and analyzed one week of occupancy logs; evaluated performance under occlusion and low light',
+        'Privacy-by-design: only bounding boxes (no facial recognition); system tuned for accuracy and robustness'
+      ],
+      tags: ['Computer Vision', 'YOLO', 'RealSense', 'Multimodal', 'Deep Learning', 'Data Analysis'],
+      githubLink: 'https://github.com/FilmonMeharii/Counting-People-Using-Video-Camera'
+    },
+    // AI Programming
+    {
+      id: 11,
+      title: 'AI Programming: From Search to Learning',
+      description: 'A comprehensive series of AI algorithm implementations covering four core areas: problem solving (GPS & A*), knowledge & reasoning (rule-based systems & Minimax), supervised learning (KNN & Perceptron), and reinforcement learning (Q-learning).',
+      category: 'AI',
+      images: [require('../assets/AI-project/KNN.png'), require('../assets/AI-project/Perceptron.png')],
+      details: [
+        'Search Algorithms (Haskell) General Problem Solver (GPS) with BFS for Solitaire puzzle, A* with Manhattan heuristic for 8-puzzle',
+        'Rule-Based Systems & Adversarial Search Forward & backward chaining expert systems, Minimax with Alpha-Beta pruning for binary game trees',
+        'Supervised Learning (Python)K-Nearest Neighbors (KNN) for MNIST digit classification (1 vs 6), Perceptron for OR problem, multi-layer perceptron for XOR',
+        'Reinforcement Learning (Python) Q-learning for Frozen Lake 8x8 (discrete), linear function approximator for continuous state spaces (Lunar Lander/Acrobot)',
+        'All algorithms implemented from scratch in Haskell and Python without ML libraries (only NumPy for basic math)',
+        'Modular design separating generic solvers from problem-specific logic; custom training loops and evaluation metrics',
+        'Integrated with Gymnasium environments; implemented accuracy, error rate, cumulative reward, and pruning efficiency metrics'
+      ],
+      tags: ['Haskell', 'Python', 'AI', 'Search Algorithms', 'Machine Learning', 'Reinforcement Learning', 'A*', 'Q-Learning'],
+      githubLink: 'https://github.com/FilmonMeharii/AI-Programming'
+    },
+    // Rest of projects
     {
       id: 8,
       title: 'Advanced C++ Data Structures & Algorithms',
@@ -244,24 +345,6 @@ const Projects = () => {
       githubLink: 'https://github.com/FilmonMeharii/SQL-Hotel-Management-System'
     },
     {
-      id: 11,
-      title: 'AI Programming: From Search to Learning',
-      description: 'A comprehensive series of AI algorithm implementations covering four core areas: problem solving (GPS & A*), knowledge & reasoning (rule-based systems & Minimax), supervised learning (KNN & Perceptron), and reinforcement learning (Q-learning).',
-      category: 'AI',
-      images: [require('../assets/AI-project/KNN.png'), require('../assets/AI-project/Perceptron.png')],
-      details: [
-        'Search Algorithms (Haskell) General Problem Solver (GPS) with BFS for Solitaire puzzle, A* with Manhattan heuristic for 8-puzzle',
-        'Rule-Based Systems & Adversarial Search Forward & backward chaining expert systems, Minimax with Alpha-Beta pruning for binary game trees',
-        'Supervised Learning (Python)K-Nearest Neighbors (KNN) for MNIST digit classification (1 vs 6), Perceptron for OR problem, multi-layer perceptron for XOR',
-        'Reinforcement Learning (Python) Q-learning for Frozen Lake 8x8 (discrete), linear function approximator for continuous state spaces (Lunar Lander/Acrobot)',
-        'All algorithms implemented from scratch in Haskell and Python without ML libraries (only NumPy for basic math)',
-        'Modular design separating generic solvers from problem-specific logic; custom training loops and evaluation metrics',
-        'Integrated with Gymnasium environments; implemented accuracy, error rate, cumulative reward, and pruning efficiency metrics'
-      ],
-      tags: ['Haskell', 'Python', 'AI', 'Search Algorithms', 'Machine Learning', 'Reinforcement Learning', 'A*', 'Q-Learning'],
-      githubLink: 'https://github.com/FilmonMeharii/AI-Programming'
-    },
-    {
       id: 12,
       title: 'Aires AB – Drone-Based Emergency Medical Delivery',
       description: 'A comprehensive business plan for a startup proposing AI-assisted, operator-controlled drones to deliver critical medical supplies in emergency situations to hard-to-reach areas.',
@@ -278,21 +361,82 @@ const Projects = () => {
       ],
       tags: ['Business Planning', 'Financial Modeling', 'Market Analysis', 'Entrepreneurship', 'Risk Management', 'Strategic Planning'],
       githubLink: ''
+    },
+    {
+      id: 14,
+      title: 'FlexiCharge – Agile Software Engineering Project',
+      description: 'A multi-squad web application developed using Scrum. I served as Product Owner for the Web-Admin squad, coordinating feature delivery and demos.',
+      category: 'Web',
+      details: [
+        'Served as Product Owner for the Web-Admin squad: sprint planning, demo preparation, and cross-squad coordination',
+        'Managed technical debt and planned future improvements',
+        'Facilitated retrospectives and improved team processes',
+        'Coordinated integration testing and resolved cross-squad issues for final demo presentations',
+        'Documented demo scripts and led stakeholder presentation'
+      ],
+      tags: ['Agile', 'Scrum', 'Product Owner', 'Project Management', 'Web'],
+      githubLink: ''
+    },
+    {
+      id: 3,
+      title: 'Mobile App – Sweco Internship',
+      description: 'Developed a proof-of-concept mobile app using React Native and REST APIs during my internship. Contributed to unit testing and debugging workflows.',
+      category: 'Mobile',
+      details: [
+        'Implemented key features and integration with REST APIs',
+        'Wrote unit tests and fixed bugs',
+        'Collaborated with other teams to deliver a POC'
+      ],
+      tags: ['React Native', 'REST', 'Testing']
+    },
+    {
+      id: 4,
+      title: 'iOS Apps (SwiftUI)',
+      description: 'Created iOS applications including a weather app and a todo list app using SwiftUI.',
+      category: 'Mobile',
+      details: [
+        'Built apps with SwiftUI and Core Location',
+        'Handled data persistence and UI state management',
+      ],
+      tags: ['SwiftUI', 'iOS']
     }
   ];
 
+  // small helper to normalize category strings (robust comparison)
+  const normalize = (s) => (s || '').toString().toLowerCase().trim();
+
   const filteredProjects = projectsData
     .filter(project => project.title.toLowerCase().includes(searchTerm.toLowerCase()))
-    .filter(project => filter === 'All' || project.category === filter);
+    .filter(project => {
+      if (filter === 'All') return true;
+      return normalize(project.category) === normalize(filter);
+    });
 
   // Ensure Cybersecurity projects appear first in the listing
   const orderedProjects = [...filteredProjects].sort((a, b) => {
-    const aCyber = a.category === 'Cybersecurity' ? 0 : 1;
-    const bCyber = b.category === 'Cybersecurity' ? 0 : 1;
+    const aCyber = normalize(a.category) === 'cybersecurity' ? 0 : 1;
+    const bCyber = normalize(b.category) === 'cybersecurity' ? 0 : 1;
     if (aCyber !== bCyber) return aCyber - bCyber;
     // fallback to original order by id
     return a.id - b.id;
   });
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKey = (e) => {
+      if (!modalProject || !modalProject.images) return;
+      const len = modalProject.images.length;
+      if (e.key === 'Escape') {
+        setLightboxIndex(null);
+      } else if (e.key === 'ArrowLeft') {
+        setLightboxIndex((idx) => (idx === null ? null : (idx - 1 + len) % len));
+      } else if (e.key === 'ArrowRight') {
+        setLightboxIndex((idx) => (idx === null ? null : (idx + 1) % len));
+      }
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, [lightboxIndex, modalProject]);
 
   return (
   <section id="projects" className="section projects-section" ref={sectionRef}>
@@ -363,7 +507,7 @@ const Projects = () => {
                           src={img}
                           alt={`${modalProject.title} screenshot ${i+1}`}
                           className="project-image"
-                          onClick={() => setLightboxImage(img)}
+                          onClick={() => setLightboxIndex(i)}
                           role="button"
                           aria-label={`Open image ${i + 1} of ${modalProject.title}`}
                         />
@@ -388,11 +532,15 @@ const Projects = () => {
           </div>
         )}
 
-        {lightboxImage && (
-          <div className="lightbox" onClick={() => setLightboxImage(null)} role="dialog" aria-modal="true">
-            <img src={lightboxImage} alt="Expanded project screenshot" />
+        {modalProject && lightboxIndex !== null && (
+          <div className="lightbox" onClick={() => setLightboxIndex(null)} role="dialog" aria-modal="true">
+            <button className="lightbox-nav left" aria-label="Previous image" onClick={(e) => { e.stopPropagation(); const len = modalProject.images.length; setLightboxIndex((lightboxIndex - 1 + len) % len); }}>&larr;</button>
+            <img src={modalProject.images[lightboxIndex]} alt={`Expanded ${modalProject.title} screenshot ${lightboxIndex+1}`} />
+            <button className="lightbox-nav right" aria-label="Next image" onClick={(e) => { e.stopPropagation(); const len = modalProject.images.length; setLightboxIndex((lightboxIndex + 1) % len); }}>&rarr;</button>
           </div>
         )}
+
+
 
       </div>
     </section>

@@ -326,6 +326,24 @@
 }
 .lightbox:focus { outline: none; }
 
+/* Lightbox navigation buttons */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  font-size: 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 2010;
+}
+.lightbox-nav.left { left: 18px; }
+.lightbox-nav.right { right: 18px; }
+.lightbox-nav:focus { outline: 2px solid rgba(255,255,255,0.2); }
+
 @media (max-width: 768px) {
   .projects-section {
     padding: 30px 0;
