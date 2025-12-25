@@ -39,15 +39,52 @@
 }
 
 .navbar a {
-  color: var(--text-color);
+  color: var(--light-text-color);
   text-decoration: none;
   font-size: 0.98rem;
-  transition: color 0.15s ease, transform 0.15s ease;
-  padding: 0.35rem 0.5rem;
+  transition: all 280ms ease;
+  padding: 8px 14px;
   border-radius: 6px;
+  font-weight: 500;
+  border: 1px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 15%, var(--secondary-color)), color-mix(in srgb, var(--accent-color) 10%, var(--secondary-color)));
+  box-shadow: 0 4px 12px rgba(2,6,23,0.06);
 }
 
-.navbar a:hover { color: var(--primary-color); transform: translateY(-2px); }
+.navbar a:hover {
+  color: var(--light-text-color);
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 28%, var(--secondary-color)), color-mix(in srgb, var(--accent-color) 20%, var(--secondary-color)));
+  border-color: color-mix(in srgb, var(--primary-color) 50%, transparent);
+  box-shadow: 0 10px 28px rgba(2,6,23,0.14);
+}
+
+/* Active state for nav links when they match current section */
+.navbar a.active {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 35%, var(--secondary-color)), color-mix(in srgb, var(--accent-color) 28%, var(--secondary-color)));
+  border-color: color-mix(in srgb, var(--primary-color) 60%, transparent);
+  color: var(--light-text-color);
+  box-shadow: 0 10px 28px rgba(2,6,23,0.14);
+}
+
+/* Dark theme nav link styling */
+[data-theme="dark"] .navbar a {
+  background: linear-gradient(90deg, rgba(14,165,164,0.15), rgba(124,58,237,0.1));
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 4px 12px rgba(2,6,23,0.6);
+}
+
+[data-theme="dark"] .navbar a:hover {
+  background: linear-gradient(90deg, rgba(14,165,164,0.28), rgba(124,58,237,0.2));
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: 0 10px 28px rgba(2,6,23,0.7);
+}
+
+[data-theme="dark"] .navbar a.active {
+  background: linear-gradient(90deg, rgba(14,165,164,0.35), rgba(124,58,237,0.28));
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 10px 28px rgba(2,6,23,0.7);
+}
 
 .light-mode-switch {
   position: relative; 
