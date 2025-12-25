@@ -101,10 +101,11 @@
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  background: transparent;
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  padding: 6px 8px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 18%, var(--secondary-color)), color-mix(in srgb, var(--accent-color) 12%, var(--secondary-color)));
+  color: var(--light-text-color);
+  border: 1px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
+  padding: 8px 10px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
 }
 
 .light-mode-switch.light {
@@ -113,9 +114,30 @@
 }
 
 .light-mode-switch.dark {
-    background-color: var(--light-text-color);
-    border: 2px solid var(--secondary-color);
+    /* Slightly invert border for dark state while preserving gradient */
+    border: 2px solid color-mix(in srgb, var(--primary-color) 40%, transparent);
 }
+
+/* Primary hero call-to-action */
+.hero-actions { margin-top: 18px; }
+.hero-cta {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 1.02rem;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--light-text-color);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 25%, var(--secondary-color)), color-mix(in srgb, var(--accent-color) 18%, var(--secondary-color)));
+  border: 1px solid color-mix(in srgb, var(--primary-color) 45%, transparent);
+  box-shadow: 0 12px 32px rgba(2,6,23,0.12);
+  transition: transform 200ms ease, box-shadow 200ms ease, opacity 160ms ease;
+}
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 42px rgba(2,6,23,0.16);
+}
+
 
 .banner {
   padding: 6.5rem 2rem 4.5rem;
@@ -150,11 +172,11 @@
 .banner-content > .badges {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 18px;
-  flex: 1 1 100%; /* span full row so it appears under the title */
-  order: 2;
+  margin-top: 22px; /* nudge down a bit so it doesn't visually overlap */
+  flex: 1 1 100%; /* keep responsive wrap behavior */
+  order: 3; /* place after main text/profile on small screens to avoid overlap */
 }
 
 /* Make embedded badge iframe responsive and less tall on small viewports */
@@ -162,8 +184,9 @@
 .banner-content > .badges iframe.tryhackme-badge,
 .badges iframe.tryhackme-badge {
   width: 100%;
-  height: 120px; /* default */
-  max-height: 180px;
+  height: 96px; /* slightly reduced to avoid overlap and keep compact */
+  max-height: 140px;
+  max-width: 360px;
   border: 0;
   overflow: hidden; /* attempt to prevent scrollbars */
   -ms-overflow-style: none; /* IE/Edge */
