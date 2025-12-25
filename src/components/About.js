@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
 import '../CSS/About.css';
 import CV from '../assets/CV thesis.pdf';
 import Cert from '../assets/CyberOps_Associate_certificate.pdf';
@@ -25,27 +26,21 @@ const About = () => {
                 <span className="prompt">$</span> whoami
               </div>
               <div className="line output">
-                I am a Computer Science graduate from Jönköping University, currently pursuing an MSc in Cybersecurity at Högskolan Väst. I focus on securing systems, intrusion detection, and industrial control system hardening.
+                I'm a Computer Science graduate currently pursuing an MSc in Cybersecurity. I focus on applied system hardening and intrusion detection, with hands-on labs and projects across cloud and industrial control systems—including FortiGate/WAF tuning, centralized logging with Splunk, vulnerability assessments with OpenVAS/Nessus, and PLC hardening with OpenPLC.
               </div>
 
               <div className="line">
-                <span className="prompt">$</span> labs
+                <span className="prompt">$</span> projects
               </div>
               <div className="line output">
-                Hands-on labs: Azure (MFA, RBAC), FortiGate, Splunk, OpenVAS/Tenable, Proxmox firewall configs, vuln scans, centralized logging.
+                I've built and evaluated end-to-end solutions: multimodal computer-vision thesis (RGB+depth+IR YOLO), IoT platform hardening (TLS/OAuth2), and ICS attack simulations with before/after scans and remediation steps.
               </div>
 
               <div className="line">
-                <span className="prompt">$</span> cat interests.txt
+                <span className="prompt">$</span> interests
               </div>
               <div className="line output">
-                • Threat Intelligence • Penetration Testing • Incident Response • Network Security • System Hardening • Software Development • AI • App Development • System Development • Web Development
-              </div>
-
-              <div className="line">
-                <span className="prompt">$</span> misc
-              </div>
-              <div className="line output">
+                Threat Intelligence • Incident Response • System Hardening • ICS Security • Cloud Security • AI & Computer Vision • Software Engineering
               </div>
 
               <div className="line">
@@ -53,8 +48,10 @@ const About = () => {
               </div>
 
               <div className="terminal-actions">
-                <a href={CV} target="_blank" rel="noopener noreferrer" className="btn">View Resume (PDF)</a>
-                <a href={Cert} target="_blank" rel="noopener noreferrer" className="btn" style={{marginLeft: '8px'}}>View Certificate</a>
+                <a href={CV} target="_blank" rel="noopener noreferrer" className="btn" aria-label="Download CV in PDF format">View CV</a>
+                <a href={Cert} target="_blank" rel="noopener noreferrer" className="btn" style={{marginLeft: '8px'}} aria-label="View CyberOps Associate certificate in PDF">View Certificate</a>
+                <Link smooth to="#skills" className="btn" style={{marginLeft: '8px'}} aria-label="View full skills section">View Skills</Link>
+                <Link smooth to="#projects" className="btn" style={{marginLeft: '8px'}} aria-label="View projects section">View Projects</Link>
               </div>
             </div>
         </div>
