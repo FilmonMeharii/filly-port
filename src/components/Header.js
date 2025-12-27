@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import profile from '../assets/profilePic.svg';
 import cvFile from '../assets/CV thesis.pdf';
+import Logo from './Logo';
 import '../CSS/Header.css';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    // Default to dark mode unless the user previously saved a preference
     const [isDarkMode, setIsDarkMode] = useState(() => {
         try {
             const saved = localStorage.getItem('theme');
@@ -54,7 +54,9 @@ const Header = () => {
         <header className='header'>
             <nav className='navbar'>
                 <div className="logo">
-                    <Link smooth to='#top'>Home</Link>
+                    <Link smooth to='#top' className='logo-link' aria-label="Home">
+                        <Logo size={42} />
+                    </Link>
                 </div>
                 <button
                     className="menu-icon"
@@ -108,7 +110,7 @@ const Header = () => {
                         />
                     </div>
                     <div className='profile-photo'>
-                        <img src={profile} alt='Filmon - Software Developer' />
+                        <img src={profile} alt='Filmon Software Developer' />
                     </div>
                 </div>
             </div>

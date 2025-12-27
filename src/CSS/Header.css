@@ -17,12 +17,31 @@
   align-items: center;
 }
 
-.logo a {
-  color: var(--text-color);
-  font-size: 1.15rem;
-  font-weight: 700;
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 200ms ease, filter 200ms ease;
+  cursor: pointer;
   text-decoration: none;
-  letter-spacing: 0.3px;
+}
+
+.logo-link:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 16px rgba(14,165,164,0.3));
+}
+
+.logo-link:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+  border-radius: 50%;
 }
 
 .navbar ul {
@@ -262,77 +281,7 @@
 }
 
 /* Glitch heading (lightweight) */
-.glitch {
-  position: relative;
-  display: block; /* ensure headline is on its own line */
-  margin-bottom: 6px;
-}
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  pointer-events: none;
-  opacity: 0.8;
-}
-.glitch::before {
-  color: var(--primary-color);
-  transform: translate(-2px, -1px);
-  clip-path: inset(0 0 60% 0);
-}
-.glitch::after {
-  color: var(--accent-color);
-  transform: translate(2px, 1px);
-  clip-path: inset(60% 0 0 0);
-}
 
-/* Typewriter subtitle (simple, no JS) */
-.typewriter {
-  display: block; /* place subtitle on its own line */
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 100%;
-}
-
-/* Static subtitle: allow wrapping and avoid forcing a single long line */
-.subtitle {
-  display: block;
-  white-space: normal;
-  overflow: visible;
-  font-weight: 600;
-  color: var(--muted-color);
-  line-height: 1.2;
-  word-break: keep-all;
-}
-
-/* Profile badge overlay */
-.profile-image-container { position: relative; display: inline-block; }
-.profile-image-container img { border-radius: 50%; display: block; }
-.security-badge {
-  position: absolute;
-  right: -6px;
-  bottom: -6px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  color: var(--light-text-color);
-  padding: 8px 10px;
-  border-radius: 10px;
-  box-shadow: var(--box-shadow);
-  font-size: 14px;
-}
-
-/* Scroll indicator */
-.scroll-indicator { display:flex; flex-direction:column; align-items:center; gap:8px; margin: 12px 0 0; color:var(--muted-color); }
-.scroll-indicator .mouse { width:28px; height:44px; border-radius:20px; border:2px solid var(--muted-color); display:inline-flex; align-items:flex-start; justify-content:center; padding-top:6px; }
-.scroll-indicator .wheel { width:6px; height:6px; background:var(--muted-color); border-radius:50%; display:block; animation: scroll-wheel 1.6s infinite; }
-@keyframes scroll-wheel { 0% { transform: translateY(0); opacity:1 } 50% { transform: translateY(8px); opacity:0.6 } 100% { transform: translateY(0); opacity:1 } }
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .scroll-indicator .wheel { animation: none; }
-  .glitch::before, .glitch::after { opacity: 0; }
-}
 
 .profile-photo {
   flex: 1;
