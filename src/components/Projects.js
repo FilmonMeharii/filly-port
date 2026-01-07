@@ -328,7 +328,16 @@ const Projects = () => {
   const normalize = (s) => (s || '').toString().toLowerCase().trim();
 
   const filteredProjects = projectsData
-    .filter(project => project.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter(project => {
+      const lowerSearchTerm = searchTerm.toLowerCase();
+      // Search in title, description, category, tags, and details
+      const titleMatch = project.title.toLowerCase().includes(lowerSearchTerm);
+      const descriptionMatch = project.description.toLowerCase().includes(lowerSearchTerm);
+      const categoryMatch = project.category.toLowerCase().includes(lowerSearchTerm);
+      const tagsMatch = project.tags && project.tags.some(tag => tag.toLowerCase().includes(lowerSearchTerm));
+      const detailsMatch = project.details && project.details.some(detail => detail.toLowerCase().includes(lowerSearchTerm));
+      return titleMatch || descriptionMatch || categoryMatch || tagsMatch || detailsMatch;
+    })
     .filter(project => {
       if (filter === 'All') return true;
       return normalize(project.category) === normalize(filter);
