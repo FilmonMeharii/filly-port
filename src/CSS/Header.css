@@ -159,7 +159,7 @@
 
 
 .banner {
-  padding: 6.5rem 2rem 4.5rem;
+  padding: 9.5rem 2rem 4.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -370,7 +370,10 @@
     transform-origin: center;
   }
 
-  /* slightly darker background for dark theme so menu contrast remains */
+  .banner {
+    padding: 6.5rem 1rem 3rem;
+  }
+
   [data-theme="dark"] .menu-icon {
     background-color: color-mix(in srgb, var(--background-color) 88%, white 4%);
     border: 1px solid rgba(255,255,255,0.06);
@@ -435,5 +438,5 @@
 
 @media (max-width: 375px) {
   .profile-photo img { width: 160px; height: 160px; }
-  .banner { padding: 4.5rem 1rem 3rem; }
+  .banner { padding: 5.5rem 1rem 3rem; }
 }

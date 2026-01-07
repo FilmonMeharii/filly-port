@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import profile from '../assets/profile pic.svg';
 import cvFile from '../assets/CV thesis.pdf';
@@ -50,9 +50,36 @@ const Header = () => {
         });
     };
 
+    // Ref for detecting outside clicks to close the mobile menu
+    const navRef = useRef(null);
+
+    useEffect(() => {
+        if (!isMenuOpen) return;
+
+        const handleOutsideClick = (e) => {
+            if (navRef.current && !navRef.current.contains(e.target)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') setIsMenuOpen(false);
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+        document.addEventListener('touchstart', handleOutsideClick);
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+            document.removeEventListener('touchstart', handleOutsideClick);
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isMenuOpen]);
+
     return (
         <header className='header'>
-            <nav className='navbar'>
+            <nav ref={navRef} className='navbar'>
                 <div className="logo">
                     <Link smooth to='#top' className='logo-link' aria-label="Home">
                         <Logo size={42} />
