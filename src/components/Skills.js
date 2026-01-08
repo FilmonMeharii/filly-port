@@ -93,6 +93,7 @@ export default function Skills() {
               I started with software development at Jönköping University, where I learned programming, mobile app design, and AI. Now at Högskolan Väst, I’m focusing on cybersecurity especially cloud security, IAM and industrial systems protection.
             </p>
             <p className="muted">Tools: Git, GitHub, Docker (basic), SQL, PyTorch</p>
+            <p className="muted" style={{ marginTop: '0.5rem' }}>Tip: click any skill chip to jump directly to the project(s) that demonstrate that skill.</p>
           </aside>
 
           <div className="skills-card card">
