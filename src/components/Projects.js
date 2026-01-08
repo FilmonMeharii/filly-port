@@ -354,7 +354,25 @@ const Projects = () => {
         'GUI Applications: Developed Tkinter based clients for chat and games with seamless network layer integration and interactive user interfaces'
       ],
       tags: ['Python', 'Socket Programming', 'Networking', 'Firebase', 'SQLite', 'HTTP', 'TCP/IP', 'Tkinter', 'GUI', 'Web Scraping', 'Cloud Integration'],
-      githubLink: ''
+      githubLink: 'https://github.com/FilmonMeharii/Network-Programming-HT2022'
+    },
+    {
+      id: 23,
+      title: 'Object-Oriented Software Engineering: UML Design to Enterprise Architecture',
+      description: 'A comprehensive portfolio spanning requirements analysis, UML modeling, Java MVC implementation, and design pattern application—demonstrating systematic progression from use case development to extensible enterprise-grade applications.',
+      category: 'Web',
+      details: [
+        'Requirements Engineering: Developed complete UML documentation for airline booking system with 4+ actors, detailed use cases in brief and fully-dressed formats, sequence diagrams modeling complex booking scenarios, and use case context diagrams',
+        'Domain Modeling: Designed domain model for JU\'s university course management system with 15+ domain entities, class identification, multiplicity relationships, and stakeholder perspective validation',
+        'Java MVC Implementation: Built Caesar cipher encryption application with Model (encryption engine with modulo-26 character shifting), View (custom GUI with validation), Controller (mediating data transformation), and comprehensive JUnit tests covering edge cases and 95%+ code coverage',
+        'Design Pattern Application: Refactored monolithic Tic-Tac-Toe code into extensible framework using MVC, Observer, Factory, and Strategy patterns; enabled configurable board size (3x3 to NxN), multi-player support, customizable winning conditions, and easy rule modification',
+        'GRASP Principles: Applied all 9 GRASP patterns (Information Expert, Creator, Controller, Low Coupling, High Cohesion, Polymorphism, Pure Fabrication, Indirection, Protected Variations) across all designs',
+        'Architecture Design: Implemented layered architecture with clear separation of concerns; resolved circular dependencies through dependency injection; established responsibility boundaries for View (input validation), Controller (business logic), and Model (core algorithms)',
+        'Design Pattern Analysis: Documented relationships between GRASP and GoF patterns with real application scenarios for save/load functionality, network play (Adapter pattern), and multiple UIs (Observer pattern)',
+        'Testing & Quality: Implemented comprehensive test suites (unit, integration, scenario tests) with high code coverage; validated winning conditions, draw detection, invalid move handling, and network disconnection scenarios'
+      ],
+      tags: ['Java', 'UML', 'Design Patterns', 'MVC Architecture', 'GRASP', 'GoF Patterns', 'Swing GUI', 'JUnit Testing', 'Requirements Engineering', 'Object-Oriented Design'],
+      githubLink: 'https://github.com/FilmonMeharii/object-oriented-software-development-labbar/tree/main'
     }
   ];
 
