@@ -448,6 +448,7 @@ const Projects = () => {
             <div
               key={project.id}
               className="project"
+              data-project-id={project.id}
               onClick={() => handleProjectClick(project)}
             >
               <h3>{project.title}</h3>
