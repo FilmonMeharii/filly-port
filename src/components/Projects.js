@@ -337,6 +337,24 @@ const Projects = () => {
       ],
       tags: ['Kotlin', 'Android', 'Multiplayer', 'Mobile Game', 'Real-time', 'Networking', 'Game Development'],
       githubLink: 'https://github.com/FilmonMeharii/android-final-project-se-ju-dimp2022-40'
+    },
+    {
+      id: 22,
+      title: 'Network Programming Toolkit: Comprehensive Python Development Suite',
+      description: 'A complete 12-module Python framework demonstrating full-stack development from socket-level networking to cloud integration, featuring a multi-client chat system, HTTP server, Firebase real-time sync, and database management.',
+      category: 'Web',
+      details: [
+        'Multi-Client Chat System: Implemented non-blocking I/O with select() module handling 50+ concurrent connections; custom message protocol with state synchronization and stress-tested connection stability',
+        'HTTP Server from Scratch: Built HTTP/1.1 server handling GET requests with proper response headers, status codes, HTML content generation, and tested compliance with Firefox and Chrome',
+        'Firebase Integration: Configured Google Firebase Realtime Database with service account authentication, automatic cross-client synchronization, and instant message delivery',
+        'Database Management: Designed SQLite schema with two-table normalization, complex SQL queries for data analysis, bulk import functionality, and tested with 10,000+ record datasets',
+        'Web Scraping Engine: Created regex-based HTML parser for structured data extraction with proper UTF-8 encoding handling for Swedish characters and group capturing',
+        'Networking Stack: Implemented TCP/IP socket programming, custom protocols for game state synchronization, proper byte encoding/decoding, and blocking I/O solutions using multi-threading and non-blocking sockets',
+        'Data Processing Pipeline: Built file parsers, compression analysis (zlib vs theoretical limits), character encoding converters (ASCII, Latin-1, UTF-8), and text analysis tools',
+        'GUI Applications: Developed Tkinter based clients for chat and games with seamless network layer integration and interactive user interfaces'
+      ],
+      tags: ['Python', 'Socket Programming', 'Networking', 'Firebase', 'SQLite', 'HTTP', 'TCP/IP', 'Tkinter', 'GUI', 'Web Scraping', 'Cloud Integration'],
+      githubLink: ''
     }
   ];
 
