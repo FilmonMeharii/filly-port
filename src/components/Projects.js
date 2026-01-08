@@ -108,7 +108,7 @@ const Projects = () => {
     // Master's Work: Literature review (most recent, currently relevant)
     {
       id: 2,
-      title: 'LitReview_Group7_SLP600',
+      title: 'Automotive Cybersecurity Standards: ISO/SAE 21434 Implementation & Tooling',
       description: 'Systematic literature review exploring how ISO/SAE 21434 is implemented, measured and supported by tooling across automotive organizations.',
       category: 'Cybersecurity',
       details: [
@@ -321,6 +321,22 @@ const Projects = () => {
         'Handled data persistence and UI state management',
       ],
       tags: ['SwiftUI', 'iOS']
+    },
+    {
+      id: 21,
+      title: 'Multiplayer Tic Tac Toe (Android)',
+      description: 'A multiplayer Android game where two players connect to a server, join a lobby, and challenge each other to play Tic Tac Toe on a 3x3 grid with real-time game state synchronization.',
+      category: 'Mobile',
+      details: [
+        'Two-player game on 3x3 grid with 3 in a row win condition (horizontal, vertical, or diagonal); draw if board fills without winner',
+        'User-friendly adaptive interface with custom grid design, current game state display including player names and board',
+        'Players create profile with name, connect to server and join lobby, view all players, challenge others and receive/accept/decline challenges',
+        'Challenger takes first turn; players send ready message to start game; coordinates are x: 0-2, y: 0-2 with 0,0 at top-left',
+        'Real-time turn management with winning condition checks after each move; result screen and return to lobby on game end',
+        'Enhanced user experience with animations, sounds, and transitions throughout gameplay'
+      ],
+      tags: ['Kotlin', 'Android', 'Multiplayer', 'Mobile Game', 'Real-time', 'Networking', 'Game Development'],
+      githubLink: 'https://github.com/FilmonMeharii/android-final-project-se-ju-dimp2022-40'
     }
   ];
 
