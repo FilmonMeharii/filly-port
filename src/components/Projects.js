@@ -359,7 +359,7 @@ const Projects = () => {
     {
       id: 23,
       title: 'Object-Oriented Software Engineering: UML Design to Enterprise Architecture',
-      description: 'A comprehensive portfolio spanning requirements analysis, UML modeling, Java MVC implementation, and design pattern application—demonstrating systematic progression from use case development to extensible enterprise-grade applications.',
+      description: 'A comprehensive portfolio spanning requirements analysis, UML modeling, Java MVC implementation, and design pattern application demonstrating systematic progression from use case development to extensible enterprise-grade applications.',
       category: 'Web',
       details: [
         'Requirements Engineering: Developed complete UML documentation for airline booking system with 4+ actors, detailed use cases in brief and fully-dressed formats, sequence diagrams modeling complex booking scenarios, and use case context diagrams',

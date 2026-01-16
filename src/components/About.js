@@ -26,7 +26,7 @@ const About = () => {
                 <span className="prompt">$</span> whoami
               </div>
               <div className="line output">
-                I'm a Computer Science graduate currently pursuing an MSc in Cybersecurity. I focus on applied system hardening and intrusion detection, with hands-on labs and projects across cloud and industrial control systems—including FortiGate/WAF tuning, centralized logging with Splunk, vulnerability assessments with OpenVAS/Nessus, and PLC hardening with OpenPLC.
+                I'm a Computer Science graduate currently pursuing an MSc in Cybersecurity. I focus on applied system hardening and intrusion detection, with hands-on labs and projects across cloud and industrial control systems including FortiGate/WAF tuning, centralized logging with Splunk, vulnerability assessments with OpenVAS/Nessus, and PLC hardening with OpenPLC.
               </div>
 
               <div className="line">
