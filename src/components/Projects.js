@@ -120,8 +120,8 @@ const Projects = () => {
         'Role: Co author & researcher focused on automation tools (RQ3) and synthesis.'
       ],
       tags: ['Research','ISO/SAE 21434','Automotive','Cybersecurity','Literature Review'],
-      // PDF lives in `src/assets` (filename includes a trailing space before .pdf)
-      pdf: require('../assets/LitReview_Group7_SLP600 .pdf'),
+      // PDF lives in `src/assets/Cyber` (filename includes a trailing space before .pdf)
+      pdf: require('../assets/Cyber/LitReview_Group7_SLP600 .pdf'),
       githubLink: ''
     },
     // Cybersecurity Labs (core specialization, latest first)
@@ -159,15 +159,18 @@ const Projects = () => {
     },
     {
       id: 5,
-      title: 'Cloud & IoT Security Labs',
-      description: 'Comprehensive cloud security labs covering Azure infrastructure hardening, IoT platform deployment, and secure authentication using modern cloud services.',
+      title: 'Azure IoT Security Lab: End-to-End Cloud Infrastructure & Platform Hardening',
+      description: 'Designed and deployed a secure, scalable IoT platform on Azure using ThingsBoard, implementing enterprise-grade security controls, identity management, and encrypted communications in a collaborative team environment.',
       category: 'Cybersecurity',
       details: [
-        'Cloud Security: configured Azure like environments with IAM, MFA, and RBAC; integrated Splunk for centralized logging and alerting; performed OpenVAS/Tenable vulnerability assessments',
-        'IoT Infrastructure: designed secure IoT infrastructure using Azure services and ThingsBoard; created VNet/subnets with Ubuntu VMs; implemented RBAC and MFA; deployed MQTT simulator',
-        'Platform Hardening: configured Let\'s Encrypt (Certbot) for HTTPS; integrated Azure AD for OAuth2 based SSO; implemented Key Vault style secrets management and managed identities'
+        'Cloud Security & IAM: Configured Azure subscription with RBAC, assigned roles (Global Admin, Contributor, Reader), and tested authentication methods including Microsoft Authenticator and TOTP-based apps.',
+        'Secure IoT Infrastructure: Built a private VNet with subnets, deployed Ubuntu VMs for frontend (ThingsBoard) and backend (PostgreSQL), restricted public IPs, and enforced SSH key-based access.',
+        'Platform Hardening: Implemented TLS/SSL via Let\'s Encrypt (Certbot), configured HTTPS for ThingsBoard, and integrated Azure AD for OAuth2-based Single Sign-On (SSO).',
+        'Secrets Management: Used Azure Key Vault to securely store API tokens, implemented Managed Identities for secure secret retrieval, and eliminated hardcoded credentials from source code.',
+        'API Security: Developed and secured an Azure Function with HTTP-triggered endpoints, implemented token-based authentication, and demonstrated secure API consumption from frontend VMs.',
+        'Team Collaboration: Worked in a 3-person team with clearly defined RBAC responsibilities, ensuring principle of least privilege and secure resource isolation.'
       ],
-      tags: ['Cloud Security', 'Azure', 'IoT', 'ThingsBoard', 'OAuth2', 'Splunk', 'MQTT', 'TLS'],
+      tags: ['Azure','ThingsBoard','IoT','Key Vault','Azure AD','OAuth2','PostgreSQL','TLS','MFA','RBAC'],
       githubLink: ''
     },
     // Advanced Technical Projects
@@ -177,12 +180,12 @@ const Projects = () => {
       description: 'A multimodal computer vision system using RGB, depth, and IR cameras with YOLO based detection to estimate occupancy while preserving privacy.',
       category: 'AI',
       images: [
-        require('../assets/thesis/missedToDetectAnd Count.png'),
-        require('../assets/thesis/occupancy_plot.png'),
-        require('../assets/thesis/1.png'),
-        require('../assets/thesis/2.png'),
-        require('../assets/thesis/3.png'),
-        require('../assets/thesis/4.png')      ],
+        require('../assets/Bachelor thesis/missedToDetectAnd Count.png'),
+        require('../assets/Bachelor thesis/occupancy_plot.png'),
+        require('../assets/Bachelor thesis/1.png'),
+        require('../assets/Bachelor thesis/2.png'),
+        require('../assets/Bachelor thesis/3.png'),
+        require('../assets/Bachelor thesis/4.png')      ],
       details: [
         'Conducted independent research and implemented a real world computer vision system',
         'Multimodal sensing: RGB, depth, and infrared data fusion with dynamic weighting',
@@ -285,7 +288,7 @@ const Projects = () => {
       title: 'Aires AB Drone Based Emergency Medical Delivery',
       description: 'A comprehensive business plan for a startup proposing AI assisted, operator controlled drones to deliver critical medical supplies in emergency situations to hard to reach areas.',
       category: 'Web',
-      images: [require('../assets/bussiness/budget2025.png'), require('../assets/bussiness/budget2026.png')],
+      images: [require('../assets/Economi/budget2025.png'), require('../assets/Economi/budget2026.png')],
       details: [
         'Business Model Canvas Key partners (hospitals, ambulance services, regulators), revenue streams, cost structure analysis',
         'Financial Analysis Self cost calculation (SEK 5,322/delivery), pricing strategy (SEK 6,653/delivery with 20% margin), break even analysis (557 deliveries/year)',
@@ -373,6 +376,62 @@ const Projects = () => {
       ],
       tags: ['Java', 'UML', 'Design Patterns', 'MVC Architecture', 'GRASP', 'GoF Patterns', 'Swing GUI', 'JUnit Testing', 'Requirements Engineering', 'Object-Oriented Design'],
       githubLink: 'https://github.com/FilmonMeharii/object-oriented-software-development-labbar/tree/main'
+    }
+    ,
+    {
+      id: 24,
+      title: "Master's Thesis (ongoing): Comparative Analysis of Open-Source Security Platforms Using Real Honeypot Attack Data",
+      description: 'Empirical comparison of Wazuh (XDR) and Elastic Security (SIEM+EDR) using real attack data collected from a multi-sensor honeypot platform.',
+      category: 'Cybersecurity',
+      status: 'Ongoing',
+      details: [
+        'Deployed T-Pot honeypot with Cowrie, Dionaea, and Suricata and collected 14 days of real attack traffic.',
+        'Configured Filebeat + Logstash to forward identical logs to Wazuh and Elastic Security for a controlled comparison.',
+        'Measured detection accuracy (TPR/FPR), precision/recall per attack type, alert latency, and resource usage.',
+        'Replayed logs for reproducible testing and analyzed resource utilization with Prometheus + Grafana.',
+        'Key findings: Wazuh showed higher brute-force coverage but more false positives; Elastic Security offered better correlation and lower latency at higher memory cost.',
+        'Tools: T-Pot (Cowrie, Dionaea, Suricata), Wazuh, Elastic Security, Filebeat, Logstash, Prometheus, Grafana, Python (pandas), Jupyter Notebooks.'
+      ],
+      tags: ['Master thesis','Wazuh','Elastic Security','T-Pot','SIEM','XDR','Filebeat','Logstash','Prometheus'],
+      githubLink: ''
+    }
+    ,
+    {
+      id: 25,
+      title: 'Academic Research: Evaluating Azure NSGs for Lateral Movement Containment',
+      description: 'Conducted a controlled experimental study to evaluate the effectiveness of Azure Network Security Groups (NSGs) in preventing lateral threat movement within cloud networks.',
+      category: 'Cybersecurity',
+      details: [
+        'Designed and deployed a simulated flat Azure network with two Ubuntu VMs to replicate worm-like propagation.',
+        'Implemented restrictive NSG rules at the subnet level to enforce microsegmentation.',
+        'Measured containment efficacy using ICMP ping, Telnet, Nmap scanning, and Azure Network Watcher flow logs.',
+        'Achieved 100% blockage of lateral movement while maintaining 100% SSH administrative access, validating NSGs as a cost-effective microsegmentation control.',
+        'Documented methodology, results, and implications in a formal research report following academic standards.'
+      ],
+      tags: ['Azure','NSG','Network Security','Microsegmentation','Lateral Movement','Nmap','Azure CLI','PowerShell'],
+      pdf: require('../assets/Cloud Security/Cloud_Security_Final_Project_Report.pdf'),
+      images: [
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.07.53.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.08.41.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.09.10.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.09.48.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.10.21.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.11.05.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.11.28.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.12.15.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.12.54.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.13.47.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.14.43.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.15.49.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.17.11.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.19.50.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.22.14.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.52.36.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.56.11.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 15.59.20.png'),
+        require('../assets/Cloud Security/Screenshot 2025-12-27 at 16.01.47.png')
+      ],
+      githubLink: ''
     }
   ];
 
