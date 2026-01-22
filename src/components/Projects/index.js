@@ -1,13 +1,14 @@
 import React from 'react';
-import '../CSS/Projects.css';
-import ProjectsList from './Projects/ProjectsList';
-import ProjectModal from './Projects/ProjectModal';
-import ProjectLightbox from './Projects/ProjectLightbox';
-import useProjects from './Projects/useProjects';
+import '../../CSS/Projects/Projects.css';
+import ProjectsList from './ProjectsList';
+import ProjectModal from './ProjectModal';
+import ProjectLightbox from './ProjectLightbox';
+import useProjects from './useProjects';
 
 const Projects = () => {
   const {
     modalProject,
+    setModalProject,
     filter,
     setFilter,
     searchTerm,

@@ -82,7 +82,7 @@ const Header = () => {
             <nav ref={navRef} className='navbar'>
                 <div className="logo">
                     <Link smooth to='#top' className='logo-link' aria-label="Home">
-                        <Logo size={42} />
+                        <Logo size={32} />
                     </Link>
                 </div>
                 <button
