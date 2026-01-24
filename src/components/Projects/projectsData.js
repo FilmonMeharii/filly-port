@@ -96,7 +96,7 @@ const projectsData = [
     title: 'AI Programming: From Search to Learning',
     description: 'A comprehensive series of AI algorithm implementations covering four core areas: problem solving (GPS & A*), knowledge & reasoning (rule based systems & Minimax), supervised learning (KNN & Perceptron), and reinforcement learning (Q learning).',
     category: 'AI',
-      images: [require('../../assets/AI-project/KNN.png'), require('../../assets/AI-project/Perceptron.png')],
+    images: [require('../../assets/AI-project/KNN.png'), require('../../assets/AI-project/Perceptron.png')],
     details: [
       'Search Algorithms (Haskell) General Problem Solver (GPS) with BFS for Solitaire puzzle, A* with Manhattan heuristic for 8 puzzle',
       'Rule Based Systems & Adversarial Search Forward & backward chaining expert systems, Minimax with Alpha Beta pruning for binary game trees',
@@ -113,7 +113,7 @@ const projectsData = [
     id: 8,
     title: 'Advanced C++ Data Structures & Algorithms',
     description: 'Comprehensive university level programming assignments covering fundamental and advanced data structures, algorithms, complexity analysis, and recursion. Implemented core CS concepts with hands on project applications.',
-    category: 'Web',
+    category: 'Software',
     details: [
       'Pointers, Arrays & Sorting Implemented BubbleSort and InsertSort using pointer arithmetic and index based loops',
       'Recursion Recursive array functions, binary search, Tower of Hanoi, flood fill algorithm',
@@ -198,15 +198,17 @@ const projectsData = [
   // Mobile & Internship Projects
   {
     id: 3,
-    title: 'Mobile App Sweco Internship',
-    description: 'Developed a proof of concept mobile app using React Native and REST APIs during my internship. Contributed to unit testing and debugging workflows.',
-    category: 'Mobile',
+    title: 'Mobile App Proof-of-Concept – Sweco Internship',
+    description: 'During my 7-week internship at Sweco, I contributed to a proof-of-concept mobile application aimed at modernizing an existing desktop-based field support tool. The project involved full-stack development, from backend integration to frontend implementation, within an Agile team environment.',
+    category: 'Software',
     details: [
-      'Implemented key features and integration with REST APIs',
-      'Wrote unit tests and fixed bugs',
-      'Collaborated with other teams to deliver a POC'
+      'Unit Testing of Legacy C# Project: Wrote and executed unit tests using NUnit for an existing C# desktop application, conducted mocking tests to isolate dependencies and validate database interactions.',
+      'Proof-of-Concept Mobile App Development: Tech Stack - React Native, Expo, Node.js, Express, REST APIs. Implemented interactive map views using react-native-webview, built REST APIs to fetch field data.',
+      'Agile Collaboration & Workflow: Used Scrum, JIRA, daily stand-ups, sprint planning. Participated in sprint reviews and presentations.',
+      'Challenges Overcome: Android emulator configuration, cross-platform compatibility, time estimation and task prioritization.'
     ],
-    tags: ['React Native', 'REST', 'Testing']
+    tags: ['React Native', 'REST APIs', 'Unit Testing', 'Scrum', 'Agile', 'Node.js', 'Express', 'NUnit', 'C#'],
+    githubLink: ''
   },
   {
     id: 4,
