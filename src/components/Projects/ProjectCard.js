@@ -3,14 +3,10 @@ import '../../CSS/Projects/ProjectCard.css';
 
 const ProjectCard = ({ project, onClick }) => {
   return (
-    <div
-      className="project"
-      data-project-id={project.id}
-      onClick={() => onClick(project)}
-    >
+    <div className="project" data-project-id={project.id}>
       <h3>{project.title}</h3>
       <p>{project.description}</p>
-      <span className="project-category">{project.category}</span>
+      <button className="read-more-btn" onClick={() => onClick(project)}>Read More</button>
     </div>
   );
 };
