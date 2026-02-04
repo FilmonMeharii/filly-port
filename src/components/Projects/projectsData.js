@@ -16,7 +16,7 @@ const projectsData = [
     tags: ['Research','ISO/SAE 21434','Automotive','Cybersecurity','Literature Review'],
     // PDF lives in `src/assets/Cyber` (filename includes a trailing space before .pdf)
       pdf: require('../../assets/Cyber/LitReview_Group7_SLP600 .pdf'),
-    githubLink: ''
+    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
   },
   // Cybersecurity Labs (core specialization, latest first)
   {
@@ -34,7 +34,7 @@ const projectsData = [
       'Documentation: collected before/after scans, rulesets, configuration snippets and a written analysis of mitigations'
     ],
     tags: ['ICS Security','PLC','OpenPLC','nftables','Fail2Ban','Modbus','Colonial Pipeline','SCADA'],
-    githubLink: ''
+    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
   },
   {
     id: 15,
@@ -49,7 +49,7 @@ const projectsData = [
       'Authentication & Access Control: implemented role based access control (RBAC), RADIUS authentication, multi factor authentication (MFA), MAC filtering, and principle of least privilege policies'
     ],
     tags: ['Reconnaissance', 'OpenVAS', 'Nessus', 'Honeypot', 'Splunk', 'FortiGate', 'WAF', 'RBAC', 'MFA', 'Network Monitoring'],
-    githubLink: ''
+    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
   },
   {
     id: 5,
@@ -65,7 +65,7 @@ const projectsData = [
       'Team Collaboration: Worked in a 3-person team with clearly defined RBAC responsibilities, ensuring principle of least privilege and secure resource isolation.'
     ],
     tags: ['Azure','ThingsBoard','IoT','Key Vault','Azure AD','OAuth2','PostgreSQL','TLS','MFA','RBAC'],
-    githubLink: ''
+    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
   },
   // Advanced Technical Projects
   {
@@ -130,7 +130,7 @@ const projectsData = [
   {
     id: 9,
     title: 'FiliPort Personal E-Portfolio Web Application',
-    description: 'A fully functional personal e portfolio web application that enables developers to showcase projects, skills, and contact information. Features admin content management, visitor comments, and a contact system.',
+    description: 'A fully functional personal e-portfolio web application that enables developers to showcase projects, skills, and contact information. Features admin content management, visitor comments, and a contact system.',
     category: 'Web',
     details: [
       'Responsive navigation with six sections: Home, About, Projects, Comments, Contact, Login/Logout',
@@ -142,7 +142,7 @@ const projectsData = [
       'Client server architecture using HTTP requests/responses with Express.js middleware'
     ],
     tags: ['Node.js', 'Express.js', 'SQLite3', 'Bcrypt', 'Handlebars', 'REST APIs', 'Authentication'],
-    githubLink: ''
+    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
   },
   {
     id: 10,

@@ -63,13 +63,6 @@ const ProjectModal = ({ project, onClose, closeButtonRef, modalRef, setLightboxI
             <a href={project.githubLink} target="_blank" rel="noopener noreferrer">View code on GitHub</a>
           </p>
         )}
-        {project.githubLink && (
-          <p>
-            <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-              View on GitHub
-            </a>
-          </p>
-        )}
         <span className="project-category">{project.category}</span>
       </div>
     </div>
