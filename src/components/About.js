@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import '../CSS/About.css';
-import CV from '../assets/CV thesis.pdf';
+import CV from '../assets/CV_Filmon.pdf';
 import Cert from '../assets/CyberOps_Associate_certificate.pdf';
 
 const About = () => {
