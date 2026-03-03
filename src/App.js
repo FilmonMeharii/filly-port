@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import About from './components/About';
 import ScrollToTop from './components/ScrollToTop';
 import Timeline from './components/Timeline';
+import Chatbot from './components/Chatbot';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Contact />          
         <ScrollToTop />
         <Footer />
+        <Chatbot />
       </div>
     </Router>
   );

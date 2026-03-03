@@ -1,7 +1,7 @@
 .scroll-to-top {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 110px;
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   color: var(--light-text-color);
   border-radius: 12px;
@@ -31,4 +31,23 @@
   background-color: var(--primary-color);
   color: #ffffff;
   border-color: var(--primary-color);
+}
+
+/* Responsive - avoid overlap with chatbot */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 90px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top {
+    bottom: 15px;
+    right: 80px;
+    width: 42px;
+    height: 42px;
+  }
 }
