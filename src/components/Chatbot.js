@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Fuse from 'fuse.js';
 import { portfolioData, translations, swedishKeywords } from './chatbotData';
 import '../CSS/Chatbot.css';
 
@@ -16,6 +17,7 @@ const Chatbot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [conversationContext, setConversationContext] = useState([]);
   const [copiedIndex, setCopiedIndex] = useState(null);
+  const [fuseInstance, setFuseInstance] = useState(null);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -25,6 +27,128 @@ const Chatbot = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    const searchableData = [
+      ...portfolioData.skills.cybersecurity.map((skill) => ({
+        type: 'skill',
+        text: skill,
+        description: `Cybersecurity skill: ${skill}`
+      })),
+      ...portfolioData.skills.programming.map((skill) => ({
+        type: 'skill',
+        text: skill,
+        description: `Programming skill: ${skill}`
+      })),
+      ...portfolioData.skills.ai.map((skill) => ({
+        type: 'skill',
+        text: skill,
+        description: `AI skill: ${skill}`
+      })),
+      ...portfolioData.projects.map((project) => ({
+        type: 'project',
+        text: project.title,
+        period: project.period,
+        description: project.description
+      })),
+      ...portfolioData.experience.map((experience) => ({
+        type: 'experience',
+        text: experience.role,
+        company: experience.company,
+        period: experience.period,
+        description: experience.description
+      }))
+    ];
+
+    const fuse = new Fuse(searchableData, {
+      keys: ['text', 'description', 'company', 'period'],
+      threshold: 0.35,
+      includeScore: true,
+      ignoreLocation: true,
+      minMatchCharLength: 2
+    });
+
+    setFuseInstance(fuse);
+  }, []);
+
+  const synonyms = {
+    azure: ['cloud', 'microsoft', 'entra', 'ad', 'iam', 'rbac', 'aws'],
+    python: ['py', 'django', 'flask', 'scripting'],
+    security: ['cyber', 'säkerhet', 'defense', 'protection', 'vulnerability', 'soc'],
+    experience: ['work', 'jobb', 'erfarenhet', 'praktik', 'internship'],
+    project: ['projekt', 'built', 'developed', 'byggt', 'thesis', 'examensarbete'],
+    education: ['utbildning', 'degree', 'examen', 'university', 'school']
+  };
+
+  const expandQuery = (query) => {
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const expanded = new Set(words);
+
+    words.forEach((word) => {
+      Object.entries(synonyms).forEach(([key, values]) => {
+        if (word.includes(key) || values.some((value) => word.includes(value) || value.includes(word))) {
+          expanded.add(key);
+          values.forEach((value) => expanded.add(value));
+        }
+      });
+    });
+
+    return Array.from(expanded);
+  };
+
+  const logUnansweredQuestion = (question, lang, suggestion = null) => {
+    const storageKey = 'chatbot_unanswered_questions';
+    const payload = {
+      question,
+      language: lang,
+      suggestion,
+      timestamp: new Date().toISOString()
+    };
+
+    try {
+      const existing = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      const updated = [...existing, payload].slice(-100);
+      localStorage.setItem(storageKey, JSON.stringify(updated));
+    } catch (error) {
+      console.error('Failed to store unanswered question:', error);
+    }
+  };
+
+  const getUnansweredQuestions = () => {
+    const storageKey = 'chatbot_unanswered_questions';
+    try {
+      return JSON.parse(localStorage.getItem(storageKey) || '[]');
+    } catch (error) {
+      console.error('Failed to read unanswered questions:', error);
+      return [];
+    }
+  };
+
+  const clearUnansweredQuestions = () => {
+    const storageKey = 'chatbot_unanswered_questions';
+    try {
+      localStorage.removeItem(storageKey);
+      return true;
+    } catch (error) {
+      console.error('Failed to clear unanswered questions:', error);
+      return false;
+    }
+  };
+
+  const createUnansweredExportUrl = (entries) => {
+    try {
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        total: entries.length,
+        entries
+      };
+      const encoded = encodeURIComponent(JSON.stringify(payload, null, 2));
+      return `data:text/json;charset=utf-8,${encoded}`;
+    } catch (error) {
+      console.error('Failed to generate export URL:', error);
+      return null;
+    }
+  };
 
   // Function to parse text and make URLs and emails clickable
   const parseTextWithLinks = (text) => {
@@ -178,6 +302,76 @@ const Chatbot = () => {
     const searchResults = searchInData(message);
     const t = translations[lang]; // Get translations for current language
 
+    if (
+      message.includes('show unanswered') ||
+      message.includes('unanswered questions') ||
+      message.includes('visa obesvarade') ||
+      message.includes('obesvarade frågor')
+    ) {
+      const entries = getUnansweredQuestions();
+      if (!entries.length) {
+        return lang === 'sv'
+          ? 'Inga obesvarade frågor finns loggade ännu.'
+          : 'No unanswered questions are logged yet.';
+      }
+
+      const preview = entries
+        .slice(-10)
+        .reverse()
+        .map((entry, index) => {
+          const suggested = entry.suggestion ? ` | suggestion: ${entry.suggestion}` : '';
+          return `${index + 1}. ${entry.question}${suggested}`;
+        })
+        .join('\n');
+
+      return lang === 'sv'
+        ? `Senaste obesvarade frågor (${entries.length} totalt):\n\n${preview}`
+        : `Latest unanswered questions (${entries.length} total):\n\n${preview}`;
+    }
+
+    if (
+      message.includes('clear unanswered') ||
+      message.includes('clear logs') ||
+      message.includes('rensa obesvarade') ||
+      message.includes('rensa logg')
+    ) {
+      const success = clearUnansweredQuestions();
+      if (!success) {
+        return lang === 'sv'
+          ? 'Kunde inte rensa loggen just nu.'
+          : 'Could not clear the log right now.';
+      }
+
+      return lang === 'sv'
+        ? 'Obesvarade frågor har rensats.'
+        : 'Unanswered question logs have been cleared.';
+    }
+
+    if (
+      message.includes('export unanswered') ||
+      message.includes('export logs') ||
+      message.includes('exportera obesvarade') ||
+      message.includes('exportera logg')
+    ) {
+      const entries = getUnansweredQuestions();
+      if (!entries.length) {
+        return lang === 'sv'
+          ? 'Ingen loggdata att exportera ännu.'
+          : 'No log data available to export yet.';
+      }
+
+      const exportUrl = createUnansweredExportUrl(entries);
+      if (!exportUrl) {
+        return lang === 'sv'
+          ? 'Kunde inte skapa exportfilen.'
+          : 'Could not generate the export file.';
+      }
+
+      return lang === 'sv'
+        ? `Export klar (${entries.length} poster). Klicka för att ladda ner JSON:\n${exportUrl}`
+        : `Export ready (${entries.length} entries). Click to download JSON:\n${exportUrl}`;
+    }
+
     // Context-aware responses for follow-up questions
     if ((message.includes('more') || message.includes('detail') || message.includes('tell me more') || message.includes('elaborate')) && conversationContext.length > 1) {
       const lastContext = conversationContext[conversationContext.length - 2];
@@ -222,6 +416,18 @@ const Chatbot = () => {
       return `${t.experienceAt}\n\n${portfolioData.experience.slice(0, 4).map(exp => 
         `• ${exp.role} ${t.at} ${exp.company} (${exp.period})`
       ).join('\n')}`;
+    }
+
+    // Thesis related (Master/Bachelor)
+    if (message.includes('thesis') || message.includes('examensarbete') || message.includes('avhandling')) {
+      const thesisWork = portfolioData.experience.filter(exp => 
+        exp.role.toLowerCase().includes('thesis')
+      );
+      if (thesisWork.length > 0) {
+        return thesisWork.map(thesis => 
+          `**${thesis.role}** ${t.at} ${thesis.company}\n${thesis.period}\n\n${thesis.description}`
+        ).join('\n\n');
+      }
     }
 
     // Projects related
@@ -324,7 +530,9 @@ const Chatbot = () => {
 
     // Help
     if (message.includes('help') || message.includes('hjälp') || message.includes('what can you') || message.includes('vad kan du') || message.includes('commands')) {
-      return `${t.helpIntro}\n\n• ${t.skillsTech}\n• ${t.projectsPortfolio}\n• ${t.educationBackground}\n• ${t.workExperience}\n• ${t.interestsSpec}\n• ${t.contactInfo}\n• ${t.certifications}\n• ${t.languages}\n\n${t.justAsk}`;
+      return lang === 'sv'
+        ? `${t.helpIntro}\n\n• ${t.skillsTech}\n• ${t.projectsPortfolio}\n• ${t.educationBackground}\n• ${t.workExperience}\n• ${t.interestsSpec}\n• ${t.contactInfo}\n• ${t.certifications}\n• ${t.languages}\n\nAdmin-kommandon:\n• visa obesvarade\n• exportera obesvarade\n• rensa obesvarade\n\n${t.justAsk}`
+        : `${t.helpIntro}\n\n• ${t.skillsTech}\n• ${t.projectsPortfolio}\n• ${t.educationBackground}\n• ${t.workExperience}\n• ${t.interestsSpec}\n• ${t.contactInfo}\n• ${t.certifications}\n• ${t.languages}\n\nAdmin commands:\n• show unanswered\n• export unanswered\n• clear unanswered\n\n${t.justAsk}`;
     }
 
     // Default response with smart search
@@ -342,10 +550,44 @@ const Chatbot = () => {
       return response;
     }
 
+    if (fuseInstance) {
+      const expandedTerms = expandQuery(message);
+      const fuzzyResults = fuseInstance.search(expandedTerms.join(' '));
+      const bestMatch = fuzzyResults[0];
+
+      if (bestMatch && typeof bestMatch.score === 'number' && bestMatch.score <= 0.45) {
+        const item = bestMatch.item;
+        if (item.type === 'project') {
+          return lang === 'sv'
+            ? `Jag tror att du menar projektet **${item.text}**.\n${item.period || ''}\n${item.description || ''}`
+            : `I think you're asking about the project **${item.text}**.\n${item.period || ''}\n${item.description || ''}`;
+        }
+
+        if (item.type === 'experience') {
+          return lang === 'sv'
+            ? `Jag tror att du syftar på **${item.text}** på ${item.company}.\n${item.period || ''}\n${item.description || ''}`
+            : `I think you're referring to **${item.text}** at ${item.company}.\n${item.period || ''}\n${item.description || ''}`;
+        }
+
+        return lang === 'sv'
+          ? `Jag tror att du menar färdigheten **${item.text}**.`
+          : `I think you're asking about the skill **${item.text}**.`;
+      }
+
+      if (bestMatch && typeof bestMatch.score === 'number' && bestMatch.score <= 0.65) {
+        const item = bestMatch.item;
+        logUnansweredQuestion(userMessage, lang, item.text);
+        return lang === 'sv'
+          ? `Jag är inte helt säker, men menade du **${item.text}**?\n${item.description || ''}`
+          : `I'm not completely sure, but did you mean **${item.text}**?\n${item.description || ''}`;
+      }
+    }
+
     // Enhanced error handling with helpful suggestions
     if (searchResults.matchedSkills.length === 0 && 
         searchResults.matchedExperience.length === 0 && 
         searchResults.matchedProjects.length === 0) {
+      logUnansweredQuestion(userMessage, lang);
       return `${t.notFound}\n\n• ${t.skillsExample}\n• ${t.projectsExample}\n• ${t.experienceExample}\n• ${t.educationExample}`;
     }
 
