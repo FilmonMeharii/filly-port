@@ -16,7 +16,7 @@ const projectsData = [
     tags: ['Research','ISO/SAE 21434','Automotive','Cybersecurity','Literature Review'],
     // PDF lives in `src/assets/Cyber` (filename includes a trailing space before .pdf)
       pdf: require('../../assets/Cyber/LitReview_Group7_SLP600 .pdf'),
-    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
+    githubLink: ''
   },
   // Cybersecurity Labs (core specialization, latest first)
   {
@@ -34,7 +34,7 @@ const projectsData = [
       'Documentation: collected before/after scans, rulesets, configuration snippets and a written analysis of mitigations'
     ],
     tags: ['ICS Security','PLC','OpenPLC','nftables','Fail2Ban','Modbus','Colonial Pipeline','SCADA'],
-    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
+    githubLink: ''
   },
   {
     id: 15,
@@ -49,7 +49,7 @@ const projectsData = [
       'Authentication & Access Control: implemented role based access control (RBAC), RADIUS authentication, multi factor authentication (MFA), MAC filtering, and principle of least privilege policies'
     ],
     tags: ['Reconnaissance', 'OpenVAS', 'Nessus', 'Honeypot', 'Splunk', 'FortiGate', 'WAF', 'RBAC', 'MFA', 'Network Monitoring'],
-    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
+    githubLink: ''
   },
   {
     id: 5,
@@ -65,7 +65,7 @@ const projectsData = [
       'Team Collaboration: Worked in a 3-person team with clearly defined RBAC responsibilities, ensuring principle of least privilege and secure resource isolation.'
     ],
     tags: ['Azure','ThingsBoard','IoT','Key Vault','Azure AD','OAuth2','PostgreSQL','TLS','MFA','RBAC'],
-    githubLink: 'https://github.com/FilmonMeharii/FiliPort2'
+    githubLink: ''
   },
   // Advanced Technical Projects
   {
