@@ -86,7 +86,7 @@ const Header = () => {
                     </Link>
                 </div>
                 <button
-                    className="menu-icon"
+                    className={`menu-icon ${isMenuOpen ? 'open' : ''}`}
                     onClick={toggleMenu}
                     aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                     aria-expanded={isMenuOpen}
@@ -119,7 +119,7 @@ const Header = () => {
                     <div className='text-content'>
                         <h3>Hello, I'm</h3>
                         <h1>Filmon Mehari</h1>
-                        <h2> Computer Science Graduate <br /> Maters's Student in Cybersecurity</h2>
+                        <h2> Computer Science Graduate <br /> Master's Student in Cybersecurity</h2>
                         <div className="hero-actions">
                             <Link smooth to='#projects' className='hero-cta' onClick={closeMenu} aria-label="Explore my projects">Explore My Work</Link>
                         </div>

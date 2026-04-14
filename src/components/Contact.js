@@ -20,7 +20,16 @@ const Contact = () => {
   }, []);
 
   if (state.succeeded) {
-    return <p>Thanks for reaching out! I will get back to you soon.</p>;
+    return (
+      <section id="contact" className="section contact" ref={sectionRef}>
+        <div className="container">
+          <h2>Contact</h2>
+          <div className="card" role="status" aria-live="polite">
+            <p>Thanks for reaching out! I will get back to you soon.</p>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (
