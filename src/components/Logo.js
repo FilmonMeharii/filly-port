@@ -16,28 +16,18 @@ const Logo = ({ size = 16 }) => {
           <stop offset="0%" stopColor="#06b6d4" />
           <stop offset="100%" stopColor="#8b5cf6" />
         </linearGradient>
-        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#0ea5a4" />
-          <stop offset="100%" stopColor="#7c3aed" />
-        </linearGradient>
       </defs>
 
-      {/* Background circle */}
-      <circle cx="25" cy="25" r="24" fill="none" stroke="url(#logoGradient)" strokeWidth="1.5" opacity="0.4" />
-
-      {/* Inner circle background */}
-      <circle cx="25" cy="25" r="22" fill="rgba(6, 182, 212, 0.08)" />
-
-      {/* FM Text */}
+      {/* Clean monogram */}
       <text
         x="25"
-        y="32"
-        fontSize="22"
-        fontWeight="700"
+        y="31"
+        fontSize="21"
+        fontWeight="800"
         fontFamily="system-ui, -apple-system, sans-serif"
-        fill="url(#textGradient)"
+        fill="url(#logoGradient)"
         textAnchor="middle"
-        letterSpacing="-0.5"
+        letterSpacing="-1"
       >
         FM
       </text>

@@ -1,0 +1,177 @@
+.header {
+  width: 100%;
+  position: relative;
+}
+
+.banner {
+  padding: 9.5rem 2rem 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-content {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.banner,
+.banner-content {
+  overflow-x: hidden;
+}
+
+.text-content {
+  flex: 1;
+  padding-right: 2rem;
+  order: 2;
+}
+
+.text-content h1,
+.text-content h2,
+.text-content h3 {
+  color: var(--text-color);
+}
+
+.text-content h3 {
+  font-size: 0.9rem;
+  margin: 0 0 10px;
+  color: var(--muted-color);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  opacity: 0.78;
+}
+
+.text-content h1 {
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  margin: 0 0 10px;
+  line-height: 1.02;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: block;
+}
+
+.text-content h2 {
+  font-size: 1.05rem;
+  margin: 8px 0 0;
+  font-weight: 600;
+  color: var(--muted-color);
+  display: block;
+}
+
+.hero-actions {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.hero-actions .tryhackme-badge {
+  width: 360px;
+  height: 96px;
+  border: 0;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.hero-linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--light-text-color);
+  background: linear-gradient(90deg, rgba(14, 165, 164, 0.95), rgba(124, 58, 237, 0.9));
+  border: 1px solid transparent;
+  transition: transform 200ms ease, opacity 160ms ease;
+}
+
+.hero-linkedin:hover {
+  transform: translateY(-2px);
+  opacity: 0.96;
+}
+
+[data-theme="dark"] .hero-linkedin {
+  color: var(--light-text-color);
+}
+
+.hero-linkedin-icon {
+  font-size: 1rem;
+}
+
+.profile-photo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  order: 1;
+}
+
+.profile-photo img {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  box-shadow: none;
+  transition: transform 220ms ease, width 200ms ease, height 200ms ease;
+}
+
+[data-theme="dark"] .profile-photo img {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.header-scroll-cue {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3.8rem;
+  gap: 0.7rem;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 12px 20px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--light-text-color);
+  background: linear-gradient(90deg, rgba(14, 165, 164, 0.95), rgba(124, 58, 237, 0.9));
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: transform 200ms ease, opacity 160ms ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  opacity: 0.96;
+}
+
+.hero-cta-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  line-height: 1;
+}

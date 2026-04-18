@@ -8,32 +8,69 @@
   margin-bottom: 16px;
 }
 
+
 .skills-grid {
-  display: grid;
-  grid-template-columns: 1fr 360px;
+  display: block;
   gap: 24px;
   align-items: start;
 }
 
-/* Default placement: description in right column, skills in left column */
-.skills-grid .description-box {
-  grid-column: 2 / 3;
-}
-
-/* When description-top-mode is active, place description full-width above
-   and show the two skill cards side-by-side in equal columns */
-.skills-grid.description-top-mode {
-  grid-template-columns: 1fr 1fr;
-}
-
-.skills-grid.description-top-mode .description-box.description-top {
-  grid-column: 1 / -1;
-}
-
 /* when description should appear above the cards */
 .skills-grid .description-box.description-top {
-  grid-column: 1 / -1;
   margin-bottom: 12px;
+}
+
+.skills-unified {
+  padding: 20px;
+}
+
+.skills-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.skills-card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px;
+  background: color-mix(in srgb, var(--background-color) 94%, transparent);
+}
+
+/* Keep all three inner sections visually identical in one unified skills box */
+.skills-unified .description-box,
+.skills-unified .skills-card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px;
+  background: color-mix(in srgb, var(--background-color) 94%, transparent);
+  box-shadow: none;
+}
+
+.skills-unified .description-box:hover,
+.skills-unified .skills-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border-color);
+}
+
+.skills-unified .description-box h3,
+.skills-unified .skills-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0 0 12px;
+}
+
+[data-theme="dark"] .skills-card {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.08);
+}
+
+[data-theme="dark"] .skills-unified .description-box,
+[data-theme="dark"] .skills-unified .skills-card {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.08);
 }
 
 .skills-container {
@@ -84,7 +121,7 @@
 /* Enhanced styling for the "About My Skills" description box */
 .description-box {
   background: linear-gradient(135deg, color-mix(in srgb, var(--primary-color) 8%, var(--background-color)), color-mix(in srgb, var(--accent-color) 6%, var(--background-color)));
-  border: 2px solid color-mix(in srgb, var(--primary-color) 20%, transparent);
+  border: 2px solid rgba(14, 165, 164, 0.2);
   border-radius: 12px;
   padding: 20px !important;
   box-shadow: 0 12px 32px rgba(2,6,23,0.08);
@@ -94,7 +131,7 @@
 .description-box:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 48px rgba(2,6,23,0.12);
-  border-color: color-mix(in srgb, var(--primary-color) 35%, transparent);
+  border-color: rgba(14, 165, 164, 0.35);
 }
 
 .description-box h3 {
@@ -141,8 +178,14 @@
   color: var(--light-text-color);
 }
 
+[data-theme="dark"] .skills-unified .description-box p,
+[data-theme="dark"] .skills-unified .skills-card p {
+  color: var(--light-text-color);
+}
+
 @media (max-width: 980px) {
   .skills-grid { grid-template-columns: 1fr; }
+  .skills-panels { grid-template-columns: 1fr; }
   .skills-cats { grid-template-columns: 1fr; }
 }
 

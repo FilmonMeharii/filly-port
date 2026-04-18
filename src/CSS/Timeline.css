@@ -125,7 +125,7 @@
 
 .timeline-content .date {
   font-style: italic;
-  color: var(--light-text-color);
+  color: var(--text-color);
   font-size: 14px;
   margin-bottom: 8px;
 }
@@ -138,6 +138,10 @@
 
 [data-theme="dark"] .timeline-content {
   background: rgba(255,255,255,0.02);
+  color: var(--light-text-color);
+}
+
+[data-theme="dark"] .timeline-content .date {
   color: var(--light-text-color);
 }
 

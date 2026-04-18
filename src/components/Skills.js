@@ -82,46 +82,50 @@ export default function Skills() {
       <div className="container skills-container">
         <h2>Skills</h2>
         <div className="skills-grid description-top-mode">
-          <aside className="description-box card description-top">
-            <h3>About My Skills</h3>
-            <p>
-              I started with software development at Jönköping University, where I learned programming, mobile app design, and AI. Now at Högskolan Väst, I’m focusing on cybersecurity especially cloud security, IAM and industrial systems protection.
-            </p>
-            <p className="muted">Tools: Git, GitHub, Docker (basic), SQL, PyTorch</p>
-            <p className="muted" style={{ marginTop: '0.5rem' }}>Tip: click any skill chip to jump directly to the project(s) that demonstrate that skill.</p>
-          </aside>
+          <div className="skills-unified card">
+            <aside className="description-box description-top">
+              <h3>About My Skills</h3>
+              <p>
+                I started with software development at Jönköping University, where I learned programming, mobile app design, and AI. Now at Högskolan Väst, I’m focusing on cybersecurity especially cloud security, IAM and industrial systems protection.
+              </p>
+              <p className="muted">Tools: Git, GitHub, Docker (basic), SQL, PyTorch</p>
+              <p className="muted" style={{ marginTop: '0.5rem' }}>Tip: click any skill chip to jump directly to the project(s) that demonstrate that skill.</p>
+            </aside>
 
-          <div className="skills-card card">
-            <h3>Cybersecurity & Cloud</h3>
-            <div className="chips">
-              <span className="chip" onClick={() => handleSkillClick('Cloud Security')} style={{ cursor: 'pointer' }}>Cloud Security</span>
-              <span className="chip" onClick={() => handleSkillClick('IAM (Identity & Access Management)')} style={{ cursor: 'pointer' }}>IAM (Identity & Access Management)</span>
-              <span className="chip" onClick={() => handleSkillClick('FortiGate / Fortinet')} style={{ cursor: 'pointer' }}>FortiGate / Fortinet</span>
-              <span className="chip" onClick={() => handleSkillClick('Splunk')} style={{ cursor: 'pointer' }}>Splunk</span>
-              <span className="chip" onClick={() => handleSkillClick('OpenVAS')} style={{ cursor: 'pointer' }}>OpenVAS</span>
-              <span className="chip" onClick={() => handleSkillClick('Tenable')} style={{ cursor: 'pointer' }}>Tenable</span>
-              <span className="chip" onClick={() => handleSkillClick('Proxmox')} style={{ cursor: 'pointer' }}>Proxmox</span>
-              <span className="chip" onClick={() => handleSkillClick('nftables')} style={{ cursor: 'pointer' }}>nftables</span>
-              <span className="chip" onClick={() => handleSkillClick('Fail2Ban')} style={{ cursor: 'pointer' }}>Fail2Ban</span>
-              <span className="chip" onClick={() => handleSkillClick('Vulnerability scanning')} style={{ cursor: 'pointer' }}>Vulnerability scanning</span>
-              <span className="chip" onClick={() => handleSkillClick('System hardening')} style={{ cursor: 'pointer' }}>System hardening</span>
-              <span className="chip" onClick={() => handleSkillClick('Network defense')} style={{ cursor: 'pointer' }}>Network defense</span>
-            </div>
-          </div>
+            <div className="skills-panels">
+              <div className="skills-card">
+                <h3>Cybersecurity & Cloud</h3>
+                <div className="chips">
+                  <span className="chip" onClick={() => handleSkillClick('Cloud Security')} style={{ cursor: 'pointer' }}>Cloud Security</span>
+                  <span className="chip" onClick={() => handleSkillClick('IAM (Identity & Access Management)')} style={{ cursor: 'pointer' }}>IAM (Identity & Access Management)</span>
+                  <span className="chip" onClick={() => handleSkillClick('FortiGate / Fortinet')} style={{ cursor: 'pointer' }}>FortiGate / Fortinet</span>
+                  <span className="chip" onClick={() => handleSkillClick('Splunk')} style={{ cursor: 'pointer' }}>Splunk</span>
+                  <span className="chip" onClick={() => handleSkillClick('OpenVAS')} style={{ cursor: 'pointer' }}>OpenVAS</span>
+                  <span className="chip" onClick={() => handleSkillClick('Tenable')} style={{ cursor: 'pointer' }}>Tenable</span>
+                  <span className="chip" onClick={() => handleSkillClick('Proxmox')} style={{ cursor: 'pointer' }}>Proxmox</span>
+                  <span className="chip" onClick={() => handleSkillClick('nftables')} style={{ cursor: 'pointer' }}>nftables</span>
+                  <span className="chip" onClick={() => handleSkillClick('Fail2Ban')} style={{ cursor: 'pointer' }}>Fail2Ban</span>
+                  <span className="chip" onClick={() => handleSkillClick('Vulnerability scanning')} style={{ cursor: 'pointer' }}>Vulnerability scanning</span>
+                  <span className="chip" onClick={() => handleSkillClick('System hardening')} style={{ cursor: 'pointer' }}>System hardening</span>
+                  <span className="chip" onClick={() => handleSkillClick('Network defense')} style={{ cursor: 'pointer' }}>Network defense</span>
+                </div>
+              </div>
 
-          <div className="skills-card card">
-            <h3>Software & AI</h3>
-            <div className="chips">
-              <span className="chip" onClick={() => handleSkillClick('Python')} style={{ cursor: 'pointer' }}>Python</span>
-              <span className="chip" onClick={() => handleSkillClick('C++')} style={{ cursor: 'pointer' }}>C++</span>
-              <span className="chip" onClick={() => handleSkillClick('Java')} style={{ cursor: 'pointer' }}>Java</span>
-              <span className="chip" onClick={() => handleSkillClick('Kotlin')} style={{ cursor: 'pointer' }}>Kotlin</span>
-              <span className="chip" onClick={() => handleSkillClick('Swift')} style={{ cursor: 'pointer' }}>Swift</span>
-              <span className="chip" onClick={() => handleSkillClick('JavaScript')} style={{ cursor: 'pointer' }}>JavaScript</span>
-              <span className="chip" onClick={() => handleSkillClick('React')} style={{ cursor: 'pointer' }}>React</span>
-              <span className="chip" onClick={() => handleSkillClick('Node.js')} style={{ cursor: 'pointer' }}>Node.js</span>
-              <span className="chip" onClick={() => handleSkillClick('Deep Learning (PyTorch)')} style={{ cursor: 'pointer' }}>Deep Learning (PyTorch)</span>
-              <span className="chip" onClick={() => handleSkillClick('Data Fusion')} style={{ cursor: 'pointer' }}>Data Fusion</span>
+              <div className="skills-card">
+                <h3>Software & AI</h3>
+                <div className="chips">
+                  <span className="chip" onClick={() => handleSkillClick('Python')} style={{ cursor: 'pointer' }}>Python</span>
+                  <span className="chip" onClick={() => handleSkillClick('C++')} style={{ cursor: 'pointer' }}>C++</span>
+                  <span className="chip" onClick={() => handleSkillClick('Java')} style={{ cursor: 'pointer' }}>Java</span>
+                  <span className="chip" onClick={() => handleSkillClick('Kotlin')} style={{ cursor: 'pointer' }}>Kotlin</span>
+                  <span className="chip" onClick={() => handleSkillClick('Swift')} style={{ cursor: 'pointer' }}>Swift</span>
+                  <span className="chip" onClick={() => handleSkillClick('JavaScript')} style={{ cursor: 'pointer' }}>JavaScript</span>
+                  <span className="chip" onClick={() => handleSkillClick('React')} style={{ cursor: 'pointer' }}>React</span>
+                  <span className="chip" onClick={() => handleSkillClick('Node.js')} style={{ cursor: 'pointer' }}>Node.js</span>
+                  <span className="chip" onClick={() => handleSkillClick('Deep Learning (PyTorch)')} style={{ cursor: 'pointer' }}>Deep Learning (PyTorch)</span>
+                  <span className="chip" onClick={() => handleSkillClick('Data Fusion')} style={{ cursor: 'pointer' }}>Data Fusion</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
