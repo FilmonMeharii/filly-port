@@ -5,6 +5,7 @@ A modern, responsive personal portfolio website built with React. Showcasing pro
 ## Features
 
 ### 🎯 Core Sections
+
 - **Header/Navigation** - Hero introduction with profile photo, TryHackMe badge, LinkedIn integration, and smooth navigation
 - **About** - Professional overview with terminal-style design and call-to-action buttons
 - **Projects** - Interactive project showcase with lightbox gallery for (AI, Business, Cyber, Thesis projects)
@@ -14,6 +15,7 @@ A modern, responsive personal portfolio website built with React. Showcasing pro
 - **Footer** - Quick links and social connections
 
 ### 🎨 Design & Accessibility
+
 - Light/Dark mode toggle with persistent theme preference
 - Responsive design optimized for mobile, tablet, and desktop
 - Cross-browser compatibility (Chrome, Safari, Firefox)
@@ -21,6 +23,7 @@ A modern, responsive personal portfolio website built with React. Showcasing pro
 - Accessible color contrast in both themes
 
 ### 🔧 Technical Features
+
 - Component-based React architecture
 - Modularized CSS with organized styling structure
 - Interactive skill chips with project filtering
@@ -39,7 +42,7 @@ A modern, responsive personal portfolio website built with React. Showcasing pro
 
 ## Project Structure
 
-```
+```tree
 filly-port/
 ├── src/
 │   ├── components/
@@ -62,39 +65,49 @@ filly-port/
 ## Getting Started
 
 ### Installation
+
 ```bash
 npm install
 ```
 
 ### Development
+
 ```bash
 npm start
 ```
+
 Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
 The page will reload when you make changes.
 
 ### Production Build
+
 ```bash
 npm run build
 ```
+
 Builds the app for production to the `build` folder.
 Optimized and minified for deployment.
 
 ### Testing
+
 ```bash
 npm test
 ```
+
 Launches the test runner in interactive watch mode.
 
 ### Deployment
+
 ```bash
 npm run deploy
 ```
+
 Deploys the production build to your hosting service.
 
 ## Recent Updates
 
 ### Header Restructuring
+
 - Modularized Header.css into focused components (base, navigation, responsive)
 - Enhanced navbar with right-aligned tabs and improved typography
 - Added LinkedIn button integration
@@ -102,16 +115,19 @@ Deploys the production build to your hosting service.
 - Added Home navigation tab with anchor linking
 
 ### Skills Unification
+
 - Consolidated multiple skill sections into a single unified container
 - Maintained internal structure while ensuring visual consistency
 - Improved responsive behavior on smaller screens
 
 ### Cross-Browser Compatibility
+
 - Resolved all CSS compatibility warnings
 - Ensured support for Chrome < 111, Safari < 15.4, and iOS browsers
 - Optimized color and layout rendering across browsers
 
 ### Theme & Visibility
+
 - Fixed text visibility issues in light mode
 - Enhanced color contrast and readability
 - Ensured proper theme-aware color transitions
