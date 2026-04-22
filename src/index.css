@@ -9,6 +9,9 @@
   --muted-color: #475569; /* softer muted slate */
   --box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
   --border-color: #e6eef3; /* very light border for cards */
+  --project-meta-bg: #111827;
+  --project-meta-text: #ffffff;
+  --project-meta-border: #111827;
   --radius-sm: 6px;
   --radius-md: 12px;
   --max-width: 1200px;
@@ -24,6 +27,9 @@
   --muted-color: #9ca3af;
   --box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
   --border-color: #1f2937;
+  --project-meta-bg: #dbeafe;
+  --project-meta-text: #0f172a;
+  --project-meta-border: #93c5fd;
 }
 
 /* sensible defaults */
