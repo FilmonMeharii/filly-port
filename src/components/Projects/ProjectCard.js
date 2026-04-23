@@ -1,11 +1,17 @@
 import React from 'react';
 import '../../CSS/Projects/ProjectCard.css';
 
-const ProjectCard = ({ project, onClick }) => {
+const ProjectCard = ({ project, onClick, isHighlighted = false }) => {
   const featuredTags = (project.tags || []).slice(0, 3);
 
   return (
-    <div className="project" data-project-id={project.id} role="article" tabIndex={0} aria-label={project.title}>
+    <div
+      className={`project${isHighlighted ? ' skill-match' : ''}`}
+      data-project-id={project.id}
+      role="article"
+      tabIndex={0}
+      aria-label={project.title}
+    >
       <h3>{project.title}</h3>
       <p>{project.description}</p>
       {featuredTags.length > 0 && (

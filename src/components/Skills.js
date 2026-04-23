@@ -7,21 +7,29 @@ export default function Skills() {
   // Map skills to their most relevant project IDs
   const skillProjectMap = {
     // Cybersecurity & Cloud
-    'Cloud Security': [5],
-    'IAM (Identity & Access Management)': [5, 15],
+    'Cloud Security': [5, 25],
+    'IAM (Identity & Access Management)': [5, 15, 25],
     'FortiGate / Fortinet': [15],
     'Splunk': [5, 15],
     'OpenVAS': [15],
+    'Tenable': [15],
+    'Proxmox': [20],
+    'nftables': [20],
+    'Fail2Ban': [20],
     'Vulnerability scanning': [15],
-    'System hardening': [20],
-    'Network defense': [15],
+    'System hardening': [20, 25],
+    'Network defense': [15, 20, 25],
     // Software & AI
-    'Python': [11, 13],
+    'Python': [11, 13, 22],
     'C++': [8],
-    'AI': [11],
+    'Java': [23],
+    'Kotlin': [21],
+    'Swift': [4, 26, 27],
+    'AI': [11, 13],
     'Machine Learning': [11],
     'JavaScript': [9],
     'React': [9],
+    'Node.js': [3, 9],
     'React Native': [3],
     'Deep Learning (PyTorch)': [13],
     'Data Fusion': [13],
@@ -30,35 +38,17 @@ export default function Skills() {
   const handleSkillClick = (skill) => {
     const projectIds = skillProjectMap[skill];
     if (projectIds && projectIds.length > 0) {
+      // Notify Projects section which project IDs should be focused.
+      window.dispatchEvent(
+        new CustomEvent('skill-project-focus', {
+          detail: { skill, projectIds }
+        })
+      );
+
       // Scroll to projects section
       const projectsSection = document.getElementById('projects');
       if (projectsSection) {
         projectsSection.scrollIntoView({ behavior: 'smooth' });
-        // Highlight the relevant project(s)
-        setTimeout(() => {
-          const projectElements = document.querySelectorAll('.project');
-          projectElements.forEach((el) => {
-            el.style.opacity = '0.5';
-            el.style.transition = 'all 0.3s ease';
-          });
-          projectIds.forEach((id) => {
-            const relevantProject = document.querySelector(`[data-project-id="${id}"]`);
-            if (relevantProject) {
-              relevantProject.style.opacity = '1';
-              relevantProject.style.border = '3px solid #4CAF50';
-              relevantProject.style.boxShadow = '0 0 15px rgba(76, 175, 80, 0.6)';
-              relevantProject.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-          });
-          // Reset after 3 seconds
-          setTimeout(() => {
-            projectElements.forEach((el) => {
-              el.style.opacity = '1';
-              el.style.border = '';
-              el.style.boxShadow = '';
-            });
-          }, 3000);
-        }, 300);
       }
     }
   };

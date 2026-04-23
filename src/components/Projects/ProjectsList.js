@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faShieldHalved,
@@ -14,6 +14,7 @@ import ProjectCard from './ProjectCard';
 
 const ProjectsList = ({ projects, onProjectClick }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [highlightedProjectIds, setHighlightedProjectIds] = useState([]);
 
   const groupedProjects = useMemo(() => {
     return projects.reduce((groups, project) => {
@@ -37,6 +38,50 @@ const ProjectsList = ({ projects, onProjectClick }) => {
   const categoryProjects = selectedCategory ? (groupedProjects[selectedCategory] || []) : [];
   const hasResults = categoryProjects.length > 0;
   const columns = Math.min(4, Math.max(1, Math.ceil(Math.sqrt(categoryProjects.length || 1))));
+
+  useEffect(() => {
+    const handleSkillProjectFocus = (event) => {
+      const projectIds = event?.detail?.projectIds || [];
+      if (!Array.isArray(projectIds) || projectIds.length === 0) return;
+
+      const byId = new Map(projects.map((project) => [project.id, project]));
+      const orderedMatches = projectIds
+        .map((id) => byId.get(id))
+        .filter(Boolean);
+
+      if (orderedMatches.length === 0) return;
+
+      const targetCategory = orderedMatches[0].category || 'Other';
+      const idsInCategory = orderedMatches
+        .filter((project) => (project.category || 'Other') === targetCategory)
+        .map((project) => project.id);
+
+      setSelectedCategory(targetCategory);
+      setHighlightedProjectIds(idsInCategory);
+    };
+
+    window.addEventListener('skill-project-focus', handleSkillProjectFocus);
+    return () => window.removeEventListener('skill-project-focus', handleSkillProjectFocus);
+  }, [projects]);
+
+  useEffect(() => {
+    if (highlightedProjectIds.length === 0 || !selectedCategory) return;
+
+    const firstId = highlightedProjectIds[0];
+    const rafId = requestAnimationFrame(() => {
+      const target = document.querySelector(`.project[data-project-id="${firstId}"]`);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    const clearId = window.setTimeout(() => setHighlightedProjectIds([]), 3200);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.clearTimeout(clearId);
+    };
+  }, [highlightedProjectIds, selectedCategory]);
 
   const getCategoryIcon = (category) => {
     const normalized = (category || '').toLowerCase();
@@ -99,7 +144,12 @@ const ProjectsList = ({ projects, onProjectClick }) => {
           {hasResults ? (
             <div className="projects projects-square" style={{ '--projects-columns': columns }}>
               {categoryProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} onClick={onProjectClick} />
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  onClick={onProjectClick}
+                  isHighlighted={highlightedProjectIds.includes(project.id)}
+                />
               ))}
             </div>
           ) : (
