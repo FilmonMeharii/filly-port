@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className='footer'>
       <div className='container'>
         <div className='footer-content'>
-          <div className='footer-section'>
+          <div className='footer-section footer-inline-row'>
             <div className="contact-info">
               <p>
                 <FontAwesomeIcon icon={faEnvelopeSolid} />
@@ -20,8 +20,6 @@ const Footer = () => {
                 +46700395606
               </p>
             </div>
-          </div>
-          <div className='footer-section'>
             <div className='social-links'>
               <a href="https://www.linkedin.com/in/filmon-mehari-452768252/" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faLinkedin} />

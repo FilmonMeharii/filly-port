@@ -3,8 +3,6 @@ import projectsData from './projectsData';
 
 const useProjects = () => {
   const [modalProject, setModalProject] = useState(null);
-  const [filter, setFilter] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('');
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
   const handleProjectClick = (project) => {
@@ -102,29 +100,11 @@ const useProjects = () => {
     return () => secObs.disconnect();
   }, []);
 
-  const filterButtons = ['All', 'Cybersecurity', 'AI', 'Mobile', 'Web', 'Database'];
-
   // small helper to normalize category strings (robust comparison)
   const normalize = (s) => (s || '').toString().toLowerCase().trim();
 
-  const filteredProjects = projectsData
-    .filter(project => {
-      const lowerSearchTerm = searchTerm.toLowerCase();
-      // Search in title, description, category, tags, and details
-      const titleMatch = project.title.toLowerCase().includes(lowerSearchTerm);
-      const descriptionMatch = project.description.toLowerCase().includes(lowerSearchTerm);
-      const categoryMatch = project.category.toLowerCase().includes(lowerSearchTerm);
-      const tagsMatch = project.tags && project.tags.some(tag => tag.toLowerCase().includes(lowerSearchTerm));
-      const detailsMatch = project.details && project.details.some(detail => detail.toLowerCase().includes(lowerSearchTerm));
-      return titleMatch || descriptionMatch || categoryMatch || tagsMatch || detailsMatch;
-    })
-    .filter(project => {
-      if (filter === 'All') return true;
-      return normalize(project.category) === normalize(filter);
-    });
-
   // Ensure Cybersecurity projects appear first in the listing
-  const orderedProjects = [...filteredProjects].sort((a, b) => {
+  const orderedProjects = [...projectsData].sort((a, b) => {
     const aCyber = normalize(a.category) === 'cybersecurity' ? 0 : 1;
     const bCyber = normalize(b.category) === 'cybersecurity' ? 0 : 1;
     if (aCyber !== bCyber) return aCyber - bCyber;
@@ -152,10 +132,6 @@ const useProjects = () => {
   return {
     modalProject,
     setModalProject,
-    filter,
-    setFilter,
-    searchTerm,
-    setSearchTerm,
     lightboxIndex,
     setLightboxIndex,
     handleProjectClick,
@@ -163,7 +139,6 @@ const useProjects = () => {
     closeButtonRef,
     modalRef,
     sectionRef,
-    filterButtons,
     orderedProjects
   };
 };
