@@ -212,14 +212,49 @@ const projectsData = [
   },
   {
     id: 4,
-    title: 'iOS Apps (SwiftUI)',
-    description: 'Created iOS applications including a weather app and a todo list app using SwiftUI.',
+    title: 'iOS Todo List with Categories (SwiftUI)',
+    description: 'Rebuilt the workshop Todo app and extended it with category support, category filtering, and category visuals using color/icon cues.',
     category: 'Mobile',
     details: [
-      'Built apps with SwiftUI and Core Location',
-      'Handled data persistence and UI state management',
+      'Core features implemented: add todos, mark a todo as done, and delete todos.',
+      'Extended features implemented: assign a category to each todo and filter the todo list by selected category.',
+      'Included at least two categories and used visual cues (icons/colors) to make categories easy to scan.',
+      'Optional persistence approach prepared with UserDefaults/AppStorage strategy so list state can survive app restarts.',
+      'Project delivered through GitHub Classroom workflow with regular commits and repository submission.'
     ],
-    tags: ['SwiftUI', 'iOS']
+    tags: ['SwiftUI', 'iOS', 'Todo App', 'Categories', 'Filtering', 'UserDefaults', 'AppStorage', 'Mobile UX'],
+    githubLink: ''
+  },
+  {
+    id: 26,
+    title: 'Weather App with Open-Meteo API (SwiftUI)',
+    description: 'Designed a weather app that fetches live weather and forecasts from Open-Meteo, supports current location, and lets users manage saved cities.',
+    category: 'Mobile',
+    details: [
+      'Integrated Open-Meteo public API for current conditions and multi-day forecast data.',
+      'Implemented current location weather using CoreLocation with required Info.plist permission setup.',
+      'Added city switching so users can search/select a custom city and update weather views.',
+      'Implemented saved city management so users can persist and navigate their preferred locations.',
+      'Used Swift networking + JSON decoding patterns to map API responses into UI-friendly models.',
+      'Project planning artifacts (rough plan/notes) prepared as part of the assignment process before implementation.'
+    ],
+    tags: ['SwiftUI', 'iOS', 'Open-Meteo API', 'CoreLocation', 'Forecast', 'JSON Parsing', 'City Management'],
+    githubLink: ''
+  },
+  {
+    id: 27,
+    title: 'Quiz App Final Project (iOS)',
+    description: 'Built a custom Quiz app concept as final project with multi-screen navigation, networking, JSON parsing, and unit testing following clean app architecture practices.',
+    category: 'Mobile',
+    details: [
+      'Created an original app concept with clear information hierarchy and navigation across 4+ screens.',
+      'Integrated networking capability and JSON parsing to fetch and render external data.',
+      'Focused on stable builds, clean code structure/formatting, and best-practice architecture patterns.',
+      'Implemented at least 4 unit tests to validate key logic and improve reliability.',
+      'Followed expected project workflow with regular commits and GitHub Classroom delivery.'
+    ],
+    tags: ['iOS', 'SwiftUI', 'Quiz App', 'Networking', 'JSON Parsing', 'Unit Testing', 'App Architecture'],
+    githubLink: ''
   },
   {
     id: 21,
