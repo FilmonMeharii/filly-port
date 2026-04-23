@@ -49,9 +49,9 @@ const About = () => {
 
               <div className="terminal-actions">
                 <a href={CV} target="_blank" rel="noopener noreferrer" className="btn" aria-label="Download CV in PDF format">View CV</a>
-                <a href={Cert} target="_blank" rel="noopener noreferrer" className="btn" style={{marginLeft: '8px'}} aria-label="View CyberOps Associate certificate in PDF">View Certificate</a>
-                <Link smooth to="#skills" className="btn" style={{marginLeft: '8px'}} aria-label="View full skills section">View Skills</Link>
-                <Link smooth to="#projects" className="btn" style={{marginLeft: '8px'}} aria-label="View projects section">View Projects</Link>
+                <a href={Cert} target="_blank" rel="noopener noreferrer" className="btn" aria-label="View CyberOps Associate certificate in PDF">View Certificate</a>
+                <Link smooth to="#skills" className="btn" aria-label="View full skills section">View Skills</Link>
+                <Link smooth to="#projects" className="btn" aria-label="View projects section">View Projects</Link>
               </div>
             </div>
         </div>

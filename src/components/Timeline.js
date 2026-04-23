@@ -39,7 +39,7 @@ const Timeline = () => {
               <h3>{item.title}</h3>
               <h4>{item.institution}</h4>
               <p className="date">{item.date}</p>
-              <p>{item.description}</p>
+              {item.description && <p>{item.description}</p>}
             </div>
           </div>
         ))}
