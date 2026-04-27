@@ -127,3 +127,7 @@
   font-weight: 700;
   width: fit-content;
 }
+
+.project-pdf-link {
+  margin: 1rem 0;
+}

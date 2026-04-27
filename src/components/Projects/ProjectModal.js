@@ -46,7 +46,7 @@ const ProjectModal = ({ project, onClose, closeButtonRef, modalRef, setLightboxI
         )}
 
         {project.pdf && (
-          <p style={{ margin: '1rem 0' }}>
+          <p className="project-pdf-link">
             <a
               className="btn"
               href={project.pdf}

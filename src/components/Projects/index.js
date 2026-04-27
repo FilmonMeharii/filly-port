@@ -8,7 +8,6 @@ import useProjects from './useProjects';
 const Projects = () => {
   const {
     modalProject,
-    setModalProject,
     lightboxIndex,
     setLightboxIndex,
     handleProjectClick,

@@ -160,11 +160,6 @@
   grid-template-columns: repeat(var(--projects-columns, 1), minmax(0, 1fr));
 }
 
-.projects-toolbar {
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-
 @media (max-width: 920px) {
   .projects-square {
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -105,8 +105,13 @@
   color: var(--light-text-color);
   border-radius: 999px;
   font-size: 13px;
+  cursor: pointer;
   box-shadow: 0 6px 14px rgba(2,6,23,0.08);
   transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.skills-tip {
+  margin-top: 0.5rem;
 }
 
 .chip:hover,
