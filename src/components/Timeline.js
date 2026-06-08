@@ -3,7 +3,7 @@ import '../CSS/Timeline.css';
 
 const timelineData = [
   {
-    date: '2025 – Present',
+    date: 'Graduated June 2026',
     title: 'MSc Cybersecurity',
     institution: 'Högskolan Väst, Trollhättan',
     description: ''

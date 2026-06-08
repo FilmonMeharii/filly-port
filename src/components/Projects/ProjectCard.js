@@ -12,16 +12,20 @@ const ProjectCard = ({ project, onClick, isHighlighted = false }) => {
       tabIndex={0}
       aria-label={project.title}
     >
-      <h3>{project.title}</h3>
-      <p>{project.description}</p>
-      {featuredTags.length > 0 && (
-        <div className="project-tags" aria-label="Project tags">
-          {featuredTags.map((tag) => (
-            <span className="project-tag" key={tag}>{tag}</span>
-          ))}
-        </div>
-      )}
-      <button className="read-more-btn" onClick={() => onClick(project)}>Read More</button>
+      <div className="project-content">
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+        {featuredTags.length > 0 && (
+          <div className="project-tags" aria-label="Project tags">
+            {featuredTags.map((tag) => (
+              <span className="project-tag" key={tag}>{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="project-footer">
+        <button className="read-more-btn" onClick={() => onClick(project)}>Read More</button>
+      </div>
     </div>
   );
 };

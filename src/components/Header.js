@@ -3,7 +3,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import profile from '../assets/profile pic.svg';
-import cvFile from '../assets/CV_Filmon.pdf';
+import cvFile from '../assets/CV Generally.pdf';
 import '../CSS/Header.base.css';
 import '../CSS/Header.nav.css';
 import '../CSS/Header.responsive.css';
@@ -118,7 +118,7 @@ const Header = () => {
                     <div className='text-content'>
                         <h3>Hello, I'm</h3>
                         <h1>Filmon Mehari</h1>
-                        <h2> Computer Science Graduate & Master's Student in Cybersecurity</h2>
+                        <h2>BSc Computer Science (2025) | MSc Cybersecurity (2026)</h2>
                         <div className="hero-actions">
                             <iframe
                                 className='tryhackme-badge'

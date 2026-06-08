@@ -8,7 +8,7 @@ export default function Skills() {
   const skillProjectMap = {
     // Cybersecurity & Cloud
     'Cloud Security': [5, 25],
-    'IAM (Identity & Access Management)': [5, 15, 25],
+    'Azure IAM / Identity & Access Management': [5, 15, 25],
     'FortiGate / Fortinet': [15],
     'Splunk': [5, 15],
     'OpenVAS': [15],
@@ -76,9 +76,9 @@ export default function Skills() {
             <aside className="description-box description-top">
               <h3>About My Skills</h3>
               <p>
-                I started with software development at Jönköping University, where I learned programming, mobile app design, and AI. Now at Högskolan Väst, I’m focusing on cybersecurity especially cloud security, IAM and industrial systems protection.
+                I started with software development at Jönköping University (BSc 2025), where I learned programming, mobile app design, and AI. I then completed my MSc in Cybersecurity at Högskolan Väst (2026), focusing on cloud security, Azure IAM, SIEM, and industrial systems protection.
               </p>
-              <p className="muted">Tools: Git, GitHub, Docker (basic), SQL, PyTorch</p>
+              <p className="muted">Tools: Git, GitHub, Docker (basic), SQL, Terraform (exploring)</p>
               <p className="muted skills-tip">Tip: click any skill chip to jump directly to the project(s) that demonstrate that skill.</p>
             </aside>
 
@@ -87,7 +87,7 @@ export default function Skills() {
                 <h3>Cybersecurity & Cloud</h3>
                 <div className="chips">
                   <span className="chip" onClick={() => handleSkillClick('Cloud Security')}>Cloud Security</span>
-                  <span className="chip" onClick={() => handleSkillClick('IAM (Identity & Access Management)')}>IAM (Identity & Access Management)</span>
+                  <span className="chip" onClick={() => handleSkillClick('Azure IAM / Identity & Access Management')}>Azure IAM / Identity & Access Management</span>
                   <span className="chip" onClick={() => handleSkillClick('FortiGate / Fortinet')}>FortiGate / Fortinet</span>
                   <span className="chip" onClick={() => handleSkillClick('Splunk')}>Splunk</span>
                   <span className="chip" onClick={() => handleSkillClick('OpenVAS')}>OpenVAS</span>

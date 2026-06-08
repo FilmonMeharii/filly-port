@@ -20,9 +20,9 @@
   background-color: var(--background-color);
   padding: 28px;
   border-radius: var(--radius-md);
-  max-width: 720px;
-  max-height: 80vh;
-  width: min(92%, 720px);
+  max-width: 960px;
+  max-height: 90vh;
+  width: min(96%, 960px);
   position: relative;
   box-shadow: 0 36px 90px rgba(2,6,23,0.32);
   overflow: auto;
@@ -74,19 +74,27 @@
 
 .close-button {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 16px;
+  right: 16px;
   font-size: 26px;
-  background: none;
-  border: none;
+  background: rgba(0,0,0,0.14);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   color: var(--muted-color);
-  transition: color 160ms ease, transform 160ms ease;
+  transition: color 160ms ease, transform 160ms ease, background 160ms ease;
+  z-index: 1300;
 }
 
 .close-button:hover {
   color: var(--primary-color);
-  transform: scale(1.06);
+  transform: scale(1.08);
+  background: rgba(0,0,0,0.18);
 }
 
 /* Project modal gallery */

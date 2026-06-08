@@ -53,18 +53,19 @@ const projectsData = [
   },
   {
     id: 5,
-    title: 'Azure IoT Security Lab: End-to-End Cloud Infrastructure & Platform Hardening',
-    description: 'Designed and deployed a secure, scalable IoT platform on Azure using ThingsBoard, implementing enterprise-grade security controls, identity management, and encrypted communications in a collaborative team environment.',
+    title: 'Azure IAM & IoT Security Lab: End-to-End Cloud Infrastructure & Platform Hardening',
+    description: 'Designed and deployed a secure Azure IoT platform with a strong IAM focus: Entra ID, RBAC, MFA, Key Vault, OAuth2, and secure service access across frontend and backend components.',
     category: 'Cybersecurity',
     details: [
-      'Cloud Security & IAM: Configured Azure subscription with RBAC, assigned roles (Global Admin, Contributor, Reader), and tested authentication methods including Microsoft Authenticator and TOTP-based apps.',
-      'Secure IoT Infrastructure: Built a private VNet with subnets, deployed Ubuntu VMs for frontend (ThingsBoard) and backend (PostgreSQL), restricted public IPs, and enforced SSH key-based access.',
-      'Platform Hardening: Implemented TLS/SSL via Let\'s Encrypt (Certbot), configured HTTPS for ThingsBoard, and integrated Azure AD for OAuth2-based Single Sign-On (SSO).',
-      'Secrets Management: Used Azure Key Vault to securely store API tokens, implemented Managed Identities for secure secret retrieval, and eliminated hardcoded credentials from source code.',
-      'API Security: Developed and secured an Azure Function with HTTP-triggered endpoints, implemented token-based authentication, and demonstrated secure API consumption from frontend VMs.',
-      'Team Collaboration: Worked in a 3-person team with clearly defined RBAC responsibilities, ensuring principle of least privilege and secure resource isolation.'
+      'Identity Management: configured Entra ID / Azure AD with user groups, RBAC roles, MFA, and conditional access enforcement for all identities.',
+      'IAM Controls: enforced least-privilege access, used managed identities for secure service-to-service authentication, and removed hardcoded credentials.',
+      'Cloud Security: implemented Azure Key Vault for secret storage, private endpoints, NSG rules, and OAuth2-based access to services.',
+      'Secure IoT Infrastructure: built a private VNet with subnets, deployed Ubuntu VMs for frontend (ThingsBoard) and backend (PostgreSQL), restricted public IPs, and enforced SSH key-based access.',
+      'Platform Hardening: implemented TLS/SSL via Let\'s Encrypt (Certbot), configured HTTPS for ThingsBoard, and integrated Azure AD for OAuth2-based Single Sign-On (SSO).',
+      'API Security: developed and secured an Azure Function with HTTP-triggered endpoints, implemented token-based authentication, and demonstrated secure API consumption from frontend VMs.',
+      'Team Collaboration: worked in a 3-person team with clearly defined RBAC responsibilities, ensuring principle of least privilege and secure resource isolation.'
     ],
-    tags: ['Azure','ThingsBoard','IoT','Key Vault','Azure AD','OAuth2','PostgreSQL','TLS','MFA','RBAC'],
+    tags: ['Azure','IAM','Entra ID','Azure AD','RBAC','MFA','Key Vault','OAuth2','IoT','Cloud Security','NSG'],
     githubLink: ''
   },
   // Advanced Technical Projects
@@ -311,19 +312,38 @@ const projectsData = [
   ,
   {
     id: 24,
-    title: "Master's Thesis (ongoing): Comparative Analysis of Open-Source Security Platforms Using Real Honeypot Attack Data",
-    description: 'Empirical comparison of Wazuh (XDR) and Elastic Security (SIEM+EDR) using real attack data collected from a multi-sensor honeypot platform.',
+    title: "Master's Thesis: Comparative Evaluation of Open-Source SOAR Tools with FortiGate Integration",
+    description: 'Empirical comparison of Shuffle (visual orchestrator) and Wazuh+Cortex+TheHive (integrated stack) using 471,000+ real attacks from a live honeypot and FortiGate 50G firewall. Completed June 2026.',
     category: 'Cybersecurity',
-    status: 'Ongoing',
+    status: 'Completed',
     details: [
-      'Deployed T-Pot honeypot with Cowrie, Dionaea, and Suricata and collected 14 days of real attack traffic.',
-      'Configured Filebeat + Logstash to forward identical logs to Wazuh and Elastic Security for a controlled comparison.',
-      'Measured detection accuracy (TPR/FPR), precision/recall per attack type, alert latency, and resource usage.',
-      'Replayed logs for reproducible testing and analyzed resource utilization with Prometheus + Grafana.',
-      'Key findings: Wazuh showed higher brute-force coverage but more false positives; Elastic Security offered better correlation and lower latency at higher memory cost.',
-      'Tools: T-Pot (Cowrie, Dionaea, Suricata), Wazuh, Elastic Security, Filebeat, Logstash, Prometheus, Grafana, Python (pandas), Jupyter Notebooks.'
+      'FortiGate 50G served dual roles: data source (forwarding IPS alerts via syslog) AND automated response target (receiving IP blocking commands via REST API).',
+      'Deployed T-Pot 24.04 honeypot with 7 sensors (Cowrie, Dionaea, Suricata, Honeytrap, Tanner, H0neytr4p, ConPot) exposed to the internet for 33 days.',
+      'Configured Logstash to split identical attack streams from honeypot and FortiGate to both SOAR platforms simultaneously.',
+      'Built 4 playbooks per platform: IP blocking directly on FortiGate via its REST API, AbuseIPDB enrichment, TheHive alert, TheHive case.',
+      'Created custom Flask proxy to bypass university firewall blocking Docker outbound traffic.',
+      'Collected 471,000+ real attacks; ran controlled attacks (Nmap, Hydra) for ground truth.',
+      'Labeled 100 random Wazuh alerts manually with co-author (Cohen\'s Kappa 0.87).',
+      'Measured 6 metrics: success rate, latency, false positives, integration effort (hours + lines of code), CPU, RAM.',
+      'Key results: FortiGate IP blocking latency: Shuffle 4.0s vs Wazuh 0.288s (13.9× faster); Avg latency 2.5s vs 0.387s (6.3× faster); 100% success rate; 141 vs 195 code lines; GUI vs Python/bash playbook creation; 60% false positives on Wazuh alerts (38/60 were CIS compliance checks); Shuffle struggled under load while Wazuh scaled better.',
+      'Unexpected findings: Shuffle spawned unlimited Docker containers → load average 375, RAM 100%, system froze → fixed with CLEANUP=true and monitoring.',
+      'Unexpected findings: FortiGate REST API received automated block commands from both platforms.',
+      'Unexpected findings: SOAR infrastructure itself attacked: 173,122 connection attempts on Shuffle port 3001 (93% of external traffic) plus 891 attempts on Wazuh port 1516 and 23 on TheHive port 9000.',
+      'Tools: T-Pot, Shuffle, Wazuh, Cortex, TheHive, FortiGate 50G (syslog + REST API), Logstash, Flask, Python, Bash, GitHub.',
+      'Conclusion: FortiGate integration worked seamlessly with both platforms. Wazuh wins on speed and scalability; Shuffle wins on ease of use. Choose based on your team\'s skills and threat volume. SOAR interfaces must be secured, they are attack targets.'
     ],
-    tags: ['Master thesis','Wazuh','Elastic Security','T-Pot','SIEM','XDR','Filebeat','Logstash','Prometheus'],
+    tags: ['Master thesis','SOAR','Shuffle','Wazuh','Cortex','TheHive','FortiGate','T-Pot','Logstash','Flask','Python','Bash','GitHub'],
+    images: [
+      require('../../assets/Master thesis/abuseipdb_scores.png'),
+      require('../../assets/Master thesis/attacker_geography.png'),
+      require('../../assets/Master thesis/classification_distribution.png'),
+      require('../../assets/Master thesis/event_distribution.png'),
+      require('../../assets/Master thesis/implementation_overview.png'),
+      require('../../assets/Master thesis/integration_effort.png'),
+      require('../../assets/Master thesis/latency_comparison}.png'),
+      require('../../assets/Master thesis/resource_utilization.png'),
+      require('../../assets/Master thesis/soar_port_scans.png')
+    ],
     githubLink: ''
   }
   ,

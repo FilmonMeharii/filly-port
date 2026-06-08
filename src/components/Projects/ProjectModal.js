@@ -15,10 +15,18 @@ const ProjectModal = ({ project, onClose, closeButtonRef, modalRef, setLightboxI
         if (e.target === e.currentTarget) onClose();
       }}
     >
+      <button
+        className="close-button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
+        ref={closeButtonRef}
+        aria-label="Close project details"
+      >
+        &times;
+      </button>
       <div className="modal-content" ref={modalRef} onClick={(e) => e.stopPropagation()}>
-        <button className="close-button" onClick={onClose} ref={closeButtonRef} aria-label="Close project details">
-          &times;
-        </button>
         <h3>{project.title}</h3>
         <p>{project.description}</p>
         {project.details && (

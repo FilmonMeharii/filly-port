@@ -72,9 +72,14 @@ export const portfolioData = {
 
   projects: [
     {
-      title: "Azure IoT Security Lab: End-to-End Cloud Infrastructure & Platform Hardening",
+      title: "Azure IAM & IoT Security Lab",
       period: "Sep 2025 – Nov 2025",
-      description: "Designed and deployed a secure, scalable IoT platform on Azure using ThingsBoard, implementing enterprise-grade security controls, identity management, and encrypted communications in a collaborative team environment."
+      description: "Built a secure Azure IoT environment with a strong IAM focus using Entra ID, RBAC, MFA, Key Vault, and OAuth2 to protect IoT applications, APIs, and services."
+    },
+    {
+      title: "Master's Thesis: Comparative Evaluation of Open-Source SOAR Tools with FortiGate Integration",
+      period: "Jan 2026 – Present",
+      description: "Compared Shuffle and Wazuh+Cortex+TheHive using 471,000+ real attacks from a honeypot and FortiGate 50G firewall. Wazuh was faster and more scalable; Shuffle was easier to use. FortiGate served as both data source and automated response target."
     },
     {
       title: "ICS Security & PLC Hardening Lab",

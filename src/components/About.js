@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import '../CSS/About.css';
-import CV from '../assets/CV_Filmon.pdf';
+import CV from '../assets/CV Generally.pdf';
 import Cert from '../assets/CyberOps_Associate_certificate.pdf';
 
 const About = () => {
@@ -26,21 +26,21 @@ const About = () => {
                 <span className="prompt">$</span> whoami
               </div>
               <div className="line output">
-                I'm a Computer Science graduate currently pursuing an MSc in Cybersecurity. I focus on applied system hardening and intrusion detection, with hands-on labs and projects across cloud and industrial control systems including FortiGate/WAF tuning, centralized logging with Splunk, vulnerability assessments with OpenVAS/Nessus, and PLC hardening with OpenPLC.
+                I'm a Computer Science graduate (BSc 2025) with an MSc in Cybersecurity (2026). My focus is on applied system hardening, intrusion detection, and IAM. My hands-on experience includes Azure IAM (Entra ID, RBAC, MFA, Key Vault), SIEM/SOAR (Wazuh, Elastic), vulnerability assessments (OpenVAS, Nessus), and network security (nftables, firewalls).
               </div>
 
               <div className="line">
                 <span className="prompt">$</span> projects
               </div>
               <div className="line output">
-                I've built and evaluated end-to-end solutions: multimodal computer-vision thesis (RGB+depth+IR YOLO), IoT platform hardening (TLS/OAuth2), and ICS attack simulations with before/after scans and remediation steps.
+                I've built end-to-end solutions: Azure IAM with Entra ID and OAuth2 SSO, SIEM log analysis pipelines comparing Wazuh and Elastic, ICS security lab with OpenPLC and Modbus/TCP, vulnerability scanning with OpenVAS/Nessus, and full-stack web applications with Node.js and REST APIs.
               </div>
 
               <div className="line">
                 <span className="prompt">$</span> interests
               </div>
               <div className="line output">
-                Threat Intelligence • Incident Response • System Hardening • ICS Security • Cloud Security • AI & Computer Vision • Software Engineering
+                IAM • Cloud Security (Azure) • SIEM / SOC • Network Security • DevSecOps • Zero Trust • Industrial Control Systems (ICS/OT)
               </div>
 
               <div className="line">
@@ -60,21 +60,20 @@ const About = () => {
   );
 }
 
-  function useReveal(ref) {
-    useEffect(() => {
-      if (!ref.current) return;
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      observer.observe(ref.current);
-      return () => observer.disconnect();
-    }, [ref]);
-  }
-
+function useReveal(ref) {
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref]);
+}
 
 export default About;
